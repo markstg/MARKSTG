@@ -1840,7 +1840,7 @@ send(msg.chat_id_, msg.id_, 1, '- 🗂¦ تم تحديث السورس 🚦', 1, 
 os.execute('rm -rf ./libs/utils.lua')
 os.execute('cd libs && wget https://raw.github.com/markstg/MARKSTG/master/libs/utils.lua')
 os.execute('rm -rf MARKSTG.lua')
-os.execute('wget https://raw.github.com/markstg/MARKSTG/master/MARKSTG.lua')
+os.execute('wget https://github.com/markstg/MARKSTG/edit/master/MARKSTG.lua')
 os.exit()
 return false
 end
@@ -1982,10 +1982,10 @@ end
 database:sadd("files"..bot_id,name_t[2]..'.lua')
 send(msg.chat_id_, msg.id_, 1, "✔┇تم تفعيل الملف بنجاح يمكنك استخدامه {"..name_t[2]..".lua}\n"..ts23, 1, 'html')
 else
-send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس ماركس \n 🚦¦[ملفات يدعمها سورس ماركس](t.me/LE_C4_KRFiles)', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس ماركس \n 🚦¦[ملفات يدعمها سورس ماركس](t.me/LE_C4_KRF)', 1, 'md')
 end
 else
-send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس ماركس \n 🚦¦[ملفات يدعمها سورس ماركس](t.me/LE_C4_KRFiles)', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس ماركس \n 🚦¦[ملفات يدعمها سورس ماركس](t.me/LE_C4_KR)', 1, 'md')
 end
 end
 if text:match("^(تعطيل ملف) (.*)(.lua)$") then
