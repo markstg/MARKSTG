@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+cd RAMBO
+screen -S RAMBO -X kill
+screen -S RAMBO ./RmAu
