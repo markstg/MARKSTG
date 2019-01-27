@@ -3767,7 +3767,7 @@ if (text and text == 'تعطيل اطردني') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'kickme:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇امر اطردني بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل امر اطردني', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم\n ~⊱ تعطيل امر اطردني', 1, 'md')
 database:set('MARKSTG:'..bot_id..'kickme:mute'..msg.chat_id_,true)
 end
 end
