@@ -5,7 +5,7 @@ CH > @MARKS_TEAM
 CH > @LE_C4_KR
 --]]
 --------------------------------------
-serpent = require('serpent')
+serpent = require('serpent تحديث')
 serp = require 'serpent'.block
 https = require("ssl.https")
 HTTPS = require("ssl.https")
@@ -1865,7 +1865,7 @@ local curl = 'curl "' .. MARKSTGe .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "
 io.popen(curl)
 end
 if text:match("^تحديث السورس$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-send(msg.chat_id_, msg.id_, 1, '🗂¦ Update Don/n🗂¦ تم تحديث السورس', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🗂¦ Update Don\n🗂¦ تم تحديث السورس', 1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
 os.execute('cd libs && wget https://raw.github.com/markstg/MARKSTG/master/libs/utils.lua')
 os.execute('rm -rf MARKSTG.lua')
