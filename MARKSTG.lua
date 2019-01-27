@@ -5,7 +5,7 @@ CH > @MARKS_TEAM
 CH > @LE_C4_KR
 --]]
 ------------------------------------
-'يدعمها--
+
 serpent = require('serpent')
 serp = require 'serpent'.block
 https = require("ssl.https")
@@ -574,7 +574,7 @@ message_ids_=mid
 },
 dl_cb, nil)
 end
---         ~⊱                 chat_del_user                         ««              --
+--          ««                  chat_del_user                         ««              --
 function chat_del_user(chat_id, user_id)
 changeChatMemberStatus(chat_id, user_id, 'Editor')
 end
@@ -5052,7 +5052,7 @@ local text =  [[
 `git clone https://github.com/markstg/MARKSTG.git && cd MARKSTG && chmod +x install.sh && ./install.sh`
 ——————————————
 كود الرن
-./MARKSTG/mx
+`./MARKSTG/mx`
 ——————————————
 🔘┇انسخ الكود وخلي بلترمينال 
 🔘┇ ورا ميكمل تنصيب حيطلب منك توكن البوت والايدي
