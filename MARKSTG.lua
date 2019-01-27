@@ -3209,7 +3209,7 @@ send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعي�
 database:set('MARKSTG:'..bot_id.."welcome"..msg.chat_id_,true)
 end
 if text:match("^تعطيل الترحيب$") and is_mod(msg) then
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل الترحيب في المجموعه', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل الترحيب في المجموعه', 1, 'md')
 database:del('MARKSTG:'..bot_id.."welcome"..msg.chat_id_)
 end
 if text:match("^وضع ترحيب (.*)$") and is_mod(msg) then
@@ -3385,7 +3385,7 @@ end
                 
 if (text and (text == "تعطيل الطرد" or text == "تعطيل الحظر") and is_creator(msg)) then
 database:set("MARKSTG:lock:ban_and_kick"..bot_id..msg.chat_id_,"MARKSTG")
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل (طرد - حضر) الاعضاء', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل (طرد - حضر) الاعضاء', 1, 'md')
 end
 if (text and (text == "تفعيل الطرد" or text == "تفعيل الحظر") and is_creator(msg)) then
 database:del("MARKSTG:lock:ban_and_kick"..bot_id..msg.chat_id_)
@@ -3767,7 +3767,7 @@ if (text and text == 'تعطيل اطردني') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'kickme:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇امر اطردني بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل امر اطردني', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل امر اطردني', 1, 'md')
 database:set('MARKSTG:'..bot_id..'kickme:mute'..msg.chat_id_,true)
 end
 end
@@ -4246,7 +4246,7 @@ if (text and text == 'تعطيل الايدي بالصوره') and is_owner(msg)
 if database:get('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇الايدي بالصوره بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل الايدي بالصوره', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل الايدي بالصوره', 1, 'md')
 database:set('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_,true)
 end
 end
@@ -4262,7 +4262,7 @@ if (text and text == 'تعطيل احضر صوره') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'get:photo'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇احضر صوره بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل احضر صوره', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل احضر صوره', 1, 'md')
 database:set('MARKSTG:'..bot_id..'get:photo'..msg.chat_id_,true)
 end
 end
@@ -4292,9 +4292,9 @@ end
 end
 if (text and text == 'تعطيل الاذاعه') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 if database:get('MARKSTG:'..bot_id..'bc:groups') then
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل اذاعه البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل اذاعه البوت', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل اذاعه البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل اذاعه البوت', 1, 'md')
 database:set('MARKSTG:'..bot_id..'bc:groups',true)
 end
 end
@@ -4310,7 +4310,7 @@ if (text and text == 'تعطيل المغادره') and tonumber(msg.sender_user
 if database:get('MARKSTG:'..bot_id..'leave:groups') then
 send(msg.chat_id_, msg.id_, 1, '☑┇مغادره بالفعل تم تعطيلها', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل مغادره البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل مغادره البوت', 1, 'md')
 database:set('MARKSTG:'..bot_id..'leave:groups'..msg.chat_id_,true)
 end
 end
@@ -4491,9 +4491,9 @@ end
 end
 if (text and text == 'تعطيل ردود المدير عام') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'repowner:mute'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل ردود المدير عام ', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل ردود المدير عام ', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل ردود المدير عام ', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل ردود المدير عام ', 1, 'md')
 database:set('MARKSTG:'..bot_id..'repowner:mute'..msg.chat_id_,true)
 end
 end
@@ -4510,14 +4510,14 @@ end
 end
 if (text and text == 'تعطيل الايدي') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل الايدي', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل الايدي', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل الايدي', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل الايدي', 1, 'md')
 database:set('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_,true)
 end
 end
 if (text and text == "تعطيل الرابط" and is_owner(msg)) then 
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل امر الروابط', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل امر الروابط', 1, 'md')
 database:set("MARKSTG:mute:link:gr:"..bot_id..msg.chat_id_,"ok")
 end
 if (text and text == "تفعيل الرابط" and is_owner(msg)) then 
@@ -4720,7 +4720,7 @@ if (text and text == 'تعطيل التثبيت') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'pin:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇التثبيت بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل التثبيت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┤ مرحبا عزيزي تم ~⊱ تعطيل التثبيت', 1, 'md')
 database:set('MARKSTG:'..bot_id..'pin:mute'..msg.chat_id_,true)
 end
 end
