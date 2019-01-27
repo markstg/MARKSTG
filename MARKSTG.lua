@@ -1906,7 +1906,7 @@ keko_info = '@'..(result.username_ or 'لا يوجد')..''
 local timeplan1 = 2592000
 database:setex( 'MARKSTG:'..bot_id.."charge:"..txt[2],timeplan1,true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة 30 يوم', 1, 'md')
-send(txt[2], 0, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل مدة المجموعه 30 يوم', 1, 'md')
+send(txt[2], 0, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل مدة المجموعه 30 يوم', 1, 'md')
 for k,v in pairs(sudo_users) do
 function MARKSTG_info(k1,k2)
 send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 30 يوم \n📟┇ايدي المطور ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المطور ⌁≻ "..keko_info.."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ⌁≻ ("..k2.title_..")" , 1, 'md')
@@ -1925,7 +1925,7 @@ keko_info = '@'..(result.username_ or 'لا يوجد')..''
 local timeplan2 = 7776000
 database:setex( 'MARKSTG:'..bot_id.."charge:"..txt[2],timeplan2,true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة 90 يوم', 1, 'md')
-send(txt[2], 0, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل مدة المجموعه 90 يوم', 1, 'md')
+send(txt[2], 0, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل مدة المجموعه 90 يوم', 1, 'md')
 for k,v in pairs(sudo_users) do
 function MARKSTG_info(k1,k2)
 send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 90 يوم \n📟┇ايدي المطور ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المطور ⌁≻ "..keko_info.."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ⌁≻ ("..k2.title_..")" , 1, 'md')
@@ -1943,7 +1943,7 @@ function keko333(extra,result,success)
 keko_info = '@'..(result.username_ or 'لا يوجد')..''
 database:set( 'MARKSTG:'..bot_id.."charge:"..txt[2],true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة لا نهائية', 1, 'md')
-send(txt[2], 0, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل مدة المجموعه لا نهائية', 1, 'md')
+send(txt[2], 0, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل مدة المجموعه لا نهائية', 1, 'md')
 for k,v in pairs(sudo_users) do
 function MARKSTG_info(k1,k2)
 send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت لا نهائية \n📟┇ايدي المطور ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المطور ⌁≻ "..keko_info.."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ⌁≻ ("..k2.title_..")" , 1, 'md')
@@ -2049,7 +2049,7 @@ if tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 if text then
 if (text and text == 'تفعيل الانلاين' ) then
 database:set('key_ts'..bot_id,"yes")
-send(msg.chat_id_, msg.id_, 1, "🚧┤ مرحبا عزيزي تم »» تفعيل خاصيه الازرار الشفافه", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "🚦¦ مرحبا عزيزي تم »» تفعيل خاصيه الازرار الشفافه", 1, 'html')
 end
 if (text and text == 'تعطيل الانلاين') then
 database:del('key_ts'..bot_id)
@@ -3205,7 +3205,7 @@ end
 end
 -----------------------------------------------------------
 if text:match("^تفعيل الترحيب$") and is_mod(msg) then
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل الترحيب في المجموعه', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل الترحيب في المجموعه', 1, 'md')
 database:set('MARKSTG:'..bot_id.."welcome"..msg.chat_id_,true)
 end
 if text:match("^تعطيل الترحيب$") and is_mod(msg) then
@@ -3389,7 +3389,7 @@ send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعط
 end
 if (text and (text == "تفعيل الطرد" or text == "تفعيل الحظر") and is_creator(msg)) then
 database:del("MARKSTG:lock:ban_and_kick"..bot_id..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل (طرد - حضر) الاعضاء', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل (طرد - حضر) الاعضاء', 1, 'md')
 end
 if text:match("^اضافه قائمه المحظورين$") and is_creator(msg) then
 local txt = {string.match(text, "^(اضافه قائمه المحظورين)$")}
@@ -3759,7 +3759,7 @@ if (text and text == 'تفعيل اطردني') and is_owner(msg) then
 if not database:get('MARKSTG:'..bot_id..'kickme:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇امر اطردني بالفعل تم تفعيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل امر اطردني', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل امر اطردني', 1, 'md')
 database:del('MARKSTG:'..bot_id..'kickme:mute'..msg.chat_id_)
 end
 end
@@ -4238,7 +4238,7 @@ if (text and text == 'تفعيل الايدي بالصوره') and is_owner(msg)
 if not database:get('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇الايدي بالصوره بالفعل تم تفعيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل الايدي بالصوره', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل الايدي بالصوره', 1, 'md')
 database:del('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_)
 end
 end
@@ -4254,7 +4254,7 @@ if (text and text == 'تفعيل احضر صوره') and is_owner(msg) then
 if not database:get('MARKSTG:'..bot_id..'get:photo'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇احضر صوره بالفعل تم تفعيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل احضر صوره', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل احضر صوره', 1, 'md')
 database:del('MARKSTG:'..bot_id..'get:photo'..msg.chat_id_)
 end
 end
@@ -4284,9 +4284,9 @@ end
 end
 if (text and text == 'تفعيل الاذاعه') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 if not database:get('MARKSTG:'..bot_id..'bc:groups') then
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل اذاعه البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل اذاعه البوت', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل اذاعه البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل اذاعه البوت', 1, 'md')
 database:del('MARKSTG:'..bot_id..'bc:groups')
 end
 end
@@ -4302,7 +4302,7 @@ if (text and text == 'تفعيل المغادره') and tonumber(msg.sender_user
 if not database:get('MARKSTG:'..bot_id..'leave:groups') then
 send(msg.chat_id_, msg.id_, 1, '☑┇مغادره بالفعل تم تفعيلها', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل مغادره البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل مغادره البوت', 1, 'md')
 database:del('MARKSTG:'..bot_id..'leave:groups'..msg.chat_id_)
 end
 end
@@ -4469,7 +4469,7 @@ if (text and text == 'تفعيل ردود المطور') and is_owner(msg) then
 if not database:get('MARKSTG:'..bot_id..'repsudo:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇ردود المطور بالفعل تم تفعيلها', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل ردود المطور', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل ردود المطور', 1, 'md')
 database:del('MARKSTG:'..bot_id..'repsudo:mute'..msg.chat_id_)
 end
 end
@@ -4483,9 +4483,9 @@ end
 end
 if (text and text == 'تفعيل ردود المدير عام') and is_owner(msg) then
 if not database:get('MARKSTG:'..bot_id..'repowner:mute'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل ردود المدير عام', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل ردود المدير عام', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل ردود المدير عام', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل ردود المدير عام', 1, 'md')
 database:del('MARKSTG:'..bot_id..'repowner:mute'..msg.chat_id_)
 end
 end
@@ -4502,9 +4502,9 @@ send(msg.chat_id_, msg.id_, 1, "*"..msg.chat_id_.."*", 1, 'md')
 end
 if (text and text == 'تفعيل الايدي') and is_owner(msg) then
 if not database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل الايدي', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل الايدي', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل الايدي', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل الايدي', 1, 'md')
 database:del('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_)
 end
 end
@@ -4521,7 +4521,7 @@ send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعط
 database:set("MARKSTG:mute:link:gr:"..bot_id..msg.chat_id_,"ok")
 end
 if (text and text == "تفعيل الرابط" and is_owner(msg)) then 
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل امر الروابط', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل امر الروابط', 1, 'md')
 database:del("MARKSTG:mute:link:gr:"..bot_id..msg.chat_id_)
 end
 if text and text == "تعين مجموعه المطور" and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -4712,7 +4712,7 @@ if (text and text == 'تفعيل التثبيت') and is_owner(msg) then
 if not database:get('MARKSTG:'..bot_id..'pin:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇التثبيت بالفعل تم تفعيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل التثبيت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم »» تفعيل التثبيت', 1, 'md')
 database:del('MARKSTG:'..bot_id..'pin:mute'..msg.chat_id_)
 end
 end
