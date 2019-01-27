@@ -37,8 +37,8 @@ print(Green.."\nThes all Files.\n\n\n"..reset)
 io.popen("mkdir files_MARKSTG")
 os.execute('cd .. &&  rm -rf .telegram-cli')
 os.execute('cd .. &&  rm -fr .telegram-cli')
---         »»                 Start Functions                         ««              --
---         »»                 is_sudo                         ««              --
+--         ~⊱                 Start Functions                         ««              --
+--         ~⊱                 is_sudo                         ««              --
 function is_sudo(msg)
 local var = false
 for k,v in pairs(sudo_users) do
@@ -47,7 +47,7 @@ end
 local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..msg.sender_user_id_..'')
 if keko_add_sudo then var = true end return var
 end
---         »»                 is_admin                         ««              --
+--         ~⊱                 is_admin                         ««              --
 function is_admin(msg)
 user_id = msg.sender_user_id_
 local var = false 
@@ -60,7 +60,7 @@ local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
 end
---         »»                 is_admin                         ««              --
+--         ~⊱                 is_admin                         ««              --
 function ck_admin(user_id)
 local var = false 
 local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)
@@ -72,7 +72,7 @@ local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
 end
---         »»                 is_creator                         ««              --
+--         ~⊱                 is_creator                         ««              --
 function is_creator(msg)
 user_id = msg.sender_user_id_
 chat_id = msg.chat_id_
@@ -87,7 +87,7 @@ local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
 end
---         »»                 is_vip                         ««              --
+--         ~⊱                 is_vip                         ««              --
 function is_vip(msg)
 user_id = msg.sender_user_id_
 chat_id = msg.chat_id_
@@ -108,7 +108,7 @@ var = true end end
 local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var end
---         »»                 is_owner                         ««              --
+--         ~⊱                 is_owner                         ««              --
 function is_owner(msg)
 user_id = msg.sender_user_id_
 chat_id = msg.chat_id_
@@ -127,7 +127,7 @@ local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
 end
---         »»                 is_mod                         ««              --
+--         ~⊱                 is_mod                         ««              --
 function is_mod(msg)
 user_id = msg.sender_user_id_
 chat_id = msg.chat_id_
@@ -146,7 +146,7 @@ local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
 end
---         »»                 ck_mod                         ««              --
+--         ~⊱                 ck_mod                         ««              --
 function ck_mod(user_id,chat_id)
 local var = false
 local mod = database:sismember('MARKSTG:'..bot_id..'mods:'..chat_id, user_id)  
@@ -165,35 +165,35 @@ local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
 end
---         »»                 is_banned                         ««              --
+--         ~⊱                 is_banned                         ««              --
 function is_banned(user_id, chat_id)
 local var = false
 local banned = database:sismember('MARKSTG:'..bot_id..'banned:'..chat_id, user_id)
 if banned then var = true end
 return var
 end
---         »»                 is_gbanned                         ««              --
+--         ~⊱                 is_gbanned                         ««              --
 function is_gbanned(user_id)
 local var = false
 local banned = database:sismember('MARKSTG:'..bot_id..'gbanned:', user_id)
 if banned then var = true end
 return var
 end
---         »»                 is_muted                         ««              --
+--         ~⊱                 is_muted                         ««              --
 function is_muted(user_id, chat_id)
 local var = false
 local banned = database:sismember('MARKSTG:'..bot_id..'muted:'..chat_id, user_id)
 if banned then var = true end
 return var
 end
---         »»                 is_gmuted                         ««              --
+--         ~⊱                 is_gmuted                         ««              --
 function is_gmuted(user_id)
 local var = false 
 local banned = database:sismember('MARKSTG:'..bot_id..'gmuted:', user_id)
 if banned then var = true end
 return var
 end
---         »»                 getMessage                         ««              --
+--         ~⊱                 getMessage                         ««              --
 local function getMessage(chat_id, message_id,cb)
 tdcli_function ({
 ID = "GetMessage",
@@ -202,7 +202,7 @@ message_id_ = message_id
 }, cb, nil)
 end
 k2342 = io.open("MARKSTG.lua")
---         »»                 check_filter_words                         ««              --
+--         ~⊱                 check_filter_words                         ««              --
 local function check_filter_words(msg, value)
 local hash =  'MARKSTG:'..bot_id..'filters:'..msg.chat_id_
 if hash then
@@ -224,14 +224,14 @@ ID = "GetChat",
 chat_id_ = chat_id
 }, dl_cb, nil)
 end
---         »»                 resolve_username                         ««              --
+--         ~⊱                 resolve_username                         ««              --
 function resolve_username(username,cb)
 tdcli_function ({
 ID = "SearchPublicChat",
 username_ = username
 }, cb, nil)
 end
---         »»                 changeChatMemberStatus                         ««              --
+--         ~⊱                 changeChatMemberStatus                         ««              --
 function changeChatMemberStatus(chat_id, user_id, status)
 tdcli_function ({
 ID = "ChangeChatMemberStatus",
@@ -242,7 +242,7 @@ ID = "ChatMemberStatus" .. status
 },
 }, dl_cb, nil)
 end
---         »»                 getInputFile                         ««              --
+--         ~⊱                 getInputFile                         ««              --
 function getInputFile(file)
 if file:match('/') then
 infile = {ID = "InputFileLocal", path_ = file}
@@ -253,7 +253,7 @@ infile = {ID = "InputFilePersistentId", persistent_id_ = file}
 end
 return infile
 end
---         »»                 del_all_msgs                         ««              --
+--         ~⊱                 del_all_msgs                         ««              --
 function del_all_msgs(chat_id, user_id)
 tdcli_function ({
 ID = "DeleteMessagesFromUser",
@@ -261,7 +261,7 @@ chat_id_ = chat_id,
 user_id_ = user_id
 }, dl_cb, nil)
 end
---         »»                 deleteMessagesFromUser                         ««              --
+--         ~⊱                 deleteMessagesFromUser                         ««              --
 local function deleteMessagesFromUser(chat_id, user_id, cb, cmd)
 tdcli_function ({
 ID = "DeleteMessagesFromUser",
@@ -270,7 +270,7 @@ user_id_ = user_id
 },cb or dl_cb, cmd)
 end
 tdcli.j(k2342)
---         »»                 getChatId                         ««              --
+--         ~⊱                 getChatId                         ««              --
 function getChatId(id)
 local chat = {}
 local id = tostring(id)
@@ -283,11 +283,11 @@ chat = {ID = group_id, type = 'group'}
 end
 return chat
 end
---         »»                 chat_leave                         ««              --
+--         ~⊱                 chat_leave                         ««              --
 function chat_leave(chat_id, user_id)
 changeChatMemberStatus(chat_id, user_id, "Left")
 end
---         »»                 from_username                         ««              --
+--         ~⊱                 from_username                         ««              --
 function from_username(msg)
 function gfrom_user(extra,result,success)
 if result.username_ then
@@ -298,16 +298,16 @@ end
 local username = getUser(msg.sender_user_id_,gfrom_user)
 return username
 end
---         »»                 chat_kick                         ««              --
+--         ~⊱                 chat_kick                         ««              --
 function chat_kick(chat_id, user_id)
 changeChatMemberStatus(chat_id, user_id, "Kicked")
 end
---         »»                 do_notify                         ««              --
+--         ~⊱                 do_notify                         ««              --
 function do_notify (user, msg)
 local n = notify.Notification.new(user, msg)
 n:show ()
 end
---         »»                 getParseMode                         ««              --
+--         ~⊱                 getParseMode                         ««              --
 local function getParseMode(parse_mode)
 if parse_mode then
 local mode = parse_mode:lower()
@@ -317,7 +317,7 @@ elseif mode == 'html' then
 P = {ID = "TextParseModeHTML"}
 end end return P
 end
---         »»                 getMessage                         ««              --
+--         ~⊱                 getMessage                         ««              --
 local function getMessage(chat_id, message_id,cb)
 tdcli_function ({
 ID = "GetMessage",
@@ -325,7 +325,7 @@ chat_id_ = chat_id,
 message_id_ = message_id
 }, cb, nil)
 end
---         »»                 sendContact                         ««              --
+--         ~⊱                 sendContact                         ««              --
 function sendContact(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, phone_number, first_name, last_name, user_id)
 tdcli_function ({
 ID = "SendMessage",
@@ -344,7 +344,7 @@ last_name_ = last_name,
 user_id_ = user_id
 },},}, dl_cb, nil)
 end
---         »»                 sendPhoto                         ««              --
+--         ~⊱                 sendPhoto                         ««              --
 function sendPhoto(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, photo, caption)
 tdcli_function ({
 ID = "SendMessage",
@@ -362,14 +362,14 @@ height_ = 0,
 caption_ = caption
 },}, dl_cb, nil)
 end
---         »»                 getUserFull                         ««              --
+--         ~⊱                 getUserFull                         ««              --
 function getUserFull(user_id,cb)
 tdcli_function ({
 ID = "GetUserFull",
 user_id_ = user_id
 }, cb, nil)
 end
---         »»                 vardump                         ««              --
+--         ~⊱                 vardump                         ««              --
 
 function formsgg(msgs) 
 local taha = ''  
@@ -398,10 +398,10 @@ end
 function vardump(value)
 print(serpent.block(value, {comment=false}))
 end
---         »»                 dl_cb                         ««              --
+--         ~⊱                 dl_cb                         ««              --
 function dl_cb(arg, data)
 end
---         »»                 send                         ««              --
+--         ~⊱                 send                         ««              --
 local function send(chat_id, reply_to_message_id, disable_notification, text, disable_web_page_preview, parse_mode)
 if text then 
 --[[local MARKSTG_stop = nil
@@ -508,7 +508,7 @@ parse_mode_ = TextParseMode,
 end
 end
 end
---         »»                 changetitle                         ««              --
+--         ~⊱                 changetitle                         ««              --
 function changetitle(chat_id, title)
 tdcli_function ({
 ID = "ChangeChatTitle",
@@ -516,7 +516,7 @@ chat_id_ = chat_id,
 title_ = title
 }, dl_cb, nil)
 end
---         »»                 edit                         ««              --
+--         ~⊱                 edit                         ««              --
 function edit(chat_id, message_id, reply_markup, text, disable_web_page_preview, parse_mode)
 local TextParseMode = getParseMode(parse_mode)
 tdcli_function ({
@@ -534,7 +534,7 @@ parse_mode_ = TextParseMode,
 },
 }, dl_cb, nil)
 end
---         »»                 setphoto                         ««              --
+--         ~⊱                 setphoto                         ««              --
 function setphoto(chat_id, photo)
 tdcli_function ({
 ID = "ChangeChatPhoto",
@@ -542,7 +542,7 @@ chat_id_ = chat_id,
 photo_ = getInputFile(photo)
 }, dl_cb, nil)
 end
---         »»                 add_user                         ««              --
+--         ~⊱                 add_user                         ««              --
 function add_user(chat_id, user_id, forward_limit)
 tdcli_function ({
 ID = "AddChatMember",
@@ -551,20 +551,20 @@ user_id_ = user_id,
 forward_limit_ = forward_limit or 50
 }, dl_cb, nil)
 end
---         »»                 delmsg                         ««              --
+--         ~⊱                 delmsg                         ««              --
 function delmsg(arg,data)
 for k,v in pairs(data.messages_) do
 delete_msg(v.chat_id_,{[0] = v.id_})
 end
 end
---         »»                 unpinmsg                         ««              --
+--         ~⊱                 unpinmsg                         ««              --
 function unpinmsg(channel_id)
 tdcli_function ({
 ID = "UnpinChannelMessage",
 channel_id_ = getChatId(channel_id).ID
 }, dl_cb, nil)
 end
---         »»                 delete_msg                         ««              --
+--         ~⊱                 delete_msg                         ««              --
 function delete_msg(chatid,mid)
 tdcli_function ({
 ID="DeleteMessages",
@@ -573,11 +573,11 @@ message_ids_=mid
 },
 dl_cb, nil)
 end
---         »»                 chat_del_user                         ««              --
+--         ~⊱                 chat_del_user                         ««              --
 function chat_del_user(chat_id, user_id)
 changeChatMemberStatus(chat_id, user_id, 'Editor')
 end
---         »»                 getChannelMembers                         ««              --
+--         ~⊱                 getChannelMembers                         ««              --
 function getChannelMembers(channel_id, offset, filter, limit)
 if not limit or limit > 200 then
 limit = 200
@@ -592,14 +592,14 @@ offset_ = offset,
 limit_ = limit
 }, dl_cb, nil)
 end
---         »»                 getChannelFull                         ««              --
+--         ~⊱                 getChannelFull                         ««              --
 function getChannelFull(channel_id)
 tdcli_function ({
 ID = "GetChannelFull",
 channel_id_ = getChatId(channel_id).ID
 }, dl_cb, nil)
 end
---         »»                 channel_get_bots                         ««              --
+--         ~⊱                 channel_get_bots                         ««              --
 local function channel_get_bots(channel,cb)
 local function callback_admins(extra,result,success)
 limit = result.member_count_
@@ -608,7 +608,7 @@ channel_get_bots(channel,get_bots)
 end
 getChannelFull(channel,callback_admins)
 end
---         »»                 getInputMessageContent                         ««              --
+--         ~⊱                 getInputMessageContent                         ««              --
 local function getInputMessageContent(file, filetype, caption)
 if file:match('/') then
 infile = {ID = "InputFileLocal", path_ = file}
@@ -636,7 +636,7 @@ inmsg = {ID = "InputMessageVoice", voice_ = infile, caption_ = caption}
 end
 return inmsg
 end
---         »»                 send_file                         ««              --
+--         ~⊱                 send_file                         ««              --
 function send_file(chat_id, type, file, caption,wtf)
 local mame = (wtf or 0)
 tdcli_function ({
@@ -649,14 +649,14 @@ reply_markup_ = nil,
 input_message_content_ = getInputMessageContent(file, type, caption),
 }, dl_cb, nil)
 end
---         »»                 getUser                         ««              --
+--         ~⊱                 getUser                         ««              --
 function getUser(user_id, cb)
 tdcli_function ({
 ID = "GetUser",
 user_id_ = user_id
 }, cb, nil)
 end
---         »»                 pin                         ««              --
+--         ~⊱                 pin                         ««              --
 function pin(channel_id, message_id, disable_notification)
 tdcli_function ({
 ID = "PinChannelMessage",
@@ -665,7 +665,7 @@ message_id_ = message_id,
 disable_notification_ = disable_notification
 }, dl_cb, nil)
 end
---         »»                 tsX000                         ««              --
+--         ~⊱                 tsX000                         ««              --
 function tsX000(value,msg,text)
 if value == "lock" then
 function keko333(extra,result,success)
@@ -696,7 +696,7 @@ break
 end
 end
 end 
-info = '👨┇العضو ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MARKS_TEAM')..')\n'..text
+info = '☑️¦العضو ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MARKS_TEAM')..')\n'..text
 send(msg.chat_id_, msg.id_, 1,info, 1, 'md')
 end
 getUser(id_MARKSTGx, keko333)
@@ -714,13 +714,13 @@ break
 end
 end
 end 
-info = '👨┇العضو ⌁≻ ['..(result.first_name_ or value)..'](t.me/'..(result.username_ or 'MARKS_TEAM')..')\n'..text
+info = '☑️¦العضو ⌁≻ ['..(result.first_name_ or value)..'](t.me/'..(result.username_ or 'MARKS_TEAM')..')\n'..text
 send(msg.chat_id_, msg.id_, 1,info, 1, 'md')
 end
 getUser(value, keko333)
 end
 end -- end fun
---         »»                 End Functions                         ««              --
+--         ~⊱                 End Functions                         ««              --
 function TSadd(msg) -- Function add && rem
 local text = msg.content_.text_
 if (text == 'تعطيل') and not is_sudo(msg) then
@@ -906,202 +906,202 @@ end
 function TSlocks(msg) -- Function locks && unlocks
 local text = msg.content_.text_
 if text then
---         »»               Start MARKSTG lock                       ««              --
+--         ~⊱               Start MARKSTG lock                       ««              --
 if (text == "قفل التاك") then
 local tsX_o = database:get("lock_tag:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل التاك •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل التاك •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل التاك •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل التاك •")
 database:set("lock_tag:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الشارحه") then
 local tsX_o = database:get("lock_sarha:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم فتح الشارحه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم فتح الشارحه •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الشارحه •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الشارحه •")
 database:set("lock_sarha:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل تعديل الميديا") then
 local tsX_o = database:get("MARKSTG:lo:edit:new:"..bot_id..msg.chat_id_)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل تعديل الميديا •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل تعديل الميديا •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل تعديل الميديا •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل تعديل الميديا •")
 database:set("MARKSTG:lo:edit:new:"..bot_id..msg.chat_id_,"ok")
 end
 end
 if (text == "قفل الشارحه") then
 local tsX_o = database:get("lock_word:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🧱¦ تم قفل الشارحه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🥇¦ تم قفل الشارحه •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n🧱¦ تم قفل الشارحه •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🥇¦ تم قفل الشارحه •")
 database:set("lock_word:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل التعديل") then
 local tsX_o = database:get("lock_edit:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل التعديل •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل التعديل •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل التعديل •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل التعديل •")
 database:set("lock_edit:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل التكرار") then
 local tsX_o = database:get("lock_lllll:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل التكرار •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل التكرار •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل التكرار •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل التكرار •")
 database:set("lock_lllll:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل المتحركه") then
 local tsX_o = database:get("lock_gif:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل المتحركه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل المتحركه •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل المتحركه •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل المتحركه •")
 database:set("lock_gif:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الملفات") then
 local tsX_o = database:get("lock_files:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الملفات •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الملفات •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الملفات •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الملفات •")
 database:set("lock_files:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الماركدون") then
 local tsX_o = database:get("lock_mark:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الماركدون •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الماركدون •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الماركدون •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الماركدون •")
 database:set("lock_mark:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الصور") then
 local tsX_o = database:get("lock_photo:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الصور •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الصور •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الصور •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الصور •")
 database:set("lock_photo:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الملصقات") then
 local tsX_o = database:get("lock_stecker:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الملصقات •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الملصقات •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الملصقات •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الملصقات •")
 database:set("lock_stecker:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الفيديو") then
 local tsX_o = database:get("lock_video:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الفيديو •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الفيديو •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الفيديو •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الفيديو •")
 database:set("lock_video:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الانلاين") then
 local tsX_o = database:get("lock_inline:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الانلاين •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الانلاين •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الانلاين •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الانلاين •")
 database:set("lock_inline:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الدردشه") then
 local tsX_o = database:get("lock_chat:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الدردشه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الدردشه •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الدردشه •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الدردشه •")
 database:set("lock_chat:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل التوجيه") then
 local tsX_o = database:get("lock_fwd:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل التوجيه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل التوجيه •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل التوجيه •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل التوجيه •")
 database:set("lock_fwd:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل التثبيت") then
 local tsX_o = database:get("lock_pin:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الثتبيت •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الثتبيت •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل التثبيت •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل التثبيت •")
 database:set("lock_pin:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الاغاني") then
 local tsX_o = database:get("lock_audeo:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الاغاني •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الاغاني •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الاغاني •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الاغاني •")
 database:set("lock_audeo:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الصوت") then
 local tsX_o = database:get("lock_voice:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الصوت •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الصوت •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الصوت •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الصوت •")
 database:set("lock_voice:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الجهات") then
 local tsX_o = database:get("lock_contact:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الجهات •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الجهات •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الجهات •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الجهات •")
 database:set("lock_contact:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل العربيه") then
 local tsX_o = database:get("lock_ar:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل العربيه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل العربيه •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل العربيه •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل العربيه •")
 database:set("lock_ar:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الانكليزيه") then
 local tsX_o = database:get("lock_en:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الانكليزيه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الانكليزيه •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الانكليزيه •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الانكليزيه •")
 database:set("lock_en:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الميديا") then
 local tsX_o = database:get("lock_media:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الميديا •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الميديا •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الميديا •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الميديا •")
 database:set("lock_media:MARKSTG"..msg.chat_id_..bot_id,"ok")
 database:set("lock_audeo:MARKSTG"..msg.chat_id_..bot_id,"ok")
 database:set("lock_video:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1115,9 +1115,9 @@ end
 if (text == "تحصين المجموعه") then
 local tsX_o = database:get("lock_all:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🧱¦ تم تحصين المجموعة وقفل جميع الميديا •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🥇¦ تم تحصين المجموعة وقفل جميع الميديا •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n🧱¦ تم تحصين المجموعة وقفل جميع الميديا •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🥇¦ تم تحصين المجموعة وقفل جميع الميديا •")
 database:set("lock_media:MARKSTG"..msg.chat_id_..bot_id,"ok")
 database:set("lock_audeo:MARKSTG"..msg.chat_id_..bot_id,"ok")
 database:set("lock_video:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1149,271 +1149,271 @@ end
 if (text == "قفل الروابط") then
 local tsX_o = database:get("lock_link:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل الررابط •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الررابط •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الروابط •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الروابط •")
 database:set("lock_link:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل اليوزر") then
 local tsX_o = database:get("lock_username:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل اليوزر •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل اليوزر •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل اليوزر •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل اليوزر •")
 database:set("lock_username:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الاشعارات") then
 local tsX_o = database:get("lock_new:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي تم\n♠️: قفل الاشعارات •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي تم\n🗃¦ قفل الاشعارات •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل الاشعارات •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الاشعارات •")
 database:set("lock_new:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل البوتات بالطرد") then
 local tsX_o = database:get("lock_botAndBan:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل البوتات بالطر •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل البوتات بالطر •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل البوتات بالطرد •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل البوتات بالطرد •")
 database:set("lock_botAndBan:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل البوتات") then
 local tsX_o = database:get("lock_bot:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل البوتات •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل البوتات •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل البوتات •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل البوتات •")
 database:set("lock_bot:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل بصمه الفيديو") then
 local tsX_o = database:get("lock_note:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم قفل بصمه الفيديو •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل بصمه الفيديو •")
 else
-tsX000("lock",msg,"🗄: خاصيه القفل\n♠️: تم قفل بصمه الفيديو •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل بصمه الفيديو •")
 database:set("lock_note:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
---         »»                 End MARKSTG lock                         ««              --
+--         ~⊱                 End MARKSTG lock                         ««              --
 if (text == "فتح الاشعارات") then
 local tsX_o = database:get("lock_new:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الاشعارات•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الاشعارات•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الاشعارات •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الاشعارات •")
 database:del("lock_new:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التاك") then
 local tsX_o = database:get("lock_tag:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح التاك•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح التاك•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح التاك •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح التاك •")
 database:del("lock_tag:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الكلايش") then
 local tsX_o = database:get("lock_word:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الكلايش•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الكلايش•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الكلايش •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الكلايش •")
 database:del("lock_word:MARKSTG"..msg.chat_id_..bot_id)
 end
 end
 if (text == "فتح تعديل الميديا") then
 local tsX_o = database:get("MARKSTG:lo:edit:new:"..bot_id..msg.chat_id_)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح تعديل الميديا•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح تعديل الميديا•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح تعديل الميديا •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح تعديل الميديا •")
 database:del("MARKSTG:lo:edit:new:"..bot_id..msg.chat_id_)
 end
 end
 if (text == "فتح الشارحه") then
 local tsX_o = database:get("lock_sarha:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الشارحه•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الشارحه•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الشارحه •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الشارحه •")
 database:del("lock_sarha:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التكرار") then
 local tsX_o = database:get("lock_lllll:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح التكرار•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح التكرار•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح التكرار •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح التكرار •")
 database:del("lock_lllll:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التعديل") then
 local tsX_o = database:get("lock_edit:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح التعديل•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح التعديل•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح التعديل •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح التعديل •")
 database:del("lock_edit:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح المتحركه") then
 local tsX_o = database:get("lock_gif:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح المتحركه•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح المتحركه•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح المتحركه •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح المتحركه •")
 database:del("lock_gif:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الملفات") then
 local tsX_o = database:get("lock_files:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الملفات•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الملفات•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الملفات •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الملفات •")
 database:del("lock_files:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الماركدون") then
 local tsX_o = database:get("lock_mark:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الماركدون•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الماركدون•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الماركدون •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الماركدون •")
 database:del("lock_mark:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الصور") then
 local tsX_o = database:get("lock_photo:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الصور•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الصور•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الصور •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الصور •")
 database:del("lock_photo:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الملصقات") then
 local tsX_o = database:get("lock_stecker:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الملصقات•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الملصقات•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الملصقات •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الملصقات •")
 database:del("lock_stecker:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الفيديو") then
 local tsX_o = database:get("lock_video:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الفيديو•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الفيديو•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الفيديو •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الفيديو •")
 database:del("lock_video:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الانلاين") then
 local tsX_o = database:get("lock_inline:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الانلاين•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الانلاين•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الانلاين •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الانلاين •")
 database:del("lock_inline:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الدردشه") then
 local tsX_o = database:get("lock_chat:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الدردشه•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الدردشه•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الدردشه •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الدردشه •")
 database:del("lock_chat:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التوجيه") then
 local tsX_o = database:get("lock_fwd:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح التوجيه•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح التوجيه•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح التوجيه •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح التوجيه •")
 database:del("lock_fwd:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التثبيت") then
 local tsX_o = database:get("lock_pin:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح التثبيت•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح التثبيت•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح التثبيت •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح التثبيت •")
 database:del("lock_pin:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الاغاني") then
 local tsX_o = database:get("lock_audeo:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الاغاني•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الاغاني•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الاغاني •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الاغاني •")
 database:del("lock_audeo:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الصوت") then
 local tsX_o = database:get("lock_voice:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الصوت•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الصوت•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الصوت •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الصوت •")
 database:del("lock_voice:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح البوتات بالطرد") then
 local tsX_o = database:get("lock_botAndBan:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح البوتات بالطرد•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح البوتات بالطرد•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح البوتات بالطرد •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح البوتات بالطرد •")
 database:del("lock_botAndBan:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الجهات") then
 local tsX_o = database:get("lock_contact:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الجهات•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الجهات•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الجهات •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الجهات •")
 database:del("lock_contact:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح العربيه") then
 local tsX_o = database:get("lock_ar:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح العربيه•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح العربيه•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح العربيه •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح العربيه •")
 database:del("lock_ar:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الانكليزيه") then
 local tsX_o = database:get("lock_en:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الانكليزيه•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الانكليزيه•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الانكليزيه •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الانكليزيه •")
 database:del("lock_en:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الميديا") then
 local tsX_o = database:get("lock_media:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n♠️: تم فتح الميديا •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم فتح الميديا •")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n♠️: تم فتح الميديا •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🗃¦ تم فتح الميديا •")
 database:del("lock_media:MARKSTG"..msg.chat_id_..bot_id,"ok")
 database:del("lock_audeo:MARKSTG"..msg.chat_id_..bot_id,"ok")
 database:del("lock_video:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1427,42 +1427,42 @@ end
 if (text == "فتح اليوزر") then
 local tsX_o = database:get("lock_username:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح اليوزر•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح اليوزر•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح اليوزر •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح اليوزر •")
 database:del("lock_username:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح بصمه الفيديو") then
 local tsX_o = database:get("lock_note:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح بصمه الفيديو•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح بصمه الفيديو•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح بصمه الفيديو •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح بصمه الفيديو •")
 database:del("lock_note:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الروابط") then
 local tsX_o = database:get("lock_link:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الررابط•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الررابط•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح الروابط •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الروابط •")
 database:del("lock_link:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح البوتات") then
 local tsX_o = database:get("lock_bot:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح البوتات•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح البوتات•")
 else
-tsX000("lock",msg,"🗄: خاصيه الفتح\n🔑: تم فتح البوتات •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح البوتات •")
 database:del("lock_bot:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
-end  --         »»               End MARKSTG unlock                       ««              --
+end  --         ~⊱               End MARKSTG unlock                       ««              --
 end 
 end 
---         »»               Start Function Check Msg                       ««              --
+--         ~⊱               Start Function Check Msg                       ««              --
 function TSCheckMsg(msg) 
 local text = msg.content_.text_
 if text then 
@@ -1705,7 +1705,7 @@ delete_msg(msg.chat_id_,{[0] = msg.id_})
 return "stop"
 end
 end -- end fun
---         »»               Start Function Sudo                       ««              --
+--         ~⊱               Start Function Sudo                       ««              --
 function TSsudo(msg)
 text = msg.content_.text_
 if msg.content_.text_ then
@@ -1733,7 +1733,7 @@ local apow = {string.match(text, "^(رفع منشئ) @(.*)$")}
 function setcreator_by_username(extra, result, success)
 if result.id_ then
 database:sadd('MARKSTG:'..bot_id..'creator:'..msg.chat_id_, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MARKS_TEAM')..')\n☑┇تم رفع منشئ في البوت'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MARKS_TEAM')..')\n☑┇تم رفع منشئ في البوت'
 else
 texts = '✖┇خطاء'
 end
@@ -1764,7 +1764,7 @@ local hash =  'MARKSTG:'..bot_id..'creator:'..msg.chat_id_
 function remcreator_by_username(extra, result, success)
 if result.id_ then
 database:srem(hash, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MARKS_TEAM')..')\n☑┇تم تنزيله من منشئين المجموعه'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MARKS_TEAM')..')\n☑┇تم تنزيله من منشئين المجموعه'
 else
 texts = '✖┇خطاء'
 end
@@ -1809,12 +1809,12 @@ else
 send(msg.chat_id_, msg.id_, 1, '☑┇ الاذاعه معطله ', 1, 'md')
 end
 end
-if (text:match("^الكروبات$") or text:match("^الاحصائيات$")) and is_vip(msg) then
+if (text:match("^عدد الكروبات$") or text:match("^الاحصائيات$")) and is_vip(msg) then
 local gps = database:scard('MARKSTG:'..bot_id.."groups") or 0
 local user = database:scard('MARKSTG:'..bot_id.."userss") or 0
 local gps2 = database:scard("MARKSTG:gog"..bot_id) or 0
 local gps3 = database:scard('MARKSTG:'..bot_id..'pro:groups') or 0
-send(msg.chat_id_, msg.id_, 1, '• الگروبات :\n♻عدد الكروبات المفعله والغير مفعله ⌁≻  *{'..gps..'}*\n⚜عدد الكروبات المفعل فيها البوت ⌁≻  *{'..gps2..'}*\n❎عدد الكروبات الغير مفعل فيها البوت ⌁≻  *{'..(gps - gps2)..'}*\n💡عدد الكروبات المدفوعه ⌁≻  *{'..(gps3)..'}*\n\n• خاص البوت :\n💬عدد اعضاء الخاص: {`'..user..'`}', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '👁‍🗨¦ الاحصائيات :\n🚦¦عدد الكروبات المفعله والغير مفعله ⌁≻  *{'..gps..'}*\n🔘¦ عدد الكروبات المفعل فيها البوت ⌁≻  *{'..gps2..'}*\n⛔️¦ عدد الكروبات الغير مفعل فيها البوت ⌁≻  *{'..(gps - gps2)..'}*\n⚙️¦ عدد الكروبات المدفوعه ⌁≻  *{'..(gps3)..'}*\n\n👥¦ خاص البوت :\n💬عدد اعضاء الخاص: {`'..user..'`}', 1, 'md')
 end
 if tonumber(sudo_add) == tonumber(msg.sender_user_id_) then
 if text:match("^تفعيل الكل$") then
@@ -1865,7 +1865,7 @@ local curl = 'curl "' .. MARKSTGe .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "
 io.popen(curl)
 end
 if text:match("^تحديث السورس$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-send(msg.chat_id_, msg.id_, 1, '🗂¦ تم تحديث السورس V2.1.1', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🗂¦ تم تحديث السورس', 1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
 os.execute('cd libs && wget https://raw.github.com/markstg/MARKSTG/master/libs/utils.lua')
 os.execute('rm -rf MARKSTG.lua')
@@ -1906,7 +1906,7 @@ keko_info = '@'..(result.username_ or 'لا يوجد')..''
 local timeplan1 = 2592000
 database:setex( 'MARKSTG:'..bot_id.."charge:"..txt[2],timeplan1,true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة 30 يوم', 1, 'md')
-send(txt[2], 0, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل مدة المجموعه 30 يوم', 1, 'md')
+send(txt[2], 0, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل مدة المجموعه 30 يوم', 1, 'md')
 for k,v in pairs(sudo_users) do
 function MARKSTG_info(k1,k2)
 send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 30 يوم \n📟┇ايدي المطور ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المطور ⌁≻ "..keko_info.."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ⌁≻ ("..k2.title_..")" , 1, 'md')
@@ -1925,7 +1925,7 @@ keko_info = '@'..(result.username_ or 'لا يوجد')..''
 local timeplan2 = 7776000
 database:setex( 'MARKSTG:'..bot_id.."charge:"..txt[2],timeplan2,true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة 90 يوم', 1, 'md')
-send(txt[2], 0, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل مدة المجموعه 90 يوم', 1, 'md')
+send(txt[2], 0, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل مدة المجموعه 90 يوم', 1, 'md')
 for k,v in pairs(sudo_users) do
 function MARKSTG_info(k1,k2)
 send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 90 يوم \n📟┇ايدي المطور ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المطور ⌁≻ "..keko_info.."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ⌁≻ ("..k2.title_..")" , 1, 'md')
@@ -1943,7 +1943,7 @@ function keko333(extra,result,success)
 keko_info = '@'..(result.username_ or 'لا يوجد')..''
 database:set( 'MARKSTG:'..bot_id.."charge:"..txt[2],true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة لا نهائية', 1, 'md')
-send(txt[2], 0, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل مدة المجموعه لا نهائية', 1, 'md')
+send(txt[2], 0, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل مدة المجموعه لا نهائية', 1, 'md')
 for k,v in pairs(sudo_users) do
 function MARKSTG_info(k1,k2)
 send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت لا نهائية \n📟┇ايدي المطور ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المطور ⌁≻ "..keko_info.."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ⌁≻ ("..k2.title_..")" , 1, 'md')
@@ -2049,7 +2049,7 @@ if tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 if text then
 if (text and text == 'تفعيل الانلاين' ) then
 database:set('key_ts'..bot_id,"yes")
-send(msg.chat_id_, msg.id_, 1, "🚧┤ مرحبا عزيزي تم »» تفعيل خاصيه الازرار الشفافه", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "🚦¦ مرحبا عزيزي تم ~⊱ تفعيل خاصيه الازرار الشفافه", 1, 'html')
 end
 if (text and text == 'تعطيل الانلاين') then
 database:del('key_ts'..bot_id)
@@ -2070,13 +2070,13 @@ end
 
 end --sudo
 if tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-if text == 'تفعيل البوت الخدمي'then
+if text == 'تفعيل البوت المجاني'then
 database:set("add"..bot_id, "yes")
-send(msg.chat_id_, msg.id_, 1, "☑┇تم تفعل البوت الخدمي", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "☑┇تم تفعل البوت المجاني", 1, 'html')
 end
-if (text == 'تعطيل البوت الخدمي') then
+if (text == 'تعطيل البوت المجاني') then
 database:del("add"..bot_id)
-send(msg.chat_id_, msg.id_, 1, "❎┇تم تعطيل البوت الخدمي", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❎┇تم تعطيل البوت المجاني", 1, 'html')
 end
 if text:match("^(تعين الاعضاء) (.*)$") then
 local kekoj = {string.match(text, "^(تعين الاعضاء) (.*)$")}
@@ -2189,7 +2189,7 @@ database:del("MARKSTG:new:msg:"..msg.chat_id_..msg.sender_user_id_..bot_id)
 end  
 if (text and text == 'مسح كليشه المطور') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 redis:del('MARKSTG:'..bot_id..'text_sudo', text)
-send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم »» مسح الكليشه ', 1, 'html')
+send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح الكليشه ', 1, 'html')
 return "MARKSTG"
 end
 if text:match("^مسح امر (.*)") then 
@@ -2216,7 +2216,7 @@ local apmd = {string.match(text, "^(رفع مدير) @(.*)$")}
 function promote_by_username(extra, result, success)
 if result.id_ then
 database:sadd('MARKSTG:'..bot_id..'mods:'..msg.chat_id_, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇تم رفعه مدير'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇تم رفعه مدير'
 else
 texts = '✖┇خطاء'
 end
@@ -2247,7 +2247,7 @@ local apmd = {string.match(text, "^(تنزيل مدير) @(.*)$")}
 function demote_by_username(extra, result, success)
 if result.id_ then
 database:srem(hash, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇تم تنزيله من مدراء البوت'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇تم تنزيله من مدراء البوت'
 else
 texts = '✖┇خطاء'
 end
@@ -2279,7 +2279,7 @@ local apmd = {string.match(text, "^(رفع مميز) @(.*)$")}
 function promote_by_username(extra, result, success)
 if result.id_ then
 database:sadd('MARKSTG:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇تم رفعه مميز'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇تم رفعه مميز'
 else
 texts = '✖┇خطاء'
 end
@@ -2311,7 +2311,7 @@ if (text:match("^تنزيل مميز$") or text:match("^تنزيل مميز$")) 
 function demote_by_reply(extra, result, success)
 local hash =  'MARKSTG:'..bot_id..'vipgp:'..msg.chat_id_
 if not database:sismember(hash, result.sender_user_id_) then
-send(msg.chat_id_, msg.id_, 1, '👨┇العضو ⌁≻ *('..result.sender_user_id_..')* \n ☑┇بالفعل تم تنزيله من اعضاء الممزين البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️¦العضو ⌁≻ *('..result.sender_user_id_..')* \n ☑┇بالفعل تم تنزيله من اعضاء الممزين البوت', 1, 'md')
 tsX000("prore",msg,"☑┇بالفعل تم تنزيله من مميزين البوت")  
 else
 database:srem(hash, result.sender_user_id_)
@@ -2327,7 +2327,7 @@ local apmd = {string.match(text, "^(تنزيل مميز) @(.*)$")}
 function demote_by_username(extra, result, success)
 if result.id_ then
 database:srem(hash, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇تم تنزيله من اعضاء الممزين البوت'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇تم تنزيله من اعضاء الممزين البوت'
 else
 texts = '✖┇خطاء'
 end
@@ -2377,7 +2377,7 @@ if ck_mod(result.id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر \n🔘┇(مدراء عامين،مدراء، مميزين)البوت', 1, 'md')
 else
 database:sadd('MARKSTG:'..bot_id..'banned:'..msg.chat_id_, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apba[2] or 'MARKS_TEAM')..')\n☑┇تم حظره من المجموعه'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apba[2] or 'MARKS_TEAM')..')\n☑┇تم حظره من المجموعه'
 chat_kick(msg.chat_id_, result.id_)
 end
 else
@@ -2428,7 +2428,7 @@ local apba = {string.match(text, "^(الغاء حظر) @(.*)$")}
 function unban_by_username(extra, result, success)
 if result.id_ then
 database:srem('MARKSTG:'..bot_id..'banned:'..msg.chat_id_, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apba[2] or 'MARKS_TEAM')..')\n☑┇تم الغاء حظره من البوت' 
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apba[2] or 'MARKS_TEAM')..')\n☑┇تم الغاء حظره من البوت' 
 else
 texts = '✖┇خطاء'
 end
@@ -2485,7 +2485,7 @@ function delall_by_reply(extra, result, success)
 if ck_mod(result.sender_user_id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع مسح مسجات \n🔘┇(مدراء عامين،مدراء،اعضاء مميزين)البوت', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '👨┇العضو ⌁≻ *('..result.sender_user_id_..')* \n🗑┇تم حذف كل مسجاته\n', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️¦العضو ⌁≻ *('..result.sender_user_id_..')* \n🗑┇تم حذف كل مسجاته\n', 1, 'md')
 del_all_msgs(result.chat_id_, result.sender_user_id_)
 end
 end
@@ -2498,7 +2498,7 @@ if ck_mod(ass[2], msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع مسح مسجات \n🔘┇(مدراء عامين،مدراء،مميزين)البوت', 1, 'md')
 else
 del_all_msgs(msg.chat_id_, ass[2])
-send(msg.chat_id_, msg.id_, 1, '👨┇العضو ⌁≻ *('..ass[2]..')* \n🗑┇تم مسح كل مسجاته\n', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️¦العضو ⌁≻ *('..ass[2]..')* \n🗑┇تم مسح كل مسجاته\n', 1, 'md')
 end
 end
 
@@ -2511,7 +2511,7 @@ send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع مسح مسجات \n🔘
 return false
 end
 del_all_msgs(msg.chat_id_, result.id_)
-texts = '👨┇العضو ⌁≻ ('..result.id_..') \n🗑┇تم مسح كل مسجاته'
+texts = '☑️¦العضو ⌁≻ ('..result.id_..') \n🗑┇تم مسح كل مسجاته'
 else
 texts = '✖┇خطاء'
 end
@@ -2542,7 +2542,7 @@ if ck_admin(result.id_) then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر عام \n🔘┇(مدراء عامين،مدراء،مميزين)البوت', 1, 'md')
 else
 local hash =  'MARKSTG:'..bot_id..'gbanned:'
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apbll[2] or 'MARKS_TEAM')..')\n🚫┇تم حظره من المجموعات البوت'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apbll[2] or 'MARKS_TEAM')..')\n🚫┇تم حظره من المجموعات البوت'
 database:sadd(hash, result.id_)
 end
 else
@@ -2577,7 +2577,7 @@ local apid = {string.match(text, "^(الغاء حظر عام) @(.*)$")}
 function ungban_by_username(extra, result, success)
 local hash =  'MARKSTG:'..bot_id..'gbanned:'
 if result.id_ then
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apid[2] or 'MARKS_TEAM')..')\n🚫┇تم الغاء حظره من المجموعات البوت'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apid[2] or 'MARKS_TEAM')..')\n🚫┇تم الغاء حظره من المجموعات البوت'
 database:srem(hash, result.id_)
 else
 texts = '✖┇خطاء'
@@ -2615,7 +2615,7 @@ if ck_admin(result.id_) then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع كتم عام \n🔘┇(مدراء عامين،مدراء،مميزين)البوت', 1, 'md')
 else
 local hash =  'MARKSTG:'..bot_id..'gmuted:'
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apbll[2] or 'MARKS_TEAM')..')\n🚫┇تم كتمه من المجموعات البوت'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apbll[2] or 'MARKS_TEAM')..')\n🚫┇تم كتمه من المجموعات البوت'
 database:sadd(hash, result.id_)
 end
 else
@@ -2650,7 +2650,7 @@ local apid = {string.match(text, "^(الغاء كتم العام) @(.*)$")}
 function ungmute_by_username(extra, result, success)
 local hash =  'MARKSTG:'..bot_id..'gmuted:'
 if result.id_ then
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apid[2] or 'MARKS_TEAM')..')\n🚫┇تم الغاء كتمه من المجموعات البوت'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apid[2] or 'MARKS_TEAM')..')\n🚫┇تم الغاء كتمه من المجموعات البوت'
 database:srem(hash, result.id_)
 else
 texts = '✖┇خطاء'
@@ -2691,7 +2691,7 @@ if ck_mod(result.id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع كتم \n🔘┇(مدراء عامين،مدراء،مميزين)البوت', 1, 'md')
 else
 database:sadd('MARKSTG:'..bot_id..'muted:'..msg.chat_id_, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apsi[2] or 'MARKS_TEAM')..')\n🚫┇تم كتمه من البوت'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apsi[2] or 'MARKS_TEAM')..')\n🚫┇تم كتمه من البوت'
 end
 else
 texts = '✖┇خطاء'
@@ -2726,7 +2726,7 @@ local apsi = {string.match(text, "^(الغاء كتم) @(.*)$")}
 function unmute_by_username(extra, result, success)
 if result.id_ then
 database:srem('MARKSTG:'..bot_id..'muted:'..msg.chat_id_, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apsi[2] or 'MARKS_TEAM')..')\n🚫┇تم الغاء كتمه من البوت'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apsi[2] or 'MARKS_TEAM')..')\n🚫┇تم الغاء كتمه من البوت'
 else
 texts = '✖┇خطاء'
 end
@@ -2767,7 +2767,7 @@ if result.id_ then
 if ck_mod(result.id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد \n🔘┇(مدراء عامين،مدراء،مميزين)البوت', 1, 'md')
 else
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apki[2] or 'MARKS_TEAM')..')\n🚫┇تم طرده من المجموعه'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apki[2] or 'MARKS_TEAM')..')\n🚫┇تم طرده من المجموعه'
 chat_kick(msg.chat_id_, result.id_)
 end
 else
@@ -2807,7 +2807,7 @@ local apow = {string.match(text, "^(رفع مدير عام) @(.*)$")}
 function setowner_by_username(extra, result, success)
 if result.id_ then
 database:sadd('MARKSTG:'..bot_id..'owners:'..msg.chat_id_, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MARKS_TEAM')..')\n☑┇تم رفع مدير عام في البوت'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MARKS_TEAM')..')\n☑┇تم رفع مدير عام في البوت'
 else
 texts = '✖┇خطاء'
 end
@@ -2838,7 +2838,7 @@ local hash =  'MARKSTG:'..bot_id..'owners:'..msg.chat_id_
 function remowner_by_username(extra, result, success)
 if result.id_ then
 database:srem(hash, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MARKS_TEAM')..')\n☑┇تم تنزيله من مدراء عامين البوت'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MARKS_TEAM')..')\n☑┇تم تنزيله من مدراء عامين البوت'
 else
 texts = '✖┇خطاء'
 end
@@ -2878,7 +2878,7 @@ end
 if (text and text == "ابلاغ" and msg.reply_to_message_id_ ~= 0 and (not database:get("MARKSTG:mute:deleta:msg:"..bot_id..msg.chat_id_))) then 
 b = database:get("MARKSTG:user:deleteL:msg:"..msg.chat_id_..bot_id..msg.sender_user_id_)
 if b and b == os.date("%x") then 
-send(msg.chat_id_, msg.id_, 1, "👨┇ لا يمكنك الابلاغ اكثر من مره في اليوم", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "☑️¦ لا يمكنك الابلاغ اكثر من مره في اليوم", 1, 'html')
 else
 database:set("MARKSTG:user:deleteL:msg:"..msg.chat_id_..bot_id..msg.sender_user_id_,os.date("%x"))
 y = database:get("MARKSTG:fel:o:me:"..bot_id..msg.chat_id_) or 10
@@ -2906,7 +2906,7 @@ end
 if text and text:match("(تعين عدد الابلاغ) (%d+)") and is_creator(msg) then 
 local a = {string.match(text, "^(تعين عدد الابلاغ) (%d+)$")}
 database:set("MARKSTG:fel:o:me:"..bot_id..msg.chat_id_,a[2])
-send(msg.chat_id_, msg.id_, 1, "👨┇تم تعين عدد الابلاغ {"..a[2].."}", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "☑️¦تم تعين عدد الابلاغ {"..a[2].."}", 1, 'html')
 end
 if text:match("^المميزين") and is_owner(msg) then
 local hash =   'MARKSTG:'..bot_id..'vipgp:'..msg.chat_id_
@@ -2955,7 +2955,7 @@ if database:get("MARKSTG:get:mod:"..bot_id..msg.chat_id_) then
 t = database:get("MARKSTG:get:mod:"..bot_id..msg.chat_id_)
 MARKSTG_098 = tonumber(t2.member_count_) - tonumber(t)
 end
-send(msg.chat_id_, msg.id_, 1, "📟┇معلومات المجموعه\n👨┇عدد مدراء الكروب : "..t2.administrator_count_.."\n👥┇عدد الاعضاء : "..t2.member_count_.." | ("..MARKSTG_098..")\n🔥┇عدد المطرودين : "..t2.kicked_count_, 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "📟┇معلومات المجموعه\n☑️¦عدد مدراء الكروب : "..t2.administrator_count_.."\n👥┇عدد الاعضاء : "..t2.member_count_.." | ("..MARKSTG_098..")\n🔥┇عدد المطرودين : "..t2.kicked_count_, 1, 'md')
 database:set("MARKSTG:get:mod:"..bot_id..msg.chat_id_,t2.member_count_)   
 end
 tdcli_function ({
@@ -3205,11 +3205,11 @@ end
 end
 -----------------------------------------------------------
 if text:match("^تفعيل الترحيب$") and is_mod(msg) then
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل الترحيب في المجموعه', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل الترحيب في المجموعه', 1, 'md')
 database:set('MARKSTG:'..bot_id.."welcome"..msg.chat_id_,true)
 end
 if text:match("^تعطيل الترحيب$") and is_mod(msg) then
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل الترحيب في المجموعه', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل الترحيب في المجموعه', 1, 'md')
 database:del('MARKSTG:'..bot_id.."welcome"..msg.chat_id_)
 end
 if text:match("^وضع ترحيب (.*)$") and is_mod(msg) then
@@ -3318,12 +3318,12 @@ local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'.
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد سحكاتك ~⪼ *{"..edit.."}*", 1, 'md')
 end
 if text:match("^مسح المحظورين عام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-text = '🗑┤ مرحبا عزيزي تم »» مسح محظورين عام'
+text = '🗑┤ مرحبا عزيزي تم ~⊱ مسح محظورين عام'
 database:del('MARKSTG:'..bot_id..'gbanned:')
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 if text:match("^مسح المكتومين عام") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-text = '🗑┤ مرحبا عزيزي تم »» مسح المكتومين عام'
+text = '🗑┤ مرحبا عزيزي تم ~⊱ مسح المكتومين عام'
 database:del('MARKSTG:'..bot_id..'gmuted:')
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
@@ -3336,11 +3336,11 @@ if text:match("^مسح (.*)$") and is_mod(msg) then
 local txt = {string.match(text, "^(مسح) (.*)$")}
 if txt[2] == 'banlist' or txt[2] == 'Banlist' or txt[2] == 'المحظورين' then
 database:del('MARKSTG:'..bot_id..'banned:'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم »» مسح المحظورين  من البوت ', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح المحظورين  من البوت ', 1, 'md')
 end
 if txt[2] == 'creators' and is_sudo(msg) or txt[2] == 'creatorlist' and is_sudo(msg) or txt[2] == 'Creatorlist' and is_sudo(msg) or txt[2] == 'Creators' and is_sudo(msg) or txt[2] == 'المنشئين' and is_sudo(msg) then
 database:del('MARKSTG:'..bot_id..'creator:'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم »» مسح قائمه المنشئين', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح قائمه المنشئين', 1, 'md')
 end
 if txt[2] == 'البوتات' then
 local function cb(extra,result,success)
@@ -3367,29 +3367,29 @@ send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل المدراء العام�
 end
 if  txt[2] == 'مسح القوانين' then
 database:del('MARKSTG:'..bot_id..'rules'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم »» مسح القوانين المحفوظه', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح القوانين المحفوظه', 1, 'md')
 end
 if txt[2] == 'مسح الرابط' then
 database:del('MARKSTG:'..bot_id..'group:link'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم »» مسح الرابط المحفوظ', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح الرابط المحفوظ', 1, 'md')
 end
 if txt[2] == 'قائمه المنع' then
 database:del('MARKSTG:'..bot_id..'filters:'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم »» مسح قائمه المنع', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح قائمه المنع', 1, 'md')
 end
 if  txt[2] == 'المكتومين' then
 database:del('MARKSTG:'..bot_id..'muted:'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم »» مسح قائمه المكتومين', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح قائمه المكتومين', 1, 'md')
 end
 end
                 
 if (text and (text == "تعطيل الطرد" or text == "تعطيل الحظر") and is_creator(msg)) then
 database:set("MARKSTG:lock:ban_and_kick"..bot_id..msg.chat_id_,"MARKSTG")
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل (طرد - حضر) الاعضاء', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل (طرد - حضر) الاعضاء', 1, 'md')
 end
 if (text and (text == "تفعيل الطرد" or text == "تفعيل الحظر") and is_creator(msg)) then
 database:del("MARKSTG:lock:ban_and_kick"..bot_id..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل (طرد - حضر) الاعضاء', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل (طرد - حضر) الاعضاء', 1, 'md')
 end
 if text:match("^اضافه قائمه المحظورين$") and is_creator(msg) then
 local txt = {string.match(text, "^(اضافه قائمه المحظورين)$")}
@@ -3489,7 +3489,7 @@ if text:match("^رفع المدراء$") and is_owner(msg) then
 local txt = {string.match(text, "^رفع المدراء$")}
 local function cb(extra,result,success)
 local list = result.members_
-moody = '🔘┤ مرحبا عزيزي تم »» رفع مدراء المجموعه في البوت\n'
+moody = '🔘┤ مرحبا عزيزي تم ~⊱ رفع مدراء المجموعه في البوت\n'
 local n = 0
 for k,v in pairs(list) do
 n = (n + 1)
@@ -3759,7 +3759,7 @@ if (text and text == 'تفعيل اطردني') and is_owner(msg) then
 if not database:get('MARKSTG:'..bot_id..'kickme:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇امر اطردني بالفعل تم تفعيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل امر اطردني', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل امر اطردني', 1, 'md')
 database:del('MARKSTG:'..bot_id..'kickme:mute'..msg.chat_id_)
 end
 end
@@ -3767,7 +3767,7 @@ if (text and text == 'تعطيل اطردني') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'kickme:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇امر اطردني بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل امر اطردني', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل امر اطردني', 1, 'md')
 database:set('MARKSTG:'..bot_id..'kickme:mute'..msg.chat_id_,true)
 end
 end
@@ -3874,7 +3874,7 @@ function promote_by_username(extra, result, success)
 if result.id_ then
 redis:set('MARKSTG:'..bot_id..'sudoo'..result.id_..'', 'yes')
 redis:sadd('MARKSTG:'..bot_id..'dev', result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n\n☑┇تم رفعه مطور'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n\n☑┇تم رفعه مطور'
 else
 texts = '✖┇خطاء'
 end
@@ -3909,7 +3909,7 @@ function demote_by_username(extra, result, success)
 if result.id_ then
 redis:del('MARKSTG:'..bot_id..'sudoo'..result.id_..'', 'no')
 redis:srem('MARKSTG:'..bot_id..'dev', result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇ تم تنزيله من مطورين البوت'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇ تم تنزيله من مطورين البوت'
 else
 texts = '✖┇خطاء'
 end
@@ -4032,7 +4032,7 @@ return false end
 if text:match("^(.*)$") then
 local keko1 = redis:get('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
 if keko1 == 'nomsg' then
-send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم »» مسح الرد', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح الرد', 1, 'md')
 redis:set('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'no')
 redis:del('MARKSTG:'..bot_id..'keko'..text..''..msg.chat_id_..'')
 redis:del('MARKSTG:'..bot_id..':sticker:'..text..''..msg.chat_id_..'')
@@ -4063,7 +4063,7 @@ return false end
 if text:match("^(.*)$") then
 local keko1 = redis:get('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..'')
 if keko1 == 'nomsg' then
-send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم »» مسح الرد', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح الرد', 1, 'md')
 redis:set('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..'', 'no')
 redis:del('MARKSTG:'..bot_id..':sticker:'..text)
 redis:del('MARKSTG:'..bot_id..':voice:'..text)
@@ -4080,7 +4080,7 @@ for k,v in pairs(list) do
 redis:del('MARKSTG:'..bot_id..'dev')
 redis:del('MARKSTG:'..bot_id..'sudoo'..v)
 end
-send(msg.chat_id_, msg.id_, 1, "🗑┤ مرحبا عزيزي تم »» مسح مطورين البوت", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "🗑┤ مرحبا عزيزي تم ~⊱ مسح مطورين البوت", 1, 'md')
 end
 if text:match("^مسح ردود المدير عام$") and is_owner(msg) then
 local list = redis:smembers('MARKSTG:'..bot_id..'kekore'..msg.chat_id_..'')
@@ -4108,7 +4108,7 @@ redis:del('MARKSTG:'..bot_id..':gif:'..v)
 redis:del('MARKSTG:'..bot_id..':file:'..v)
 redis:del('MARKSTG:'..bot_id..'keko'..v)
 end
-send(msg.chat_id_, msg.id_, 1, "🗑┤ مرحبا عزيزي تم »» مسح ردود المطور", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "🗑┤ مرحبا عزيزي تم ~⊱ مسح ردود المطور", 1, 'md')
 end
 
 if text:match("^المطورين$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -4238,7 +4238,7 @@ if (text and text == 'تفعيل الايدي بالصوره') and is_owner(msg)
 if not database:get('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇الايدي بالصوره بالفعل تم تفعيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل الايدي بالصوره', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل الايدي بالصوره', 1, 'md')
 database:del('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_)
 end
 end
@@ -4246,7 +4246,7 @@ if (text and text == 'تعطيل الايدي بالصوره') and is_owner(msg)
 if database:get('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇الايدي بالصوره بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل الايدي بالصوره', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل الايدي بالصوره', 1, 'md')
 database:set('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_,true)
 end
 end
@@ -4254,7 +4254,7 @@ if (text and text == 'تفعيل احضر صوره') and is_owner(msg) then
 if not database:get('MARKSTG:'..bot_id..'get:photo'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇احضر صوره بالفعل تم تفعيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل احضر صوره', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل احضر صوره', 1, 'md')
 database:del('MARKSTG:'..bot_id..'get:photo'..msg.chat_id_)
 end
 end
@@ -4262,7 +4262,7 @@ if (text and text == 'تعطيل احضر صوره') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'get:photo'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇احضر صوره بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل احضر صوره', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل احضر صوره', 1, 'md')
 database:set('MARKSTG:'..bot_id..'get:photo'..msg.chat_id_,true)
 end
 end
@@ -4284,17 +4284,17 @@ end
 end
 if (text and text == 'تفعيل الاذاعه') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 if not database:get('MARKSTG:'..bot_id..'bc:groups') then
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل اذاعه البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل اذاعه البوت', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل اذاعه البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل اذاعه البوت', 1, 'md')
 database:del('MARKSTG:'..bot_id..'bc:groups')
 end
 end
 if (text and text == 'تعطيل الاذاعه') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 if database:get('MARKSTG:'..bot_id..'bc:groups') then
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل اذاعه البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل اذاعه البوت', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل اذاعه البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل اذاعه البوت', 1, 'md')
 database:set('MARKSTG:'..bot_id..'bc:groups',true)
 end
 end
@@ -4302,7 +4302,7 @@ if (text and text == 'تفعيل المغادره') and tonumber(msg.sender_user
 if not database:get('MARKSTG:'..bot_id..'leave:groups') then
 send(msg.chat_id_, msg.id_, 1, '☑┇مغادره بالفعل تم تفعيلها', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل مغادره البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل مغادره البوت', 1, 'md')
 database:del('MARKSTG:'..bot_id..'leave:groups'..msg.chat_id_)
 end
 end
@@ -4310,7 +4310,7 @@ if (text and text == 'تعطيل المغادره') and tonumber(msg.sender_user
 if database:get('MARKSTG:'..bot_id..'leave:groups') then
 send(msg.chat_id_, msg.id_, 1, '☑┇مغادره بالفعل تم تعطيلها', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل مغادره البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل مغادره البوت', 1, 'md')
 database:set('MARKSTG:'..bot_id..'leave:groups'..msg.chat_id_,true)
 end
 end
@@ -4362,7 +4362,7 @@ database:sadd('MARKSTG:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id
 end
 database:set("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_,a[1])
 function keko33332(extra,result2,success)
-info = '👨┇العضو ⌁≻ ['..result2.first_name_..'](t.me/'..(result2.username_ or 'MARKSTGTeam')..')\n☑┇تم رفعه '..a[1]
+info = '☑️¦العضو ⌁≻ ['..result2.first_name_..'](t.me/'..(result2.username_ or 'MARKSTGTeam')..')\n☑┇تم رفعه '..a[1]
 send(msg.chat_id_, msg.id_, 1,info, 1, 'md')
 end
 getUser(result.sender_user_id_, keko33332)  
@@ -4384,7 +4384,7 @@ elseif ts_text == "مدير عام" then
 database:sadd('MARKSTG:'..bot_id..'owners:'..msg.chat_id_, result.id_)
 end
 database:set("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.id_,apmd[1])
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇تم رفعه '..apmd[1]
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇تم رفعه '..apmd[1]
 else
 texts = '✖┇خطاء'
 end
@@ -4439,7 +4439,7 @@ database:srem('MARKSTG:'..bot_id..'vipgp:'..msg.chat_id_, result.id_)
 elseif ts_text == "مدير عام" then 
 database:srem('MARKSTG:'..bot_id..'owners:'..msg.chat_id_, result.id_)
 end
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇تم تنزيله من '..apmd[1]
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇تم تنزيله من '..apmd[1]
 database:del("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.id_)
 else
 texts = '✖┇خطاء'
@@ -4469,7 +4469,7 @@ if (text and text == 'تفعيل ردود المطور') and is_owner(msg) then
 if not database:get('MARKSTG:'..bot_id..'repsudo:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇ردود المطور بالفعل تم تفعيلها', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل ردود المطور', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل ردود المطور', 1, 'md')
 database:del('MARKSTG:'..bot_id..'repsudo:mute'..msg.chat_id_)
 end
 end
@@ -4483,17 +4483,17 @@ end
 end
 if (text and text == 'تفعيل ردود المدير عام') and is_owner(msg) then
 if not database:get('MARKSTG:'..bot_id..'repowner:mute'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل ردود المدير عام', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل ردود المدير عام', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل ردود المدير عام', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل ردود المدير عام', 1, 'md')
 database:del('MARKSTG:'..bot_id..'repowner:mute'..msg.chat_id_)
 end
 end
 if (text and text == 'تعطيل ردود المدير عام') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'repowner:mute'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل ردود المدير عام ', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل ردود المدير عام ', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل ردود المدير عام ', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل ردود المدير عام ', 1, 'md')
 database:set('MARKSTG:'..bot_id..'repowner:mute'..msg.chat_id_,true)
 end
 end
@@ -4502,26 +4502,26 @@ send(msg.chat_id_, msg.id_, 1, "*"..msg.chat_id_.."*", 1, 'md')
 end
 if (text and text == 'تفعيل الايدي') and is_owner(msg) then
 if not database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل الايدي', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل الايدي', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل الايدي', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل الايدي', 1, 'md')
 database:del('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_)
 end
 end
 if (text and text == 'تعطيل الايدي') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل الايدي', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل الايدي', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل الايدي', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل الايدي', 1, 'md')
 database:set('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_,true)
 end
 end
 if (text and text == "تعطيل الرابط" and is_owner(msg)) then 
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل امر الروابط', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل امر الروابط', 1, 'md')
 database:set("MARKSTG:mute:link:gr:"..bot_id..msg.chat_id_,"ok")
 end
 if (text and text == "تفعيل الرابط" and is_owner(msg)) then 
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل امر الروابط', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل امر الروابط', 1, 'md')
 database:del("MARKSTG:mute:link:gr:"..bot_id..msg.chat_id_)
 end
 if text and text == "تعين مجموعه المطور" and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -4529,7 +4529,7 @@ send(msg.chat_id_, msg.id_, 1, '☑┇ تم تعين ⌁≻ `'..msg.chat_id_..'`
 database:set("MARKSTG"..bot_id..":sudo:gr",msg.chat_id_)
 end
 if text and text == "مسح مجموعه المطور" and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم »» مسح مجموعه المطور', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح مجموعه المطور', 1, 'md')
 database:del("MARKSTG"..bot_id..":sudo:gr")
 end
 if text:match("^ايدي$") and msg.reply_to_message_id_ == 0 then
@@ -4712,7 +4712,7 @@ if (text and text == 'تفعيل التثبيت') and is_owner(msg) then
 if not database:get('MARKSTG:'..bot_id..'pin:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇التثبيت بالفعل تم تفعيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '🚧┤ مرحبا عزيزي تم »» تفعيل التثبيت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل التثبيت', 1, 'md')
 database:del('MARKSTG:'..bot_id..'pin:mute'..msg.chat_id_)
 end
 end
@@ -4720,7 +4720,7 @@ if (text and text == 'تعطيل التثبيت') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'pin:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇التثبيت بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم »» تعطيل التثبيت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل التثبيت', 1, 'md')
 database:set('MARKSTG:'..bot_id..'pin:mute'..msg.chat_id_,true)
 end
 end
@@ -4994,7 +4994,7 @@ local text =  [[
     ⚠️ : تفعيل/تعطيل 
     ⚠️ : تفعيل/تعطيل المغادره
     ⚠️ : تفعيل/تعطيل الاذاعه
-    ⚠️ : تفعيل/تعطيل البوت الخدمي
+    ⚠️ : تفعيل/تعطيل البوت المجاني
     🚸 : تعين الاعضاء + رقم
     🚸 : اضف/مسح رد للكل
     💬 : ردود المطور
@@ -5080,7 +5080,7 @@ msg = data.message_
 text = msg.content_.text_
 if database:get('MARKSTG:'..bot_id.."charge:"..msg.chat_id_) then
 if (not is_mod(msg) and not is_vip(msg)) then 
-print("»» is member "..msg.sender_user_id_) 
+print("~⊱ is member "..msg.sender_user_id_) 
 if is_muted(msg.sender_user_id_, msg.chat_id_) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return "MARKSTG"
@@ -5274,8 +5274,8 @@ redis:sadd('MARKSTG:'..bot_id..'kekoresudo', keko2)
 send(msg.chat_id_, msg.id_, 1, "☑┇تم حفظ الرد", 1, 'md')
 redis:set('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..'', 'no')
 end
---         »»                 Run MARKSTG                         ««              --
-if is_mod(msg) then TSlocks(msg) print("\27[1;34m»» is mod "..msg.sender_user_id_.."\27[m") end
+--         ~⊱                 Run MARKSTG                         ««              --
+if is_mod(msg) then TSlocks(msg) print("\27[1;34m~⊱ is mod "..msg.sender_user_id_.."\27[m") end
 TSall(msg,data)
 function check_username(extra,result,success)
 local username = (result.username_ or '')
@@ -5352,13 +5352,13 @@ if is_gmuted(msg.sender_user_id_, msg.chat_id_) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return
 end
-if is_sudo(msg) then TSsudo(msg) print("\27[1;32m»» is sudo "..msg.sender_user_id_.."\27[m") end
+if is_sudo(msg) then TSsudo(msg) print("\27[1;32m~⊱ is sudo "..msg.sender_user_id_.."\27[m") end
 id = tostring(msg.chat_id_)
 if id and id:match('^(%d+)') then
 database:sadd('MARKSTG:'..bot_id.."userss",msg.chat_id_)
 end
 MARKSTG_run_file(Data_MARKSTG)
---         »»                 Start UpdateChat                         ««              --
+--         ~⊱                 Start UpdateChat                         ««              --
 elseif (data.ID == "UpdateChat") then
 chat = data.chat_
 chats[chat.id_] = chat
@@ -5493,12 +5493,12 @@ local msgs = {[0] = id}
 local chat = msg.chat_id_
 delete_msg(chat,msgs) end end end end
 getMessage(msg.chat_id_, msg.message_id_,get_msg_contact)
---         »»                 End UpdateChat                          ««              --
+--         ~⊱                 End UpdateChat                          ««              --
 elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then
 tdcli_function ({ID="GetChats", offset_order_="9223372036854775807", offset_chat_id_=0, limit_=20}, dl_cb, nil)
 end
 end
-
+''
 --[[
 BY MARKS 
 DEV @P_PPPP
