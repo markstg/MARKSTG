@@ -5,7 +5,7 @@ CH > @MARKS_TEAM
 CH > @LE_C4_KR
 --]]
 --------------------------------------
-local function keko_MARKSTG(data)
+local function marks_MARKSTG(data)
     local msg = data.message_
     redis = (loadfile "./libs/redis.lua")()
     database = Redis.connect('127.0.0.1', 6379)
@@ -63,7 +63,7 @@ local function keko_MARKSTG(data)
     end 
     end
     return {
-        keko_MARKSTG = keko_MARKSTG,
+        keko_MARKSTG = marks_MARKSTG,
     }
     --[[
 --[[
