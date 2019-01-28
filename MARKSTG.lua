@@ -39,56 +39,59 @@ io.popen("mkdir files_MARKSTG")
 os.execute('cd .. &&  rm -rf .telegram-cli')
 os.execute('cd .. &&  rm -fr .telegram-cli')
 --         ~⊱                 Start Functions                         ««              --
---         ~⊱                 is_sudo                         ««              --
+--         »»                 TEAK JER                         ««              --
 function is_sudo(msg)
-local var = false
-for k,v in pairs(sudo_users) do
-if msg.sender_user_id_ == v then var = true end
-end
-local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..msg.sender_user_id_..'')
-if marx_add_sudo then var = true end return var
-end
---         ~⊱                 is_admin                         ««              --
-function is_admin(msg)
-user_id = msg.sender_user_id_
-local var = false 
-local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)
-if admin then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then var = true end
-end
-local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if marx_add_sudo then var = true end
-return var
-end
---         ~⊱                 is_admin                         ««              --
-function ck_admin(user_id)
-local var = false 
-local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)
-if admin then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then var = true end
-end
-local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if marx_add_sudo then var = true end
-return var
-end
---         ~⊱                 is_creator                         ««              --
-function is_creator(msg)
-user_id = msg.sender_user_id_
-chat_id = msg.chat_id_
-local var = false
-local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id) 
-local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)
-if creator then var = true end
-if admin then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then var = true end end
-local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if marx_add_sudo then var = true end
-return var
-end
-function is_creatorbasic(msg)
+  local var = false
+  for k,v in pairs(sudo_users) do
+  if msg.sender_user_id_ == v then var = true end
+  end
+  local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..msg.sender_user_id_..'')
+  if marx_add_sudo then var = true end return var
+  end
+  --         »»                 REOFR                         ««              --
+  function is_admin(msg)
+  user_id = msg.sender_user_id_
+  local var = false 
+  local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)
+  if admin then var = true end
+  for k,v in pairs(sudo_users) do
+  if user_id == v then var = true end
+  end
+  local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+  if marx_add_sudo then var = true end
+  return var
+  end
+  --         »»                 CROOF                         ««              --
+  function ck_admin(user_id)
+  local var = false 
+  local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)
+  if admin then var = true end
+  for k,v in pairs(sudo_users) do
+  if user_id == v then var = true end
+  end
+  local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+  if marx_add_sudo then var = true end
+  return var
+  end
+  --         »»                 FACK YUO                         ««              --
+  
+  function is_creator(msg)
+  user_id = msg.sender_user_id_
+  chat_id = msg.chat_id_
+  local var = false
+  local creatorbasic = database:sismember('MARKSTG:'..bot_id..'creatorbasic:'..chat_id, user_id) 
+  local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id) 
+  local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)
+  if creatorbasic then var = true end
+  if creator then var = true end
+  if admin then var = true end
+  for k,v in pairs(sudo_users) do
+  if user_id == v then var = true end end
+  local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+  if marx_add_sudo then var = true end
+  return var
+  end
+  function is_creatorbasic(msg)
   user_id = msg.sender_user_id_
   chat_id = msg.chat_id_
   local var = false
@@ -98,88 +101,99 @@ function is_creatorbasic(msg)
   if admin then var = true end
   for k,v in pairs(sudo_users) do
   if user_id == v then var = true end end
-  local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-  if keko_add_sudo then var = true end
+  local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+  if marx_add_sudo then var = true end
   return var
   end
---         ~⊱                 is_vip                         ««              --
-function is_vip(msg)
-user_id = msg.sender_user_id_
-chat_id = msg.chat_id_
-local var = false
-local mod = database:sismember('MARKSTG:'..bot_id..'mods:'..chat_id, user_id)  
-local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)  
-local owner = database:sismember('MARKSTG:'..bot_id..'owners:'..chat_id, user_id)
-local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id)  
-local vip = database:sismember('MARKSTG:'..bot_id..'vipgp:'..chat_id, user_id)
-if mod then var = true end
-if owner then var = true end
-if creator then var = true end
-if admin then var = true end
-if vip then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then
-var = true end end
-local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if marx_add_sudo then var = true end
-return var end
---         ~⊱                 is_owner                         ««              --
-function is_owner(msg)
-user_id = msg.sender_user_id_
-chat_id = msg.chat_id_
-local var = false
-local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)  
-local owner = database:sismember('MARKSTG:'..bot_id..'owners:'..chat_id, user_id)
-local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id)  
-if owner then var = true
-end if admin then
-var = true end if creator then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then
-var = true
-end end
-local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if marx_add_sudo then var = true end
-return var
-end
---         ~⊱                 is_mod                         ««              --
-function is_mod(msg)
-user_id = msg.sender_user_id_
-chat_id = msg.chat_id_
-local var = false
-local mod = database:sismember('MARKSTG:'..bot_id..'mods:'..chat_id, user_id)  
-local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)  
-local owner = database:sismember('MARKSTG:'..bot_id..'owners:'..chat_id, user_id)
-local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id)  
-if mod then var = true end
-if owner then var = true end
-if creator then var = true end
-if admin then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then var = true end end
-local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if marx_add_sudo then var = true end
-return var
-end
---         ~⊱                 ck_mod                         ««              --
-function ck_mod(user_id,chat_id)
-local var = false
-local mod = database:sismember('MARKSTG:'..bot_id..'mods:'..chat_id, user_id)  
-local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)  
-local owner = database:sismember('MARKSTG:'..bot_id..'owners:'..chat_id, user_id)
-local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id)  
-local vip = database:sismember('MARKSTG:'..bot_id..'vipgp:'..chat_id, user_id)
-if mod then var = true end
-if owner then var = true end
-if creator then var = true end
-if admin then var = true end
-if vip then var = true end
-for k,v in pairs(sudo_users) do
-if user_id == v then var = true end end
-local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if marx_add_sudo then var = true end
-return var
-end
+  --         »»                 is_vip                         ««              --
+  function is_vip(msg)
+  user_id = msg.sender_user_id_
+  chat_id = msg.chat_id_
+  local var = false
+  local mod = database:sismember('MARKSTG:'..bot_id..'mods:'..chat_id, user_id)  
+  local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)  
+  local owner = database:sismember('MARKSTG:'..bot_id..'owners:'..chat_id, user_id)
+  local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id)  
+  local creatorbasic = database:sismember('MARKSTG:'..bot_id..'creatorbasic:'..chat_id, user_id)  
+  local vip = database:sismember('MARKSTG:'..bot_id..'vipgp:'..chat_id, user_id)
+  if mod then var = true end
+  if owner then var = true end
+  if creator then var = true end
+  if creatorbasic then var = true end
+  if admin then var = true end
+  if vip then var = true end
+  for k,v in pairs(sudo_users) do
+  if user_id == v then
+  var = true end end
+  local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+  if marx_add_sudo then var = true end
+  return var end
+  o023121 = true
+  --         »»                 is_owner                         ««              --
+  function is_owner(msg)
+  user_id = msg.sender_user_id_
+  chat_id = msg.chat_id_
+  local var = false
+  local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)  
+  local owner = database:sismember('MARKSTG:'..bot_id..'owners:'..chat_id, user_id)
+  local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id)  
+  local creatorbasic = database:sismember('MARKSTG:'..bot_id..'creatorbasic:'..chat_id, user_id) 
+  if owner then var = true end 
+  if admin then var = true end
+  if creator then var = true end
+  if creatorbasic then var = true end
+  for k,v in pairs(sudo_users) do
+  if user_id == v then
+  var = true
+  end end
+  local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+  if marx_add_sudo then var = true end
+  return var
+  end
+  --         »»                 is_mod                         ««              --
+  function is_mod(msg)
+  user_id = msg.sender_user_id_
+  chat_id = msg.chat_id_
+  local var = false
+  local mod = database:sismember('MARKSTG:'..bot_id..'mods:'..chat_id, user_id)  
+  local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)  
+  local owner = database:sismember('MARKSTG:'..bot_id..'owners:'..chat_id, user_id)
+  local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id)  
+  local creatorbasic = database:sismember('MARKSTG:'..bot_id..'creatorbasic:'..chat_id, user_id)  
+  if mod then var = true end
+  if owner then var = true end
+  if creator then var = true end
+  if creatorbasic then var = true end
+  if admin then var = true end
+  for k,v in pairs(sudo_users) do
+  if user_id == v then var = true end end
+  local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+  if marx_add_sudo then var = true end
+  return var
+  end
+  --         »»                 ck_mod                         ««              --
+  function ck_mod(user_id,chat_id)
+  local var = false
+  local mod = database:sismember('MARKSTG:'..bot_id..'mods:'..chat_id, user_id)  
+  local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)  
+  local owner = database:sismember('MARKSTG:'..bot_id..'owners:'..chat_id, user_id)
+  local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id)  
+  local creatorbasic = database:sismember('MARKSTG:'..bot_id..'creatorbasic:'..chat_id, user_id)  
+  local vip = database:sismember('MARKSTG:'..bot_id..'vipgp:'..chat_id, user_id)
+  if mod then var = true end
+  if owner then var = true end
+  if creator then var = true end
+  if creatorbasic then var = true end
+  if admin then var = true end
+  if vip then var = true end
+  for k,v in pairs(sudo_users) do
+  if user_id == v then var = true end end
+  local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+  if marx_add_sudo then var = true end
+  return var
+  end
+  
+  
 --         ~⊱                 is_banned                         ««              --
 function is_banned(user_id, chat_id)
 local var = false
