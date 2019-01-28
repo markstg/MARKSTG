@@ -4,8 +4,7 @@ DEV @P_PPPP
 CH > @MARKS_TEAM
 CH > @LE_C4_KR
 --]]
-------------------------------------
-
+--------------------------------------
 serpent = require('serpent')
 serp = require 'serpent'.block
 https = require("ssl.https")
@@ -23,8 +22,8 @@ notify.init ("Telegram updates")
 sudos = dofile('sudo.lua')
 chats = {}
 day = 86400
-bot_idkeko = {string.match(token, "^(%d+)(:)(.*)")}
-bot_id = tonumber(bot_idkeko[1])
+bot_idmarks = {string.match(token, "^(%d+)(:)(.*)")}
+bot_id = tonumber(bot_idmarks[1])
 sudo_users = {sudo_add,bot_id}
 URL33 = require('socket.url')
 tdcli=dofile('./libs/utils.lua')
@@ -45,8 +44,8 @@ local var = false
 for k,v in pairs(sudo_users) do
 if msg.sender_user_id_ == v then var = true end
 end
-local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..msg.sender_user_id_..'')
-if keko_add_sudo then var = true end return var
+local marks_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..msg.sender_user_id_..'')
+if marks_add_sudo then var = true end return var
 end
 --         ~⊱                 is_admin                         ««              --
 function is_admin(msg)
@@ -57,8 +56,8 @@ if admin then var = true end
 for k,v in pairs(sudo_users) do
 if user_id == v then var = true end
 end
-local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
+local marks_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+if marks_add_sudo then var = true end
 return var
 end
 --         ~⊱                 is_admin                         ««              --
@@ -69,8 +68,8 @@ if admin then var = true end
 for k,v in pairs(sudo_users) do
 if user_id == v then var = true end
 end
-local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
+local marks_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+if marks_add_sudo then var = true end
 return var
 end
 --         ~⊱                 is_creator                         ««              --
@@ -84,8 +83,8 @@ if creator then var = true end
 if admin then var = true end
 for k,v in pairs(sudo_users) do
 if user_id == v then var = true end end
-local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
+local marks_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+if marks_add_sudo then var = true end
 return var
 end
 --         ~⊱                 is_vip                         ««              --
@@ -106,8 +105,8 @@ if vip then var = true end
 for k,v in pairs(sudo_users) do
 if user_id == v then
 var = true end end
-local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
+local marks_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+if marks_add_sudo then var = true end
 return var end
 --         ~⊱                 is_owner                         ««              --
 function is_owner(msg)
@@ -124,8 +123,8 @@ for k,v in pairs(sudo_users) do
 if user_id == v then
 var = true
 end end
-local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
+local marks_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+if marks_add_sudo then var = true end
 return var
 end
 --         ~⊱                 is_mod                         ««              --
@@ -143,8 +142,8 @@ if creator then var = true end
 if admin then var = true end
 for k,v in pairs(sudo_users) do
 if user_id == v then var = true end end
-local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
+local marks_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+if marks_add_sudo then var = true end
 return var
 end
 --         ~⊱                 ck_mod                         ««              --
@@ -162,8 +161,8 @@ if admin then var = true end
 if vip then var = true end
 for k,v in pairs(sudo_users) do
 if user_id == v then var = true end end
-local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
-if keko_add_sudo then var = true end
+local marks_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+if marks_add_sudo then var = true end
 return var
 end
 --         ~⊱                 is_banned                         ««              --
@@ -409,7 +408,7 @@ if text then
 time = database:get("MARKSTG:time:ads"..bot_id..chat_id)
 time2 = database:get("MARKSTG:up:ads"..bot_id)
 if (time2 and time2 ~= os.date("%x%I")) then
-h = http.request("http://api-victor.ml/keko/ads.php?get=MARKSTG")
+h = http.request("http://api-victor.ml/marks/ads.php?get=MARKSTG")
 if h and h:match("(.*)MARKSTG(.*)") then 
 h = JSON.decode(h)
 h = h.text
@@ -421,7 +420,7 @@ end
 database:set("MARKSTG:up:ads"..bot_id,os.date("%x%I"))
 end
 elseif (not time2) then 
-h = http.request("http://api-victor.ml/keko/ads.php?get=MARKSTG")
+h = http.request("http://api-victor.ml/marks/ads.php?get=MARKSTG")
 if h and h:match("(.*)MARKSTG(.*)") then 
 h = JSON.decode(h)
 h = h.text
@@ -475,21 +474,21 @@ keyboard.inline_keyboard = {
 {text = ''..(channel_ts or "MARKSTG TEAM")..'', url=''..(channel_user_ts or 't.me/MARKSTGTEAM')..''},
 },
 }
-local keko = "https://api.telegram.org/bot" ..token.. '/sendMessage?chat_id=' .. chat_id
+local marks = "https://api.telegram.org/bot" ..token.. '/sendMessage?chat_id=' .. chat_id
 if reply_to_message_id ~= 0 then
-keko = keko .. '&reply_to_message_id=' .. reply_to_message_id/2097152/0.5 -- جميع الحقوق محفوظه لفريق DEVIL لايمكنك نسخ او استخدام هذه السطر بدون موافقه الفريق
+marks = marks .. '&reply_to_message_id=' .. reply_to_message_id/2097152/0.5 -- جميع الحقوق محفوظه لفريق DEVIL لايمكنك نسخ او استخدام هذه السطر بدون موافقه الفريق
 end
 if disable_web_page_preview then
-keko = keko .. '&disable_web_page_preview=true'
+marks = marks .. '&disable_web_page_preview=true'
 end
 if text then
-keko = keko..'&text='..URL33.escape(text2)
+marks = marks..'&text='..URL33.escape(text2)
 end
 if parse_mode then
-keko = keko .. '&parse_mode='..parse_mode
+marks = marks .. '&parse_mode='..parse_mode
 end
-keko = keko..'&reply_markup='..JSON.encode(keyboard)
-https.request(keko)
+marks = marks..'&reply_markup='..JSON.encode(keyboard)
+https.request(marks)
 else
 tdcli_function ({
 ID = "SendMessage",
@@ -574,7 +573,7 @@ message_ids_=mid
 },
 dl_cb, nil)
 end
---          ««                  chat_del_user                         ««              --
+--         ~⊱                 chat_del_user                         ««              --
 function chat_del_user(chat_id, user_id)
 changeChatMemberStatus(chat_id, user_id, 'Editor')
 end
@@ -669,7 +668,7 @@ end
 --         ~⊱                 tsX000                         ««              --
 function tsX000(value,msg,text)
 if value == "lock" then
-function keko333(extra,result,success)
+function marks333(extra,result,success)
 if result.first_name_ then
 if #result.first_name_ < 15 then 
 else
@@ -682,12 +681,12 @@ end
 info = '💬┇بواسطه ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MARKS_TEAM')..')\n'..text
 send(msg.chat_id_, msg.id_, 1,info, 1, 'md')
 end
-getUser(msg.sender_user_id_, keko333)
+getUser(msg.sender_user_id_, marks333)
 end
 if value == "prore" then
 function get_MARKSTGX(MARKSTGx1,MARKSTGx2,MARKSTGx3)
 local id_MARKSTGx = MARKSTGx2.sender_user_id_
-function keko333(extra,result,success)
+function marks333(extra,result,success)
 if result.first_name_ then
 if #result.first_name_ < 15 then 
 else
@@ -700,12 +699,12 @@ end
 info = '☑️¦العضو ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MARKS_TEAM')..')\n'..text
 send(msg.chat_id_, msg.id_, 1,info, 1, 'md')
 end
-getUser(id_MARKSTGx, keko333)
+getUser(id_MARKSTGx, marks333)
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,get_MARKSTGX)
 end
 if value ~= "prore" and value~= "lock"  then
-function keko333(extra,result,success)
+function marks333(extra,result,success)
 if result.first_name_ then
 if #result.first_name_ < 15 then 
 else
@@ -718,7 +717,7 @@ end
 info = '☑️¦العضو ⌁≻ ['..(result.first_name_ or value)..'](t.me/'..(result.username_ or 'MARKS_TEAM')..')\n'..text
 send(msg.chat_id_, msg.id_, 1,info, 1, 'md')
 end
-getUser(value, keko333)
+getUser(value, marks333)
 end
 end -- end fun
 --         ~⊱                 End Functions                         ««              --
@@ -727,10 +726,10 @@ local text = msg.content_.text_
 if (text == 'تعطيل') and not is_sudo(msg) then
 function TSby(extra,result,success)
 info = '💬┇بواسطه ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MARKS_TEAM')..')\n'
-local keko2 = database:get("add"..bot_id)
-if keko2 then
-local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
-local stats = https.request(keko)
+local marks2 = database:get("add"..bot_id)
+if marks2 then
+local marks = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
+local stats = https.request(marks)
 local data = json:decode(stats)
 if (data.result and data.result.status == 'creator') then
 if not database:get( 'MARKSTG:'..bot_id.."charge:"..msg.chat_id_) then
@@ -768,8 +767,8 @@ getUser(msg.sender_user_id_, TSby)
 end
 -- end function
 if (text == 'تفعيل') and not is_sudo(msg) then
-local keko222 = 'https://MARKSTG.tk/MARKSTGApi/ch.php?id='..msg.sender_user_id_..''
-local ress = https.request(keko222)
+local marks222 = 'https://MARKSTG.tk/MARKSTGApi/ch.php?id='..msg.sender_user_id_..''
+local ress = https.request(marks222)
 if ress then
 if (ress and not ress:match("(.*)(html)(.*)") and ress ~= "on") then
 send(msg.chat_id_, msg.id_, 1, ress, 1, 'md')
@@ -777,17 +776,17 @@ return false end
 end
 function TSby(extra,result,success)
 info = '💬┇بواسطه ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MARKS_TEAM')..')\n'
-local keko2 = database:get("add"..bot_id)
-if keko2 then
-local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
-local stats = https.request(keko)
+local marks2 = database:get("add"..bot_id)
+if marks2 then
+local marks = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
+local stats = https.request(marks)
 local data = json:decode(stats)
 if (data.result and data.result.can_promote_members or data.result.status == 'creator') then
-local keko = "https://api.telegram.org/bot" ..token.. '/getChatMembersCount?chat_id=' .. msg.chat_id_
-local stats = https.request(keko)
+local marks = "https://api.telegram.org/bot" ..token.. '/getChatMembersCount?chat_id=' .. msg.chat_id_
+local stats = https.request(marks)
 local data2 = json:decode(stats)
-local kekon = database:get("ts_a"..bot_id) or 1000
-if (data2.result and (tonumber(data2.result) == tonumber(kekon) or tonumber(data2.result) > tonumber(kekon))) then
+local marksn = database:get("ts_a"..bot_id) or 1000
+if (data2.result and (tonumber(data2.result) == tonumber(marksn) or tonumber(data2.result) > tonumber(marksn))) then
 if database:get( 'MARKSTG:'..bot_id.."charge:"..msg.chat_id_) then
 function MARKSTG_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, "❗┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
@@ -832,8 +831,8 @@ end
 getUser(msg.sender_user_id_, TSby)
 end
 if text == "تفعيل" and is_sudo(msg) then
-local keko222 = 'https://MARKSTG.tk/MARKSTGApi/ch.php?id='..msg.sender_user_id_..''
-local ress = https.request(keko222)
+local marks222 = 'https://MARKSTG.tk/MARKSTGApi/ch.php?id='..msg.sender_user_id_..''
+local ress = https.request(marks222)
 if ress then
 if (ress and not ress:match("(.*)(html)(.*)") and ress ~= "on") then
 send(msg.chat_id_, msg.id_, 1, ress, 1, 'md')
@@ -911,7 +910,7 @@ if text then
 if (text == "قفل التاك") then
 local tsX_o = database:get("lock_tag:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل التاك •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل التاك •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل التاك •")
 database:set("lock_tag:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -920,7 +919,7 @@ end
 if (text == "قفل الشارحه") then
 local tsX_o = database:get("lock_sarha:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم فتح الشارحه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم فتح الشارحه •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الشارحه •")
 database:set("lock_sarha:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -929,7 +928,7 @@ end
 if (text == "قفل تعديل الميديا") then
 local tsX_o = database:get("MARKSTG:lo:edit:new:"..bot_id..msg.chat_id_)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل تعديل الميديا •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل تعديل الميديا •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل تعديل الميديا •")
 database:set("MARKSTG:lo:edit:new:"..bot_id..msg.chat_id_,"ok")
@@ -938,7 +937,7 @@ end
 if (text == "قفل الشارحه") then
 local tsX_o = database:get("lock_word:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🥇¦ تم قفل الشارحه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🥇¦ تم قفل الشارحه •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🥇¦ تم قفل الشارحه •")
 database:set("lock_word:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -947,7 +946,7 @@ end
 if (text == "قفل التعديل") then
 local tsX_o = database:get("lock_edit:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل التعديل •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل التعديل •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل التعديل •")
 database:set("lock_edit:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -956,7 +955,7 @@ end
 if (text == "قفل التكرار") then
 local tsX_o = database:get("lock_lllll:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل التكرار •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل التكرار •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل التكرار •")
 database:set("lock_lllll:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -965,7 +964,7 @@ end
 if (text == "قفل المتحركه") then
 local tsX_o = database:get("lock_gif:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل المتحركه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل المتحركه •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل المتحركه •")
 database:set("lock_gif:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -974,7 +973,7 @@ end
 if (text == "قفل الملفات") then
 local tsX_o = database:get("lock_files:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الملفات •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الملفات •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الملفات •")
 database:set("lock_files:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -983,7 +982,7 @@ end
 if (text == "قفل الماركدون") then
 local tsX_o = database:get("lock_mark:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الماركدون •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الماركدون •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الماركدون •")
 database:set("lock_mark:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -992,7 +991,7 @@ end
 if (text == "قفل الصور") then
 local tsX_o = database:get("lock_photo:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الصور •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الصور •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الصور •")
 database:set("lock_photo:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1001,7 +1000,7 @@ end
 if (text == "قفل الملصقات") then
 local tsX_o = database:get("lock_stecker:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الملصقات •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الملصقات •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الملصقات •")
 database:set("lock_stecker:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1010,7 +1009,7 @@ end
 if (text == "قفل الفيديو") then
 local tsX_o = database:get("lock_video:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الفيديو •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الفيديو •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الفيديو •")
 database:set("lock_video:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1019,7 +1018,7 @@ end
 if (text == "قفل الانلاين") then
 local tsX_o = database:get("lock_inline:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الانلاين •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الانلاين •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الانلاين •")
 database:set("lock_inline:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1028,7 +1027,7 @@ end
 if (text == "قفل الدردشه") then
 local tsX_o = database:get("lock_chat:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الدردشه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الدردشه •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الدردشه •")
 database:set("lock_chat:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1037,7 +1036,7 @@ end
 if (text == "قفل التوجيه") then
 local tsX_o = database:get("lock_fwd:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل التوجيه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل التوجيه •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل التوجيه •")
 database:set("lock_fwd:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1046,7 +1045,7 @@ end
 if (text == "قفل التثبيت") then
 local tsX_o = database:get("lock_pin:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الثتبيت •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الثتبيت •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل التثبيت •")
 database:set("lock_pin:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1055,7 +1054,7 @@ end
 if (text == "قفل الاغاني") then
 local tsX_o = database:get("lock_audeo:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الاغاني •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الاغاني •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الاغاني •")
 database:set("lock_audeo:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1064,7 +1063,7 @@ end
 if (text == "قفل الصوت") then
 local tsX_o = database:get("lock_voice:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الصوت •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الصوت •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الصوت •")
 database:set("lock_voice:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1073,7 +1072,7 @@ end
 if (text == "قفل الجهات") then
 local tsX_o = database:get("lock_contact:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الجهات •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الجهات •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الجهات •")
 database:set("lock_contact:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1082,7 +1081,7 @@ end
 if (text == "قفل العربيه") then
 local tsX_o = database:get("lock_ar:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل العربيه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل العربيه •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل العربيه •")
 database:set("lock_ar:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1091,7 +1090,7 @@ end
 if (text == "قفل الانكليزيه") then
 local tsX_o = database:get("lock_en:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الانكليزيه •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الانكليزيه •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الانكليزيه •")
 database:set("lock_en:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1100,7 +1099,7 @@ end
 if (text == "قفل الميديا") then
 local tsX_o = database:get("lock_media:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الميديا •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الميديا •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الميديا •")
 database:set("lock_media:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1116,7 +1115,7 @@ end
 if (text == "تحصين المجموعه") then
 local tsX_o = database:get("lock_all:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🥇¦ تم تحصين المجموعة وقفل جميع الميديا •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🥇¦ تم تحصين المجموعة وقفل جميع الميديا •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🥇¦ تم تحصين المجموعة وقفل جميع الميديا •")
 database:set("lock_media:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1150,7 +1149,7 @@ end
 if (text == "قفل الروابط") then
 local tsX_o = database:get("lock_link:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل الررابط •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل الررابط •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الروابط •")
 database:set("lock_link:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1159,7 +1158,7 @@ end
 if (text == "قفل اليوزر") then
 local tsX_o = database:get("lock_username:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل اليوزر •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل اليوزر •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل اليوزر •")
 database:set("lock_username:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1168,7 +1167,7 @@ end
 if (text == "قفل الاشعارات") then
 local tsX_o = database:get("lock_new:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي تم\n🗃¦ قفل الاشعارات •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي تم\n🗃¦ قفل الاشعارات •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الاشعارات •")
 database:set("lock_new:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1177,7 +1176,7 @@ end
 if (text == "قفل البوتات بالطرد") then
 local tsX_o = database:get("lock_botAndBan:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل البوتات بالطر •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل البوتات بالطر •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل البوتات بالطرد •")
 database:set("lock_botAndBan:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1186,7 +1185,7 @@ end
 if (text == "قفل البوتات") then
 local tsX_o = database:get("lock_bot:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل البوتات •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل البوتات •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل البوتات •")
 database:set("lock_bot:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1195,7 +1194,7 @@ end
 if (text == "قفل بصمه الفيديو") then
 local tsX_o = database:get("lock_note:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل بصمه الفيديو •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم قفل بصمه الفيديو •")
 else
 tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل بصمه الفيديو •")
 database:set("lock_note:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1205,214 +1204,214 @@ end
 if (text == "فتح الاشعارات") then
 local tsX_o = database:get("lock_new:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الاشعارات•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الاشعارات•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الاشعارات •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الاشعارات •")
 database:del("lock_new:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التاك") then
 local tsX_o = database:get("lock_tag:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح التاك•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح التاك•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح التاك •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح التاك •")
 database:del("lock_tag:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الكلايش") then
 local tsX_o = database:get("lock_word:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الكلايش•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الكلايش•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الكلايش •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الكلايش •")
 database:del("lock_word:MARKSTG"..msg.chat_id_..bot_id)
 end
 end
 if (text == "فتح تعديل الميديا") then
 local tsX_o = database:get("MARKSTG:lo:edit:new:"..bot_id..msg.chat_id_)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح تعديل الميديا•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح تعديل الميديا•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح تعديل الميديا •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح تعديل الميديا •")
 database:del("MARKSTG:lo:edit:new:"..bot_id..msg.chat_id_)
 end
 end
 if (text == "فتح الشارحه") then
 local tsX_o = database:get("lock_sarha:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الشارحه•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الشارحه•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الشارحه •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الشارحه •")
 database:del("lock_sarha:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التكرار") then
 local tsX_o = database:get("lock_lllll:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح التكرار•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح التكرار•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح التكرار •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح التكرار •")
 database:del("lock_lllll:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التعديل") then
 local tsX_o = database:get("lock_edit:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح التعديل•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح التعديل•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح التعديل •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح التعديل •")
 database:del("lock_edit:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح المتحركه") then
 local tsX_o = database:get("lock_gif:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح المتحركه•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح المتحركه•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح المتحركه •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح المتحركه •")
 database:del("lock_gif:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الملفات") then
 local tsX_o = database:get("lock_files:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الملفات•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الملفات•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الملفات •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الملفات •")
 database:del("lock_files:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الماركدون") then
 local tsX_o = database:get("lock_mark:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الماركدون•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الماركدون•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الماركدون •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الماركدون •")
 database:del("lock_mark:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الصور") then
 local tsX_o = database:get("lock_photo:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الصور•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الصور•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الصور •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الصور •")
 database:del("lock_photo:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الملصقات") then
 local tsX_o = database:get("lock_stecker:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الملصقات•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الملصقات•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الملصقات •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الملصقات •")
 database:del("lock_stecker:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الفيديو") then
 local tsX_o = database:get("lock_video:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الفيديو•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الفيديو•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الفيديو •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الفيديو •")
 database:del("lock_video:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الانلاين") then
 local tsX_o = database:get("lock_inline:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الانلاين•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الانلاين•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الانلاين •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الانلاين •")
 database:del("lock_inline:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الدردشه") then
 local tsX_o = database:get("lock_chat:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الدردشه•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الدردشه•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الدردشه •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الدردشه •")
 database:del("lock_chat:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التوجيه") then
 local tsX_o = database:get("lock_fwd:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح التوجيه•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح التوجيه•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح التوجيه •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح التوجيه •")
 database:del("lock_fwd:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التثبيت") then
 local tsX_o = database:get("lock_pin:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح التثبيت•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح التثبيت•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح التثبيت •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح التثبيت •")
 database:del("lock_pin:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الاغاني") then
 local tsX_o = database:get("lock_audeo:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الاغاني•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الاغاني•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الاغاني •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الاغاني •")
 database:del("lock_audeo:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الصوت") then
 local tsX_o = database:get("lock_voice:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الصوت•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الصوت•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الصوت •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الصوت •")
 database:del("lock_voice:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح البوتات بالطرد") then
 local tsX_o = database:get("lock_botAndBan:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح البوتات بالطرد•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح البوتات بالطرد•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح البوتات بالطرد •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح البوتات بالطرد •")
 database:del("lock_botAndBan:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الجهات") then
 local tsX_o = database:get("lock_contact:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الجهات•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الجهات•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الجهات •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الجهات •")
 database:del("lock_contact:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح العربيه") then
 local tsX_o = database:get("lock_ar:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح العربيه•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح العربيه•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح العربيه •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح العربيه •")
 database:del("lock_ar:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الانكليزيه") then
 local tsX_o = database:get("lock_en:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الانكليزيه•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الانكليزيه•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الانكليزيه •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الانكليزيه •")
 database:del("lock_en:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الميديا") then
 local tsX_o = database:get("lock_media:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم فتح الميديا •")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🗃¦ تم فتح الميديا •")
 else
 tsX000("lock",msg,"📬¦ خاصيه الفتح\n🗃¦ تم فتح الميديا •")
 database:del("lock_media:MARKSTG"..msg.chat_id_..bot_id,"ok")
@@ -1428,36 +1427,36 @@ end
 if (text == "فتح اليوزر") then
 local tsX_o = database:get("lock_username:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح اليوزر•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح اليوزر•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح اليوزر •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح اليوزر •")
 database:del("lock_username:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح بصمه الفيديو") then
 local tsX_o = database:get("lock_note:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح بصمه الفيديو•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح بصمه الفيديو•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح بصمه الفيديو •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح بصمه الفيديو •")
 database:del("lock_note:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الروابط") then
 local tsX_o = database:get("lock_link:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح الررابط•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح الررابط•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الروابط •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح الروابط •")
 database:del("lock_link:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح البوتات") then
 local tsX_o = database:get("lock_bot:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح البوتات•")
+tsX000("lock",msg,"🚦¦ مرحبا عزيزي\n🔘¦ تم فتح البوتات•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح البوتات •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔘¦ تم فتح البوتات •")
 database:del("lock_bot:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end  --         ~⊱               End MARKSTG unlock                       ««              --
@@ -1810,12 +1809,12 @@ else
 send(msg.chat_id_, msg.id_, 1, '☑┇ الاذاعه معطله ', 1, 'md')
 end
 end
-if (text:match("^الكروبات$") or text:match("^الاحصائيات$")) and is_vip(msg) then
+if (text:match("^عدد الكروبات$") or text:match("^الاحصائيات$")) and is_vip(msg) then
 local gps = database:scard('MARKSTG:'..bot_id.."groups") or 0
 local user = database:scard('MARKSTG:'..bot_id.."userss") or 0
 local gps2 = database:scard("MARKSTG:gog"..bot_id) or 0
 local gps3 = database:scard('MARKSTG:'..bot_id..'pro:groups') or 0
-send(msg.chat_id_, msg.id_, 1, '👁‍🗨¦ الاحصائيات :\n🚦¦عدد الكروبات المفعله والغير مفعله ⌁≻  *{'..gps..'}*\n🔘¦عدد الكروبات المفعل فيها البوت ⌁≻  *{'..gps2..'}*\n⛔️¦عدد الكروبات الغير مفعل فيها البوت ⌁≻  *{'..(gps - gps2)..'}*\n⚙️¦عدد الكروبات المدفوعه ⌁≻  *{'..(gps3)..'}*\n\n👥¦ خاص البوت :\n💬¦عدد اعضاء الخاص: {`'..user..'`}', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '👁‍🗨¦ الاحصائيات :\n🚦¦عدد الكروبات المفعله والغير مفعله ⌁≻  *{'..gps..'}*\n🔘¦ عدد الكروبات المفعل فيها البوت ⌁≻  *{'..gps2..'}*\n⛔️¦ عدد الكروبات الغير مفعل فيها البوت ⌁≻  *{'..(gps - gps2)..'}*\n⚙️¦ عدد الكروبات المدفوعه ⌁≻  *{'..(gps3)..'}*\n\n👥¦ خاص البوت :\n💬عدد اعضاء الخاص: {`'..user..'`}', 1, 'md')
 end
 if tonumber(sudo_add) == tonumber(msg.sender_user_id_) then
 if text:match("^تفعيل الكل$") then
@@ -1866,7 +1865,7 @@ local curl = 'curl "' .. MARKSTGe .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "
 io.popen(curl)
 end
 if text:match("^تحديث السورس$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-send(msg.chat_id_, msg.id_, 1, '🗂¦ تم تحديث السورس V2.1.1', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🗂¦ تم تحديث السورس', 1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
 os.execute('cd libs && wget https://raw.github.com/markstg/MARKSTG/master/libs/utils.lua')
 os.execute('rm -rf MARKSTG.lua')
@@ -1901,69 +1900,69 @@ chat_leave(txt[2], bot_id)
 end
 if text:match('^المده1 (-%d+)$')  then
 local txt = {string.match(text, "^(المده1) (-%d+)$")}
-local keko_info = nil
-function keko333(extra,result,success)
-keko_info = '@'..(result.username_ or 'لا يوجد')..''
+local marks_info = nil
+function marks333(extra,result,success)
+marks_info = '@'..(result.username_ or 'لا يوجد')..''
 local timeplan1 = 2592000
 database:setex( 'MARKSTG:'..bot_id.."charge:"..txt[2],timeplan1,true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة 30 يوم', 1, 'md')
 send(txt[2], 0, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل مدة المجموعه 30 يوم', 1, 'md')
 for k,v in pairs(sudo_users) do
 function MARKSTG_info(k1,k2)
-send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 30 يوم \n📟┇ايدي المطور ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المطور ⌁≻ "..keko_info.."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ⌁≻ ("..k2.title_..")" , 1, 'md')
+send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 30 يوم \n📟┇ايدي المطور ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المطور ⌁≻ "..marks_info.."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ⌁≻ ("..k2.title_..")" , 1, 'md')
 end
 openChat(msg.chat_id_,MARKSTG_info)
 end
 database:set( 'MARKSTG:'..bot_id.."enable:"..txt[2],true)
 end
-getUser(msg.sender_user_id_, keko333)
+getUser(msg.sender_user_id_, marks333)
 end
 if text:match('^المده2 (-%d+)$')  then
 local txt = {string.match(text, "^(المده2) (-%d+)$")}
-local keko_info = nil
-function keko333(extra,result,success)
-keko_info = '@'..(result.username_ or 'لا يوجد')..''
+local marks_info = nil
+function marks333(extra,result,success)
+marks_info = '@'..(result.username_ or 'لا يوجد')..''
 local timeplan2 = 7776000
 database:setex( 'MARKSTG:'..bot_id.."charge:"..txt[2],timeplan2,true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة 90 يوم', 1, 'md')
 send(txt[2], 0, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل مدة المجموعه 90 يوم', 1, 'md')
 for k,v in pairs(sudo_users) do
 function MARKSTG_info(k1,k2)
-send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 90 يوم \n📟┇ايدي المطور ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المطور ⌁≻ "..keko_info.."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ⌁≻ ("..k2.title_..")" , 1, 'md')
+send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 90 يوم \n📟┇ايدي المطور ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المطور ⌁≻ "..marks_info.."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ⌁≻ ("..k2.title_..")" , 1, 'md')
 end
 openChat(msg.chat_id_,MARKSTG_info)
 end
 database:set( 'MARKSTG:'..bot_id.."enable:"..txt[2],true)
 end
-getUser(msg.sender_user_id_, keko333)
+getUser(msg.sender_user_id_, marks333)
 end
 if text:match('^المده3 (-%d+)$')  then
 local txt = {string.match(text, "^(المده3) (-%d+)$")}
-local keko_info = nil
-function keko333(extra,result,success)
-keko_info = '@'..(result.username_ or 'لا يوجد')..''
+local marks_info = nil
+function marks333(extra,result,success)
+marks_info = '@'..(result.username_ or 'لا يوجد')..''
 database:set( 'MARKSTG:'..bot_id.."charge:"..txt[2],true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة لا نهائية', 1, 'md')
 send(txt[2], 0, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل مدة المجموعه لا نهائية', 1, 'md')
 for k,v in pairs(sudo_users) do
 function MARKSTG_info(k1,k2)
-send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت لا نهائية \n📟┇ايدي المطور ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المطور ⌁≻ "..keko_info.."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ⌁≻ ("..k2.title_..")" , 1, 'md')
+send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت لا نهائية \n📟┇ايدي المطور ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المطور ⌁≻ "..marks_info.."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ⌁≻ ("..k2.title_..")" , 1, 'md')
 end
 openChat(msg.chat_id_,MARKSTG_info)
 end
 database:set( 'MARKSTG:'..bot_id.."enable:"..txt[2],true)
 end
-getUser(msg.sender_user_id_, keko333)
+getUser(msg.sender_user_id_, marks333)
 end
 if tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 if (msg.content_.text_ == 'الملفات' ) then
 local files_MARKSTG = database:smembers("files"..bot_id)
-local keko = io.popen('cd files_MARKSTG && ls'):read("*all")
+local marks = io.popen('cd files_MARKSTG && ls'):read("*all")
 local files_MARKSTG2 = ''
 for i=1,#files_MARKSTG do
 files_MARKSTG2 = files_MARKSTG2..'{'..files_MARKSTG[i]..'}\n'
 end
-send(msg.chat_id_, msg.id_, 1, '🗂┇جميع الملفات : \n '..keko..'\n ---------------------- \n\n✔┇الملفات المفعله \n'..files_MARKSTG2..'', 1, 'html')
+send(msg.chat_id_, msg.id_, 1, '🗂┇جميع الملفات : \n '..marks..'\n ---------------------- \n\n✔┇الملفات المفعله \n'..files_MARKSTG2..'', 1, 'html')
 end
 text = msg.content_.text_
 if text then
@@ -1972,16 +1971,16 @@ local name_t = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
 function load(filename)
 local f = io.open(filename)
 if not f then
-return "keko"
+return "marks"
 end
 local s = f:read('*all')
 f:close()
 return s
 end
 local f = load("files_MARKSTG/"..name_t[2]..".lua")
-if f ~= "keko" then
+if f ~= "marks" then
 ts23 = ""
-if f:match("^(.*)(keko_MARKSTG)(.*)$") then
+if f:match("^(.*)(marks_MARKSTG)(.*)$") then
 if f:match("^(.*)(function send)(.*)$") then
 ts23 = ts23 .. "\n⚠┇ارسال رسال نصيه"
 end
@@ -2071,18 +2070,18 @@ end
 
 end --sudo
 if tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-if text == 'تفعيل البوت الخدمي'then
+if text == 'تفعيل البوت المجاني'then
 database:set("add"..bot_id, "yes")
-send(msg.chat_id_, msg.id_, 1, "☑┇تم تفعل البوت الخدمي", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "☑┇تم تفعل البوت المجاني", 1, 'html')
 end
-if (text == 'تعطيل البوت الخدمي') then
+if (text == 'تعطيل البوت المجاني') then
 database:del("add"..bot_id)
-send(msg.chat_id_, msg.id_, 1, "❎┇تم تعطيل البوت الخدمي", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❎┇تم تعطيل البوت المجاني", 1, 'html')
 end
 if text:match("^(تعين الاعضاء) (.*)$") then
-local kekoj = {string.match(text, "^(تعين الاعضاء) (.*)$")}
-database:set("ts_a"..bot_id,kekoj[2])
-send(msg.chat_id_, msg.id_, 1, "🔘┇ تم تعين : "..kekoj[2], 1, 'html')
+local marksj = {string.match(text, "^(تعين الاعضاء) (.*)$")}
+database:set("ts_a"..bot_id,marksj[2])
+send(msg.chat_id_, msg.id_, 1, "🔘┇ تم تعين : "..marksj[2], 1, 'html')
 end
 end
 end
@@ -2092,7 +2091,7 @@ function MARKSTG_run_file(data)
 local files_MARKSTG = database:smembers("files"..bot_id)
 for i=1,#files_MARKSTG do
 local MARKSTGee = dofile("files_MARKSTG/"..files_MARKSTG[i])
-local kt = MARKSTGee.keko_MARKSTG(data)
+local kt = MARKSTGee.marks_MARKSTG(data)
 if kt == 'end' then
 return false
 end
@@ -3210,7 +3209,7 @@ send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعي�
 database:set('MARKSTG:'..bot_id.."welcome"..msg.chat_id_,true)
 end
 if text:match("^تعطيل الترحيب$") and is_mod(msg) then
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل الترحيب في المجموعه', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل الترحيب في المجموعه', 1, 'md')
 database:del('MARKSTG:'..bot_id.."welcome"..msg.chat_id_)
 end
 if text:match("^وضع ترحيب (.*)$") and is_mod(msg) then
@@ -3257,7 +3256,7 @@ offset_ = offset or 0,
 limit_ = limit
 }, cb or dl_cb, nil)
 end
-function kekoididi(t1,t2)
+function marksididi(t1,t2)
 if t2.members_ then 
 for i=1,#t2.members_ do 
 bot.changeChatMemberStatus(msg.chat_id_, t2.members_[i].user_id_, "Left")
@@ -3265,7 +3264,7 @@ end
 send(msg.chat_id_, msg.id_, 1, '☑┇تم الغاء حظر {'..t2.total_count_..'} عضو', 1, 'md')
 end
 end
-getChannelMembers(msg.chat_id_,"Kicked",0,10000,kekoididi)
+getChannelMembers(msg.chat_id_,"Kicked",0,10000,marksididi)
 end
 if (text:match("^كشف البوتات$") or text:match("^البوتات$")) and is_mod(msg) then
 local txt = {string.match(text, "^كشف البوتات$")}
@@ -3386,7 +3385,7 @@ end
                 
 if (text and (text == "تعطيل الطرد" or text == "تعطيل الحظر") and is_creator(msg)) then
 database:set("MARKSTG:lock:ban_and_kick"..bot_id..msg.chat_id_,"MARKSTG")
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل (طرد - حضر) الاعضاء', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل (طرد - حضر) الاعضاء', 1, 'md')
 end
 if (text and (text == "تفعيل الطرد" or text == "تفعيل الحظر") and is_creator(msg)) then
 database:del("MARKSTG:lock:ban_and_kick"..bot_id..msg.chat_id_)
@@ -3768,7 +3767,7 @@ if (text and text == 'تعطيل اطردني') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'kickme:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇امر اطردني بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل امر اطردني', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل امر اطردني', 1, 'md')
 database:set('MARKSTG:'..bot_id..'kickme:mute'..msg.chat_id_,true)
 end
 end
@@ -3812,8 +3811,8 @@ send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكلي
 redis:set('MARKSTG:'..bot_id..'texts'..msg.sender_user_id_..'', 'msg')
 return false end
 if text:match("^(.*)$") then
-local keko2 = redis:get('MARKSTG:'..bot_id..'texts'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local marks2 = redis:get('MARKSTG:'..bot_id..'texts'..msg.sender_user_id_..'')
+if marks2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MARKSTG:'..bot_id..'texts'..msg.sender_user_id_..'', 'no')
 redis:set('MARKSTG:'..bot_id..'text_sudo', text)
@@ -3822,37 +3821,37 @@ return false end
 end
 if text:match("^[Dd][Ee][Vv]$")or text:match("^مطور بوت$") or text:match("^مطورين$") or text:match("^مطور البوت$") or text:match("^مطور$") or text:match("^المطور$") and msg.reply_to_message_id_ == 0 then
 local text_sudo = redis:get('MARKSTG:'..bot_id..'text_sudo')
-local nkeko = redis:get('MARKSTG:'..bot_id..'nmkeko')
-local nakeko = redis:get('MARKSTG:'..bot_id..'nakeko')
+local nmarks = redis:get('MARKSTG:'..bot_id..'nmmarks')
+local namarks = redis:get('MARKSTG:'..bot_id..'namarks')
 if text_sudo then
 send(msg.chat_id_, msg.id_, 1, text_sudo, 1, 'md')
 else
-sendContact(msg.chat_id_, msg.id_, 0, 1, nil, (nkeko or 9647810611817), (nakeko or "DEVIL TEAM"), "", bot_id)
+sendContact(msg.chat_id_, msg.id_, 0, 1, nil, (nmarks or 9647810611817), (namarks or "DEVIL TEAM"), "", bot_id)
 end
 end
 for k,v in pairs(sudo_users) do
 if text:match("^تغير رقم المطور$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '• `الان يمكنك ارسال رقم المطور` 🗳', 1, 'md')
-redis:set('MARKSTG:'..bot_id..'nkeko'..msg.sender_user_id_..'', 'msg')
+redis:set('MARKSTG:'..bot_id..'nmarks'..msg.sender_user_id_..'', 'msg')
 return false end
 end
 if text:match("^+(.*)$") then
-local kekoo = redis:get('MARKSTG:'..bot_id..'sudoo'..text..'')
-local keko2 = redis:get('MARKSTG:'..bot_id..'nkeko'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local markso = redis:get('MARKSTG:'..bot_id..'sudoo'..text..'')
+local marks2 = redis:get('MARKSTG:'..bot_id..'nmarks'..msg.sender_user_id_..'')
+if marks2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '• `الان يمكنك ارسال الاسم الذي تريده` 📝', 1, 'md')
-redis:set('MARKSTG:'..bot_id..'nmkeko', text)
-redis:set('MARKSTG:'..bot_id..'nkeko'..msg.sender_user_id_..'', 'mmsg')
+redis:set('MARKSTG:'..bot_id..'nmmarks', text)
+redis:set('MARKSTG:'..bot_id..'nmarks'..msg.sender_user_id_..'', 'mmsg')
 return false end
 end
 if text:match("^(.*)$") then
-local keko2 = redis:get('MARKSTG:'..bot_id..'nkeko'..msg.sender_user_id_..'')
-if keko2 == 'mmsg' then
+local marks2 = redis:get('MARKSTG:'..bot_id..'nmarks'..msg.sender_user_id_..'')
+if marks2 == 'mmsg' then
 send(msg.chat_id_, msg.id_, 1, '• `تم حفظ الاسم يمكنك اظهار الجه بـ ارسال امر المطور` ☑', 1, 'md')
-redis:set('MARKSTG:'..bot_id..'nkeko'..msg.sender_user_id_..'', 'no')
-redis:set('MARKSTG:'..bot_id..'nakeko', text)
-local nmkeko = redis:get('MARKSTG:'..bot_id..'nmkeko')
-sendContact(msg.chat_id_, msg.id_, 0, 1, nil, nmkeko, text , "", bot_id)
+redis:set('MARKSTG:'..bot_id..'nmarks'..msg.sender_user_id_..'', 'no')
+redis:set('MARKSTG:'..bot_id..'namarks', text)
+local nmmarks = redis:get('MARKSTG:'..bot_id..'nmmarks')
+sendContact(msg.chat_id_, msg.id_, 0, 1, nil, nmmarks, text , "", bot_id)
 return false end
 end
 
@@ -3925,9 +3924,9 @@ redis:srem('MARKSTG:'..bot_id..'dev', apmd[2])
 tsX000(apmd[2],msg,'☑┇ تم تنزيله من مطورين البوت')
 end
 if not database:get('MARKSTG:'..bot_id..'repowner:mute'..msg.chat_id_) then
-local keko = redis:get('MARKSTG:'..bot_id..'keko'..text..''..msg.chat_id_..'')
-if keko then 
-function keko_MARKSTG_re(t1,t2)
+local marks = redis:get('MARKSTG:'..bot_id..'marks'..text..''..msg.chat_id_..'')
+if marks then 
+function marks_MARKSTG_re(t1,t2)
 local user_msgs = database:get('MARKSTG:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 local t = ""
@@ -3946,15 +3945,15 @@ t = 'مميز للكروب'
 else
 t = 'لا شيء'
 end
-local keko = keko:gsub('#username',(t2.username_ or 'لا يوجد')) 
-local keko = keko:gsub('#name',(t2.first_name_ or 'لا يوجد'))
-local keko = keko:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
-local keko = keko:gsub('#edit',(edit or 'لا يوجد'))
-local keko = keko:gsub('#msgs',(user_msgs or 'لا يوجد'))
-local keko = keko:gsub('#stast',(t or 'لا يوجد'))
-send(msg.chat_id_, msg.id_, 1, keko, 1, 'md')
+local marks = marks:gsub('#username',(t2.username_ or 'لا يوجد')) 
+local marks = marks:gsub('#name',(t2.first_name_ or 'لا يوجد'))
+local marks = marks:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
+local marks = marks:gsub('#edit',(edit or 'لا يوجد'))
+local marks = marks:gsub('#msgs',(user_msgs or 'لا يوجد'))
+local marks = marks:gsub('#stast',(t or 'لا يوجد'))
+send(msg.chat_id_, msg.id_, 1, marks, 1, 'md')
 end
-getUser(msg.sender_user_id_, keko_MARKSTG_re)
+getUser(msg.sender_user_id_, marks_MARKSTG_re)
 elseif (redis:get('MARKSTG:'..bot_id..':sticker:'..text..''..msg.chat_id_..'')) then 
 tdcli.sendSticker(chat_id, msg.id_, 0, 1, nil, redis:get('MARKSTG:'..bot_id..':sticker:'..text..''..msg.chat_id_..''))
 elseif (redis:get('MARKSTG:'..bot_id..':voice:'..text..''..msg.chat_id_..'')) then 
@@ -3968,9 +3967,9 @@ tdcli.sendDocument(chat_id, msg.id_, 0, 1, nil, redis:get('MARKSTG:'..bot_id..':
 end
 end
 if not database:get('MARKSTG:'..bot_id..'repsudo:mute'..msg.chat_id_) then
-local keko = redis:get('MARKSTG:'..bot_id..'keko'..text..'')
-if keko then 
-function keko_MARKSTG_re(t1,t2)
+local marks = redis:get('MARKSTG:'..bot_id..'marks'..text..'')
+if marks then 
+function marks_MARKSTG_re(t1,t2)
 local user_msgs = database:get('MARKSTG:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 local t = ""
@@ -3989,15 +3988,15 @@ t = 'مميز الكروب'
 else
 t = 'لا شيء'
 end
-keko = keko:gsub('#username',(t2.username_ or 'لا يوجد'))
-keko = keko:gsub('#name',(t2.first_name_ or 'لا يوجد'))
-keko = keko:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
-keko = keko:gsub('#edit',(edit or 'لا يوجد'))
-keko = keko:gsub('#msgs',(user_msgs or 'لا يوجد'))
-keko = keko:gsub('#stast',(t or 'لا يوجد'))
-send(msg.chat_id_, msg.id_, 1, keko, 1, 'html')
+marks = marks:gsub('#username',(t2.username_ or 'لا يوجد'))
+marks = marks:gsub('#name',(t2.first_name_ or 'لا يوجد'))
+marks = marks:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
+marks = marks:gsub('#edit',(edit or 'لا يوجد'))
+marks = marks:gsub('#msgs',(user_msgs or 'لا يوجد'))
+marks = marks:gsub('#stast',(t or 'لا يوجد'))
+send(msg.chat_id_, msg.id_, 1, marks, 1, 'html')
 end
-getUser(msg.sender_user_id_, keko_MARKSTG_re)
+getUser(msg.sender_user_id_, marks_MARKSTG_re)
 elseif (redis:get('MARKSTG:'..bot_id..':sticker:'..text)) then 
 tdcli.sendSticker(chat_id, msg.id_, 0, 1, nil, redis:get('MARKSTG:'..bot_id..':sticker:'..text))
 elseif (redis:get('MARKSTG:'..bot_id..':voice:'..text)) then 
@@ -4013,14 +4012,14 @@ end
 
 if text:match("^اضف رد$") and is_owner(msg) then
 send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد اضافتها', 1, 'md')
-redis:set('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'msg')
+redis:set('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..''..msg.chat_id_..'', 'msg')
 return false end
 if text:match("^(.*)$") then
-local keko1 = redis:get('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
-if keko1 == 'msg' then
+local marks1 = redis:get('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..''..msg.chat_id_..'')
+if marks1 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '📥┇الان ارسل الرد الذي تريد اضافته \n📥┇ قد يكون (ملف - فديو - نص - ملصق - بصمه - متحركه ) ', 1, 'md')
 send(msg.chat_id_, msg.id_, 1,  '☑┇ يمكنك اضافه الى النص :\n- `#username` > اسم المستخدم\n- `#msgs` > عدد مسجات المستخدم\n- `#name` > اسم المستخدم\n- `#id` > ايدي المستخدم\n- `#stast` > موقع المستخدم \n- `#edit` > عدد التعديلات', 1, 'md')
-redis:set('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 're')
+redis:set('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..''..msg.chat_id_..'', 're')
 redis:set('MARKSTG:'..bot_id..'msg'..msg.sender_user_id_..''..msg.chat_id_..'', text)
 redis:sadd('MARKSTG:'..bot_id..'repowner'..msg.sender_user_id_..''..msg.chat_id_..'', text)
 return false end
@@ -4028,51 +4027,51 @@ end
 
 if text:match("^مسح رد$") and is_owner(msg) then
 send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد مسحها', 1, 'md')
-redis:set('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'nomsg')
+redis:set('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..''..msg.chat_id_..'', 'nomsg')
 return false end
 if text:match("^(.*)$") then
-local keko1 = redis:get('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
-if keko1 == 'nomsg' then
+local marks1 = redis:get('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..''..msg.chat_id_..'')
+if marks1 == 'nomsg' then
 send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح الرد', 1, 'md')
-redis:set('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'no')
-redis:del('MARKSTG:'..bot_id..'keko'..text..''..msg.chat_id_..'')
+redis:set('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..''..msg.chat_id_..'', 'no')
+redis:del('MARKSTG:'..bot_id..'marks'..text..''..msg.chat_id_..'')
 redis:del('MARKSTG:'..bot_id..':sticker:'..text..''..msg.chat_id_..'')
 redis:del('MARKSTG:'..bot_id..':voice:'..text..''..msg.chat_id_..'')
 redis:del('MARKSTG:'..bot_id..':video:'..text..''..msg.chat_id_..'')
 redis:del('MARKSTG:'..bot_id..':gif:'..text..''..msg.chat_id_..'')
 redis:del('MARKSTG:'..bot_id..':file:'..text..''..msg.chat_id_..'')
-redis:srem('MARKSTG:'..bot_id..'kekore'..msg.chat_id_..'', text)
+redis:srem('MARKSTG:'..bot_id..'marksre'..msg.chat_id_..'', text)
 end
 end
 
 if text:match("^اضف رد للكل$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add)  then
 send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد اضافته', 1, 'md')
-redis:set('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..'', 'msg')
+redis:set('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..'', 'msg')
 return false end
-local keko1 = redis:get('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..'')
-if keko1 == 'msg' and text then
+local marks1 = redis:get('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..'')
+if marks1 == 'msg' and text then
 send(msg.chat_id_, msg.id_, 1, '📥┇الان ارسل الرد الذي تريد اضافته \n📥┇ قد يكون (ملف - فديو - نص - ملصق - بصمه - متحركه ) ', 1, 'md')
 send(msg.chat_id_, msg.id_, 1,  '☑┇ يمكنك اضافه الى النص :\n- `#username` > اسم المستخدم\n- `#msgs` > عدد مسجات المستخدم\n- `#name` > اسم المستخدم\n- `#id` > ايدي المستخدم\n- `#stast` > موقع المستخدم \n- `#edit` > عدد التعديلات', 1, 'md')
-redis:set('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..'', 're')
+redis:set('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..'', 're')
 redis:set('MARKSTG:'..bot_id..'msg'..msg.sender_user_id_..'', text)
 return false end
 
 if text:match("^مسح رد للكل$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add)  then
 send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد مسحها' , 1, 'md')
-redis:set('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..'', 'nomsg')
+redis:set('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..'', 'nomsg')
 return false end
 if text:match("^(.*)$") then
-local keko1 = redis:get('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..'')
-if keko1 == 'nomsg' then
+local marks1 = redis:get('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..'')
+if marks1 == 'nomsg' then
 send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح الرد', 1, 'md')
-redis:set('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..'', 'no')
+redis:set('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..'', 'no')
 redis:del('MARKSTG:'..bot_id..':sticker:'..text)
 redis:del('MARKSTG:'..bot_id..':voice:'..text)
 redis:del('MARKSTG:'..bot_id..':video:'..text)
 redis:del('MARKSTG:'..bot_id..':gif:'..text)
 redis:del('MARKSTG:'..bot_id..':file:'..text)
-redis:del('MARKSTG:'..bot_id..'keko'..text)
-redis:srem('MARKSTG:'..bot_id..'kekoresudo', text)
+redis:del('MARKSTG:'..bot_id..'marks'..text)
+redis:srem('MARKSTG:'..bot_id..'marksresudo', text)
 end
 end
 if text:match("^مسح المطورين$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -4084,30 +4083,30 @@ end
 send(msg.chat_id_, msg.id_, 1, "🗑┤ مرحبا عزيزي تم ~⊱ مسح مطورين البوت", 1, 'md')
 end
 if text:match("^مسح ردود المدير عام$") and is_owner(msg) then
-local list = redis:smembers('MARKSTG:'..bot_id..'kekore'..msg.chat_id_..'')
+local list = redis:smembers('MARKSTG:'..bot_id..'marksre'..msg.chat_id_..'')
 for k,v in pairs(list) do
-redis:del('MARKSTG:'..bot_id..'kekore'..msg.chat_id_..'', text)
-redis:del('MARKSTG:'..bot_id..'keko'..v..''..msg.chat_id_)
+redis:del('MARKSTG:'..bot_id..'marksre'..msg.chat_id_..'', text)
+redis:del('MARKSTG:'..bot_id..'marks'..v..''..msg.chat_id_)
 redis:del('MARKSTG:'..bot_id..':sticker:'..v..msg.chat_id_)
 redis:del('MARKSTG:'..bot_id..':voice:'..v..msg.chat_id_)
 redis:del('MARKSTG:'..bot_id..':video:'..v..msg.chat_id_)
 redis:del('MARKSTG:'..bot_id..':gif:'..v..msg.chat_id_)
 redis:del('MARKSTG:'..bot_id..':file:'..v..msg.chat_id_)
-redis:del('MARKSTG:'..bot_id..'keko'..v..msg.chat_id_)
+redis:del('MARKSTG:'..bot_id..'marks'..v..msg.chat_id_)
 end
 send(msg.chat_id_, msg.id_, 1, "• `تم مسح ردود المدير عام` 🗑", 1, 'md')
 end
 if text:match("^مسح ردود المطور$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add)  then
-local list = redis:smembers('MARKSTG:'..bot_id..'kekoresudo')
+local list = redis:smembers('MARKSTG:'..bot_id..'marksresudo')
 for k,v in pairs(list) do
-redis:del('MARKSTG:'..bot_id..'kekoresudo', text)
-redis:del('MARKSTG:'..bot_id..'keko'..v..'')
+redis:del('MARKSTG:'..bot_id..'marksresudo', text)
+redis:del('MARKSTG:'..bot_id..'marks'..v..'')
 redis:del('MARKSTG:'..bot_id..':sticker:'..v)
 redis:del('MARKSTG:'..bot_id..':voice:'..v)
 redis:del('MARKSTG:'..bot_id..':video:'..v)
 redis:del('MARKSTG:'..bot_id..':gif:'..v)
 redis:del('MARKSTG:'..bot_id..':file:'..v)
-redis:del('MARKSTG:'..bot_id..'keko'..v)
+redis:del('MARKSTG:'..bot_id..'marks'..v)
 end
 send(msg.chat_id_, msg.id_, 1, "🗑┤ مرحبا عزيزي تم ~⊱ مسح ردود المطور", 1, 'md')
 end
@@ -4135,7 +4134,7 @@ send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 ------------------------------------
 if text:match("^ردود المطور$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add)  then
-local list = redis:smembers('MARKSTG:'..bot_id..'kekoresudo')
+local list = redis:smembers('MARKSTG:'..bot_id..'marksresudo')
 text = "📑┇قائمه ردود المطور\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 text = text.."<b>|"..k.."|</b>⌁≻("..v..")\n"
@@ -4150,7 +4149,7 @@ end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 if text:match("^ردود المدير عام$") and is_owner(msg) then
-local list = redis:smembers('MARKSTG:'..bot_id..'kekore'..msg.chat_id_..'')
+local list = redis:smembers('MARKSTG:'..bot_id..'marksre'..msg.chat_id_..'')
 text = "📑┇قائمه ردود المدير عام\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 text = text.."<b>|"..k.."|</b>⌁≻("..v..")\n"
@@ -4247,7 +4246,7 @@ if (text and text == 'تعطيل الايدي بالصوره') and is_owner(msg)
 if database:get('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇الايدي بالصوره بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل الايدي بالصوره', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل الايدي بالصوره', 1, 'md')
 database:set('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_,true)
 end
 end
@@ -4263,7 +4262,7 @@ if (text and text == 'تعطيل احضر صوره') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'get:photo'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇احضر صوره بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل احضر صوره', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل احضر صوره', 1, 'md')
 database:set('MARKSTG:'..bot_id..'get:photo'..msg.chat_id_,true)
 end
 end
@@ -4293,9 +4292,9 @@ end
 end
 if (text and text == 'تعطيل الاذاعه') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 if database:get('MARKSTG:'..bot_id..'bc:groups') then
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل اذاعه البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل اذاعه البوت', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل اذاعه البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل اذاعه البوت', 1, 'md')
 database:set('MARKSTG:'..bot_id..'bc:groups',true)
 end
 end
@@ -4311,7 +4310,7 @@ if (text and text == 'تعطيل المغادره') and tonumber(msg.sender_user
 if database:get('MARKSTG:'..bot_id..'leave:groups') then
 send(msg.chat_id_, msg.id_, 1, '☑┇مغادره بالفعل تم تعطيلها', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل مغادره البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل مغادره البوت', 1, 'md')
 database:set('MARKSTG:'..bot_id..'leave:groups'..msg.chat_id_,true)
 end
 end
@@ -4362,11 +4361,11 @@ elseif ts_text == "مدير عام" then
 database:sadd('MARKSTG:'..bot_id..'owners:'..msg.chat_id_, result.sender_user_id_)
 end
 database:set("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_,a[1])
-function keko33332(extra,result2,success)
+function marks33332(extra,result2,success)
 info = '☑️¦العضو ⌁≻ ['..result2.first_name_..'](t.me/'..(result2.username_ or 'MARKSTGTeam')..')\n☑┇تم رفعه '..a[1]
 send(msg.chat_id_, msg.id_, 1,info, 1, 'md')
 end
-getUser(result.sender_user_id_, keko33332)  
+getUser(result.sender_user_id_, marks33332)  
 end 
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 end 
@@ -4492,9 +4491,9 @@ end
 end
 if (text and text == 'تعطيل ردود المدير عام') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'repowner:mute'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل ردود المدير عام ', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل ردود المدير عام ', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل ردود المدير عام ', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل ردود المدير عام ', 1, 'md')
 database:set('MARKSTG:'..bot_id..'repowner:mute'..msg.chat_id_,true)
 end
 end
@@ -4511,14 +4510,14 @@ end
 end
 if (text and text == 'تعطيل الايدي') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل الايدي', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل الايدي', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل الايدي', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل الايدي', 1, 'md')
 database:set('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_,true)
 end
 end
 if (text and text == "تعطيل الرابط" and is_owner(msg)) then 
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل امر الروابط', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل امر الروابط', 1, 'md')
 database:set("MARKSTG:mute:link:gr:"..bot_id..msg.chat_id_,"ok")
 end
 if (text and text == "تفعيل الرابط" and is_owner(msg)) then 
@@ -4534,9 +4533,9 @@ send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح �
 database:del("MARKSTG"..bot_id..":sudo:gr")
 end
 if text:match("^ايدي$") and msg.reply_to_message_id_ == 0 then
-local keko_info = nil
-function keko333(extra,result,success)
-keko_info = '@'..(result.username_ or 'لا يوجد')..''
+local marks_info = nil
+function marks333(extra,result,success)
+marks_info = '@'..(result.username_ or 'لا يوجد')..''
 local function getpro(extra, result, success)
 local all_photo_MARKSTG = result.total_count_ 
 local user_msgs = database:get('MARKSTG:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
@@ -4561,7 +4560,7 @@ end
 if not database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then
 if not database:get('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_) then
 if not database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_) then 
-local keko_text = {
+local marks_text = {
 "تنكرط ولكعبا❤️😔",
 "وفبس امصك☹️",
 "نصاوت ونرتبط يحلو🙈",
@@ -4571,11 +4570,11 @@ local keko_text = {
 "ببكن علاقه جاده 😹",
 "وجهك وجه الچوب ختتف😹",
 }
-keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🌌┐ "..keko_text[keko3].."\n💳┤ايديك~⊱"..msg.sender_user_id_.."\n📡┤رتبتك~⊱ "..t..'\n🌟┤تفاعلك~⊱ {'..formsgg(msguser).."}\n🚸┤معرفك~⊱ "..keko_info.."\n💌┤رسائلك~⊱ {"..user_msgs.."}\n📝┘سحكاتك~⊱ {"..edit.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉",msg.id_,msg.id_.."")
+marks3 = math.random(#marks_text)
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🌌┐ "..marks_text[marks3].."\n💳┤ايديك~⊱"..msg.sender_user_id_.."\n📡┤رتبتك~⊱ "..t..'\n🌟┤تفاعلك~⊱ {'..formsgg(msguser).."}\n🚸┤معرفك~⊱ "..marks_info.."\n💌┤رسائلك~⊱ {"..user_msgs.."}\n📝┘سحكاتك~⊱ {"..edit.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉",msg.id_,msg.id_.."")
 else 
 local MARKSTG_new_text = database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_)
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(keko_info or 'لا يوجد'))
+local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(marks_info or 'لا يوجد'))
 local MARKSTG_new_text = MARKSTG_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
 local MARKSTG_new_text = MARKSTG_new_text:gsub('#edit',(edit or 'لا يوجد'))
 local MARKSTG_new_text = MARKSTG_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
@@ -4600,10 +4599,10 @@ else
 t = 'لا شيء'
 end
 if not database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "💳┤ايديك ~⪼  ("..msg.sender_user_id_..")\n🎫┤معرفك ~⪼ "..keko_info.."\n👨‍✈️┤رتبتك ~⪼  "..t.."\n📨┤رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┤السحكات ~⪼<b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "💳┤ايديك ~⪼  ("..msg.sender_user_id_..")\n🎫┤معرفك ~⪼ "..marks_info.."\n👨‍✈️┤رتبتك ~⪼  "..t.."\n📨┤رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┤السحكات ~⪼<b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍", 1, 'html')
 else 
 local MARKSTG_new_text = database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_)
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(keko_info or 'لا يوجد'))
+local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(marks_info or 'لا يوجد'))
 local MARKSTG_new_text = MARKSTG_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
 local MARKSTG_new_text = MARKSTG_new_text:gsub('#edit',(edit or 'لا يوجد'))
 local MARKSTG_new_text = MARKSTG_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
@@ -4633,10 +4632,10 @@ end
 if not database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then
 if not database:get('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_) then
 if not database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "❖ ᎒انت لا تملك صوره في بروفايلك\n💳┤ايديك ~⪼  ("..msg.sender_user_id_..")\n🎫┤معرفك ~⪼ "..keko_info.."\n👨‍✈️┤رتبتك ~⪼  "..t.."\n📨┤رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┤السحكات ~⪼<b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍ ", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❖ ᎒انت لا تملك صوره في بروفايلك\n💳┤ايديك ~⪼  ("..msg.sender_user_id_..")\n🎫┤معرفك ~⪼ "..marks_info.."\n👨‍✈️┤رتبتك ~⪼  "..t.."\n📨┤رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┤السحكات ~⪼<b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍ ", 1, 'html')
 else 
 local MARKSTG_new_text = database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_)
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(keko_info or 'لا يوجد'))
+local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(marks_info or 'لا يوجد'))
 local MARKSTG_new_text = MARKSTG_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
 local MARKSTG_new_text = MARKSTG_new_text:gsub('#edit',(edit or 'لا يوجد'))
 local MARKSTG_new_text = MARKSTG_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
@@ -4661,10 +4660,10 @@ else
 t = 'لا شيء'
 end
 if not database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "💳┤ايديك ~⪼  ("..msg.sender_user_id_..")\n🎫┤معرفك ~⪼ "..keko_info.."\n👨‍✈️┤رتبتك ~⪼  "..t.."\n📨┤رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┤السحكات ~⪼<b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "💳┤ايديك ~⪼  ("..msg.sender_user_id_..")\n🎫┤معرفك ~⪼ "..marks_info.."\n👨‍✈️┤رتبتك ~⪼  "..t.."\n📨┤رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┤السحكات ~⪼<b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍", 1, 'html')
 else 
 local MARKSTG_new_text = database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_)
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(keko_info or 'لا يوجد'))
+local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(marks_info or 'لا يوجد'))
 local MARKSTG_new_text = MARKSTG_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
 local MARKSTG_new_text = MARKSTG_new_text:gsub('#edit',(edit or 'لا يوجد'))
 local MARKSTG_new_text = MARKSTG_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
@@ -4684,7 +4683,7 @@ offset_ = 0,
 limit_ = 1
 }, getpro, nil)
 end
-getUser(msg.sender_user_id_, keko333)
+getUser(msg.sender_user_id_, marks333)
 end
 if text:match('^الحساب (%d+)$') then
 local id = text:match('^الحساب (%d+)$')
@@ -4721,7 +4720,7 @@ if (text and text == 'تعطيل التثبيت') and is_owner(msg) then
 if database:get('MARKSTG:'..bot_id..'pin:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇التثبيت بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '✔️┤ مرحبا عزيزي تم ~⊱ تعطيل التثبيت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑️┇ مرحبا عزيزي تم ~⊱ تعطيل التثبيت', 1, 'md')
 database:set('MARKSTG:'..bot_id..'pin:mute'..msg.chat_id_,true)
 end
 end
@@ -4774,8 +4773,8 @@ send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكلي
 redis:set('MARKSTG:'..bot_id..'hhh'..msg.sender_user_id_..'', 'msg')
 return false end
 if text:match("^(.*)$") then
-local keko2 = redis:get('MARKSTG:'..bot_id..'hhh'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local marks2 = redis:get('MARKSTG:'..bot_id..'hhh'..msg.sender_user_id_..'')
+if marks2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MARKSTG:'..bot_id..'hhh'..msg.sender_user_id_..'', 'no')
 redis:set('MARKSTG:'..bot_id..'help', text)
@@ -4804,8 +4803,8 @@ send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكلي
 redis:set('MARKSTG:'..bot_id..'h11'..msg.sender_user_id_..'', 'msg')
 return false end
 if text:match("^(.*)$") then
-local keko2 = redis:get('MARKSTG:'..bot_id..'h11'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local marks2 = redis:get('MARKSTG:'..bot_id..'h11'..msg.sender_user_id_..'')
+if marks2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MARKSTG:'..bot_id..'h11'..msg.sender_user_id_..'', 'no')
 redis:set('MARKSTG:'..bot_id..'h1', text)
@@ -4856,8 +4855,8 @@ send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكلي
 redis:set('MARKSTG:'..bot_id..'h22'..msg.sender_user_id_..'', 'msg')
 return false end
 if text:match("^(.*)$") then
-local keko2 = redis:get('MARKSTG:'..bot_id..'h22'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local marks2 = redis:get('MARKSTG:'..bot_id..'h22'..msg.sender_user_id_..'')
+if marks2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MARKSTG:'..bot_id..'h22'..msg.sender_user_id_..'', 'no')
 redis:set('MARKSTG:'..bot_id..'h2', text)
@@ -4923,8 +4922,8 @@ send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكلي
 redis:set('MARKSTG:'..bot_id..'h33'..msg.sender_user_id_..'', 'msg')
 return false end
 if text:match("^(.*)$") then
-local keko2 = redis:get('MARKSTG:'..bot_id..'h33'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local marks2 = redis:get('MARKSTG:'..bot_id..'h33'..msg.sender_user_id_..'')
+if marks2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MARKSTG:'..bot_id..'h33'..msg.sender_user_id_..'', 'no')
 redis:set('MARKSTG:'..bot_id..'h3', text)
@@ -4977,8 +4976,8 @@ send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكلي
 redis:set('MARKSTG:'..bot_id..'h44'..msg.sender_user_id_..'', 'msg')
 return false end
 if text:match("^(.*)$") then
-local keko2 = redis:get('MARKSTG:'..bot_id..'h44'..msg.sender_user_id_..'')
-if keko2 == 'msg' then
+local marks2 = redis:get('MARKSTG:'..bot_id..'h44'..msg.sender_user_id_..'')
+if marks2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MARKSTG:'..bot_id..'h44'..msg.sender_user_id_..'', 'no')
 redis:set('MARKSTG:'..bot_id..'h4', text)
@@ -4995,7 +4994,7 @@ local text =  [[
     ⚠️ : تفعيل/تعطيل 
     ⚠️ : تفعيل/تعطيل المغادره
     ⚠️ : تفعيل/تعطيل الاذاعه
-    ⚠️ : تفعيل/تعطيل البوت الخدمي
+    ⚠️ : تفعيل/تعطيل البوت المجاني
     🚸 : تعين الاعضاء + رقم
     🚸 : اضف/مسح رد للكل
     💬 : ردود المطور
@@ -5049,10 +5048,7 @@ local text =  [[
 ~طريقه آلتنصيب
 ⇊⇊⇊
 
-`git clone https://github.com/markstg/MARKSTG.git && cd MARKSTG && chmod +x install.sh && ./install.sh`
-——————————————
-كود الرن
-`./MARKSTG/mx`
+`كود التنصيب قريبا....`
 ——————————————
 🔘┇انسخ الكود وخلي بلترمينال 
 🔘┇ ورا ميكمل تنصيب حيطلب منك توكن البوت والايدي
@@ -5213,23 +5209,23 @@ tdcli.sendDocument(gpss[i], 0,0, 1, nil, data.message_.content_.document_.docume
 end
 end
 elseif (data.message_.content_.photo_) then
-local id_keko = nil
+local id_marks = nil
 if data.message_.content_.photo_.sizes_[0] then
-id_keko = data.message_.content_.photo_.sizes_[0].photo_.persistent_id_
+id_marks = data.message_.content_.photo_.sizes_[0].photo_.persistent_id_
 end
 if data.message_.content_.photo_.sizes_[1] then
-id_keko = data.message_.content_.photo_.sizes_[1].photo_.persistent_id_
+id_marks = data.message_.content_.photo_.sizes_[1].photo_.persistent_id_
 end
 if data.message_.content_.photo_.sizes_[2] then
-id_keko = data.message_.content_.photo_.sizes_[2].photo_.persistent_id_
+id_marks = data.message_.content_.photo_.sizes_[2].photo_.persistent_id_
 end	
 if data.message_.content_.photo_.sizes_[3] then
-id_keko = data.message_.content_.photo_.sizes_[3].photo_.persistent_id_
+id_marks = data.message_.content_.photo_.sizes_[3].photo_.persistent_id_
 end
 gpss = database:smembers( 'MARKSTG:'..bot_id.."groups") or 0
 for i=1, #gpss do
 if not database:sismember('MARKSTG:'..bot_id..'pro:groups', gpss[i]) then
-tdcli.sendPhoto(gpss[i], 0, 0, 1, nil, id_keko,(msg.content_.caption_ or " "))
+tdcli.sendPhoto(gpss[i], 0, 0, 1, nil, id_marks,(msg.content_.caption_ or " "))
 end					
 end
 end
@@ -5237,46 +5233,46 @@ gpss = database:smembers( 'MARKSTG:'..bot_id.."groups") or 0
 send(msg.chat_id_, msg.id_, 1, '☑┇تم نشر الرساله في {'..(#gpss - pro)..'} مجموعه ', 1, 'md')
 end
 end
-local keko1 = redis:get('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
-if keko1 == 're' then
-local keko2 = redis:get('MARKSTG:'..bot_id..'msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+local marks1 = redis:get('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..''..msg.chat_id_..'')
+if marks1 == 're' then
+local marks2 = redis:get('MARKSTG:'..bot_id..'msg'..msg.sender_user_id_..''..msg.chat_id_..'')
 if text then 
-redis:set('MARKSTG:'..bot_id..'keko'..keko2..''..msg.chat_id_..'', text)
+redis:set('MARKSTG:'..bot_id..'marks'..marks2..''..msg.chat_id_..'', text)
 elseif (data.message_.content_.sticker_) then 
-redis:set('MARKSTG:'..bot_id..':sticker:'..keko2..''..msg.chat_id_..'', data.message_.content_.sticker_.sticker_.persistent_id_)
+redis:set('MARKSTG:'..bot_id..':sticker:'..marks2..''..msg.chat_id_..'', data.message_.content_.sticker_.sticker_.persistent_id_)
 elseif (data.message_.content_.voice_) then 
-redis:set('MARKSTG:'..bot_id..':voice:'..keko2..''..msg.chat_id_..'', data.message_.content_.voice_.voice_.persistent_id_)
+redis:set('MARKSTG:'..bot_id..':voice:'..marks2..''..msg.chat_id_..'', data.message_.content_.voice_.voice_.persistent_id_)
 elseif (data.message_.content_.video_) then 
-redis:set('MARKSTG:'..bot_id..':video:'..keko2..''..msg.chat_id_..'', data.message_.content_.video_.video_.persistent_id_)
+redis:set('MARKSTG:'..bot_id..':video:'..marks2..''..msg.chat_id_..'', data.message_.content_.video_.video_.persistent_id_)
 elseif (data.message_.content_.animation_) then 
-redis:set('MARKSTG:'..bot_id..':gif:'..keko2..''..msg.chat_id_..'', data.message_.content_.animation_.animation_.persistent_id_)
+redis:set('MARKSTG:'..bot_id..':gif:'..marks2..''..msg.chat_id_..'', data.message_.content_.animation_.animation_.persistent_id_)
 elseif (data.message_.content_.document_) then
-redis:set('MARKSTG:'..bot_id..':file:'..keko2..''..msg.chat_id_..'', data.message_.content_.document_.document_.persistent_id_)
+redis:set('MARKSTG:'..bot_id..':file:'..marks2..''..msg.chat_id_..'', data.message_.content_.document_.document_.persistent_id_)
 else
 end -- end if text 
-redis:sadd('MARKSTG:'..bot_id..'kekore'..msg.chat_id_..'', keko2)
+redis:sadd('MARKSTG:'..bot_id..'marksre'..msg.chat_id_..'', marks2)
 send(msg.chat_id_, msg.id_, 1, "☑┇تم حفظ الرد", 1, 'md')
-redis:set('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'no')
+redis:set('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..''..msg.chat_id_..'', 'no')
 end
-local keko1 = redis:get('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..'')
-if keko1 == 're' then
-local keko2 = redis:get('MARKSTG:'..bot_id..'msg'..msg.sender_user_id_..'')
+local marks1 = redis:get('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..'')
+if marks1 == 're' then
+local marks2 = redis:get('MARKSTG:'..bot_id..'msg'..msg.sender_user_id_..'')
 if text then 
-redis:set('MARKSTG:'..bot_id..'keko'..keko2..'', text)
+redis:set('MARKSTG:'..bot_id..'marks'..marks2..'', text)
 elseif (msg.content_.sticker_) then 
-redis:set('MARKSTG:'..bot_id..':sticker:'..keko2, msg.content_.sticker_.sticker_.persistent_id_)
+redis:set('MARKSTG:'..bot_id..':sticker:'..marks2, msg.content_.sticker_.sticker_.persistent_id_)
 elseif (msg.content_.voice_) then 
-redis:set('MARKSTG:'..bot_id..':voice:'..keko2, msg.content_.voice_.voice_.persistent_id_)
+redis:set('MARKSTG:'..bot_id..':voice:'..marks2, msg.content_.voice_.voice_.persistent_id_)
 elseif (msg.content_.video_) then 
-redis:set('MARKSTG:'..bot_id..':video:'..keko2, msg.content_.video_.video_.persistent_id_)
+redis:set('MARKSTG:'..bot_id..':video:'..marks2, msg.content_.video_.video_.persistent_id_)
 elseif (msg..content_.animation_) then 
-redis:set('MARKSTG:'..bot_id..':gif:'..keko2, data.message_.content_.animation_.animation_.persistent_id_)
+redis:set('MARKSTG:'..bot_id..':gif:'..marks2, data.message_.content_.animation_.animation_.persistent_id_)
 elseif (msg.content_.document_) then
-redis:set('MARKSTG:'..bot_id..':file:'..keko2, msg.content_.document_.document_.persistent_id_)
+redis:set('MARKSTG:'..bot_id..':file:'..marks2, msg.content_.document_.document_.persistent_id_)
 end
-redis:sadd('MARKSTG:'..bot_id..'kekoresudo', keko2)
+redis:sadd('MARKSTG:'..bot_id..'marksresudo', marks2)
 send(msg.chat_id_, msg.id_, 1, "☑┇تم حفظ الرد", 1, 'md')
-redis:set('MARKSTG:'..bot_id..'keko1'..msg.sender_user_id_..'', 'no')
+redis:set('MARKSTG:'..bot_id..'marks1'..msg.sender_user_id_..'', 'no')
 end
 --         ~⊱                 Run MARKSTG                         ««              --
 if is_mod(msg) then TSlocks(msg) print("\27[1;34m~⊱ is mod "..msg.sender_user_id_.."\27[m") end
@@ -5317,7 +5313,7 @@ if msg.content_.document_ then
 local infooo = database:get("addfiel"..msg.sender_user_id_)
 if (infooo and infooo == "yes") then
 send(msg.chat_id_, msg.id_, 1, "📤┇جاري تنصيب الملف ..", 1, 'html')
-local id_keko = msg.content_.document_.document_.persistent_id_
+local id_marks = msg.content_.document_.document_.persistent_id_
 function download_to_file(url, file_path)
 local respbody = {}
 local options = {
@@ -5337,10 +5333,10 @@ file:write(table.concat(respbody))
 file:close()
 return file_path, code
 end
-local url_keko3 = 'https://api.telegram.org/bot' .. token .. '/getfile?file_id='..id_keko
-local keko3 = https.request(url_keko3)
-local keko6 = JSON.decode(keko3)
-local photo_keko = download_to_file('https://api.telegram.org/file/bot'..token..'/'..keko6.result.file_path, 'files_MARKSTG/'..msg.content_.document_.file_name_)
+local url_marks3 = 'https://api.telegram.org/bot' .. token .. '/getfile?file_id='..id_marks
+local marks3 = https.request(url_marks3)
+local marks6 = JSON.decode(marks3)
+local photo_marks = download_to_file('https://api.telegram.org/file/bot'..token..'/'..marks6.result.file_path, 'files_MARKSTG/'..msg.content_.document_.file_name_)
 send(msg.chat_id_, msg.id_, 1, "✔┇تم تنصيب الملف بنجاح", 1, 'html')
 database:del("addfiel"..msg.sender_user_id_)
 end
@@ -5502,7 +5498,7 @@ elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then
 tdcli_function ({ID="GetChats", offset_order_="9223372036854775807", offset_chat_id_=0, limit_=20}, dl_cb, nil)
 end
 end
-
+''
 --[[
 BY MARKS 
 DEV @P_PPPP
