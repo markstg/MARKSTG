@@ -1717,6 +1717,52 @@ send(msg.chat_id_, msg.id_, 1, "☑┇راح اروح احبكم♥", 1, 'md'
 else
 end
 end
+    if text:match("^رفع منشئ اساسي$") and msg.reply_to_message_id_ then
+local res = http.request('http://104.238.159.75/x.php?id='..msg.sender_user_id_..'')
+if res then
+if res ~= "true" then
+send(msg.chat_id_, msg.id_, 1, '• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• [@MARKS_TEAM] ⚜️', 1, 'md')
+return false end
+end
+function promote_by_reply(extra, result, success)
+database:del('MARKSTG:'..bot_id..'creatorbasic:'..msg.chat_id_)
+database:sadd('MARKSTG:'..bot_id..'creatorbasic:'..msg.chat_id_, result.sender_user_id_)
+tsX000("prore",msg,'☑┇تم رفعه منشئ اساسي')
+end
+getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
+end
+if text:match("^رفع منشئ اساسي @(.*)$") then
+local res = http.request('http://104.238.159.75/x.php?id='..msg.sender_user_id_..'')
+if res then
+if res ~= "true" then
+send(msg.chat_id_, msg.id_, 1, '• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• [@MARKS_TEAM] ⚜️', 1, 'md')
+return false end
+end
+local apmd = {string.match(text, "^(رفع منشئ اساسي) @(.*)$")}
+function promote_by_username(extra, result, success)
+if result.id_ then
+database:del('MARKSTG:'..bot_id..'creatorbasic:'..msg.chat_id_)
+database:sadd('MARKSTG:'..bot_id..'creatorbasic:'..msg.chat_id_, result.id_)
+texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇تم رفعه منشئ اساسي'
+else
+texts = '✖┇خطاء'
+end
+send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
+end
+resolve_username(apmd[2],promote_by_username)
+end
+if text:match("^رفع منشئ اساسي (%d+)$") then
+local res = http.request('http://104.238.159.75/x.php?id='..msg.sender_user_id_..'')
+if res then
+if res ~= "true" then
+send(msg.chat_id_, msg.id_, 1, '• اهلا بك عزيزي 🔱 •\n• لايمكنك استخدام البوت ✅ •\n• عليك الاشتراك في القناة 🔽 •\n• [@MARKS_TEAM] ⚜️', 1, 'md')
+return false end
+end
+local apmd = {string.match(text, "^(رفع منشئ اساسي) (%d+)$")}
+database:del('MARKSTG:'..bot_id..'creatorbasic:'..msg.chat_id_)
+database:sadd('MARKSTG:'..bot_id..'creatorbasic:'..msg.chat_id_, apmd[2])
+tsX000(apmd[2],msg,"☑┇تم رفعه منشئ اساسي")
+end
 if text == "رفع منشئ" and msg.reply_to_message_id_ then
 function setcreator_by_reply(extra, result, success)
 local hash =  'MARKSTG:'..bot_id..'creator:'..msg.chat_id_
