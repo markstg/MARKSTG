@@ -38,363 +38,114 @@ io.popen("mkdir files_MARKSTG")
 os.execute('cd .. &&  rm -rf .telegram-cli')
 os.execute('cd .. &&  rm -fr .telegram-cli')
 --         ~⊱                 Start Functions                         ««              --
------------Bot Owner-------------
-function is_leader(msg)
-    local var = false
-    if msg.sender_user_id_ == tonumber(bot_owner) then
-    var = true
-    end
-    return var
-    end
-    function is_leaderid(user_id)
-    local var = false
-    if user_id == tonumber(bot_owner) then
-    var = true
-    end
-    return var
-    end
-    --------------Sudo----------------
-    function is_sudo(msg)
-    local var = false
-    for k,v in pairs(sudo_users) do
-    if msg.sender_user_id_ == v then
-    var = true
-    end
-    end
-    if msg.sender_user_id_ == tonumber(bot_owner) then
-    var = true
-    end
-    return var
-    end
-    
-    function is_sudoid(user_id)
-    local var = false
-    for k,v in pairs(sudo_users) do
-    if user_id == v then
-    var = true
-    end
-    end
-    if user_id == tonumber(bot_owner) then
-    var = true
-    end
-    return var
-    end
-    ---------------Admin-----------------
-    function is_admin(user_id)
-    local var = false
-    local hashsb =  'bot:admins:'
-    local admin = marx:sismember(MARKSTG..hashsb, user_id)
-    if admin then
-    var = true
-    end
-    for k,v in pairs(sudo_users) do
-    if user_id == v then
-    var = true
-    end
-    end
-    if user_id == tonumber(bot_owner) then
-    var = true
-    end
-    return var
-    end
-    ---------------Owner all-------------------
-    function is_onall(user_id, chat_id)
-    local var = false
-    local hash =  'bot:onall:'
-    local onall = marx:sismember(MARKSTG..hash, user_id)
-    local hashs =  'bot:admins:'
-    local admin = marx:sismember(MARKSTG..hashs, user_id)
-    if onall then
-    var = true
-    end
-    if admin then
-    var = true
-    end
-    for k,v in pairs(sudo_users) do
-    if user_id == v then
-    var = true
-    end
-    end
-    if user_id == tonumber(bot_owner) then
-    var = true
-    end
-    return var
-    end
-    ------------------Modod all-------------------
-    function is_moall(user_id, chat_id)
-    local var = false
-    local hash =  'bot:moall:'
-    local moall = marx:sismember(MARKSTG..hash, user_id)
-    local hashs =  'bot:admins:'
-    local admin = marx:sismember(MARKSTG..hashs, user_id)
-    local hashss =  'bot:onall:'
-    local onall = marx:sismember(MARKSTG..hashss, user_id)
-    if moall then
-    var = true
-    end
-    if admin then
-     var = true
-    end
-    if onall then
-    var = true
-    end
-    for k,v in pairs(sudo_users) do
-    if user_id == v then
-    var = true
-    end
-    end
-    if user_id == tonumber(bot_owner) then
-    var = true
-    end
-    return var
-    end
-    --------------VIP MEMBER ALL-----------------
-    function is_vpall(user_id, chat_id)
-    local var = false
-    local hashs =  'bot:admins:'
-    local admin = marx:sismember(MARKSTG..hashs, user_id)
-    local hashss =  'bot:onall:'
-    local onall = marx:sismember(MARKSTG..hashss, user_id)
-    local hashsss = 'bot:vpall:'
-    local vpall = marx:sismember(MARKSTG..hashsss, user_id)
-    local hashssss =  'bot:moall:'
-    local moall = marx:sismember(MARKSTG..hashssss, user_id)
-    if vipmem then
-    var = true
-    end
-    if onall then
-    var = true
-    end
-    if admin then
-    var = true
-    end
-    if moall then
-    var = true
-    end
-    for k,v in pairs(sudo_users) do
-    if user_id == v then
-    var = true
-    end
-    end
-    if user_id == tonumber(bot_owner) then
-    var = true
-    end
-    return var
-    end
-    -----------------------donky--------------------
-    function is_donky(user_id, chat_id)
-    local var = false
-    local hash =  'bot:donky:'..chat_id
-    local momod = marx:sismember(MARKSTG..hash, user_id)
-    local hashs =  'bot:admins:'
-    local admin = marx:sismember(MARKSTG..hashs, user_id)
-    local hashss =  'bot:owners:'..chat_id
-    local owner = marx:sismember(MARKSTG..hashss, user_id)
-    local hashsss = 'bot:vipmem:'..chat_id
-    local vipmem = marx:sismember(MARKSTG..hashsss, user_id)
-    local hashssss =  'bot:monsh:'..chat_id
-    local monsh = marx:sismember(MARKSTG..hashssss, user_id)
-    local hashsssss =  'bot:onall:'
-    local onall = marx:sismember(MARKSTG..hashsssss, user_id)
-    local hashfaed =  'bot:moall:'
-    local moall = marx:sismember(MARKSTG..hashfaed, user_id)
-    if donky then
-    var = true
-    end
-    if momod then
-    var = true
-    end
-    if owner then
-    var = true
-    end
-    if admin then
-    var = true
-    end
-    if monsh then
-    var = true
-    end
-    if onall then
-    var = true
-    end
-    if moall then
-    var = true
-    end
-    for k,v in pairs(sudo_users) do
-    if user_id == v then
-    var = true
-    end
-    end
-    if user_id == tonumber(bot_owner) then
-    var = true
-    end
-    return var
-    end
-    ---------------monsh------------------------------
-    function is_monsh(user_id, chat_id)
-    local var = false
-    local hash =  'bot:monsh:'..chat_id
-    local monsh = marx:sismember(MARKSTG..hash, user_id)
-    local hashs =  'bot:admins:'
-    local admin = marx:sismember(MARKSTG..hashs, user_id)
-    if monsh then
-    var = true
-    end
-    if admin then
-    var = true
-    end
-    for k,v in pairs(sudo_users) do
-    if user_id == v then
-    var = true
-    end
-    end
-    if user_id == tonumber(bot_owner) then
-    var = true
-    end
-    return var
-    end
-    ---------------Owner-------------------
-    function is_owner(user_id, chat_id)
-    local var = false
-    local hash =  'bot:owners:'..chat_id
-    local owner = marx:sismember(MARKSTG..hash, user_id)
-    local hashs =  'bot:admins:'
-    local admin = marx:sismember(MARKSTG..hashs, user_id)
-    local hashss =  'bot:monsh:'..chat_id
-    local monsh = marx:sismember(MARKSTG..hashss, user_id)
-    if owner then
-    var = true
-    end
-    if admin then
-    var = true
-    end
-    if monsh then
-    var = true
-    end
-    for k,v in pairs(sudo_users) do
-    if user_id == v then
-    var = true
-    end
-    end
-    if user_id == tonumber(bot_owner) then
-    var = true
-    end
-    return var
-    end
-    ------------------Modod-------------------
-    function is_momod(user_id, chat_id)
-    local var = false
-    local hash =  'bot:momod:'..chat_id
-    local momod = marx:sismember(MARKSTG..hash, user_id)
-    local hashs =  'bot:admins:'
-    local admin = marx:sismember(MARKSTG..hashs, user_id)
-    local hashss =  'bot:owners:'..chat_id
-    local owner = marx:sismember(MARKSTG..hashss, user_id)
-    local hashsss =  'bot:monsh:'..chat_id
-    local monsh = marx:sismember(MARKSTG..hashsss, user_id)
-    local hashssss =  'bot:onall:'
-    local onall = marx:sismember(MARKSTG..hashssss, user_id)
-    if momod then
-    var = true
-    end
-    if owner then
-    var = true
-    end
-    if admin then
-    var = true
-    end
-    if monsh then
-    var = true
-    end
-    if onall then
-    var = true
-    end
-    for k,v in pairs(sudo_users) do
-    if user_id == v then
-    var = true
-    end
-    end
-    if user_id == tonumber(bot_owner) then
-    var = true
-    end
-    return var
-    end
-    --------------VIP MEMBER-----------------
-    function is_vipmem(user_id, chat_id)
-    local var = false
-    local hash =  'bot:momod:'..chat_id
-    local momod = marx:sismember(MARKSTG..hash, user_id)
-    local hashs =  'bot:admins:'
-    local admin = marx:sismember(MARKSTG..hashs, user_id)
-    local hashss =  'bot:owners:'..chat_id
-    local owner = marx:sismember(MARKSTG..hashss, user_id)
-    local hashsss = 'bot:vipmem:'..chat_id
-    local vipmem = marx:sismember(MARKSTG..hashsss, user_id)
-    local hashssss =  'bot:monsh:'..chat_id
-    local monsh = marx:sismember(MARKSTG..hashssss, user_id)
-    local hashsssss =  'bot:onall:'
-    local onall = marx:sismember(MARKSTG..hashsssss, user_id)
-    local hashfaed =  'bot:moall:'
-    local moall = marx:sismember(MARKSTG..hashfaed, user_id)
-    if vipmem then
-    var = true
-    end
-    if momod then
-    var = true
-    end
-    if owner then
-    var = true
-    end
-    if admin then
-    var = true
-    end
-    if monsh then
-    var = true
-    end
-    if onall then
-    var = true
-    end
-    if moall then
-    var = true
-    end
-    for k,v in pairs(sudo_users) do
-    if user_id == v then
-    var = true
-    end
-    end
-    if user_id == tonumber(bot_owner) then
-    var = true
-    end
-    return var
-    end
-    -------------------
-    local setnumbergp = function()
-    local setnumbergp_two = function(user_id)
-    local hashs = "admins:data:" .. user_id
-    local lists = marx:smembers(MARKSTG..hashs)
-    marx:del(MARKSTG.."SudoNumberGp" .. user_id)
-    for k, v in pairs(lists) do
-    marx:incr(MARKSTG.."SudoNumberGp" .. user_id)
-    end
-    end
-    local setnumbergp_three = function(user_id)
-    local hashss = "admins:data:" .. user_id
-    local lists = marx:smembers(MARKSTG..hashss)
-    marx:del(MARKSTG.."SudoNumberGp" .. user_id)
-    for k, v in pairs(lists) do
-    marx:incr(MARKSTG.."SudoNumberGp" .. user_id)
-    end
-    end
-    local list = marx:smembers(MARKSTG.."Bot:Admins")
-    for k, v in pairs(list) do
-    setnumbergp_two(v)
-    end
-    local lists = marx:smembers(MARKSTG.."Bot:leader")
-    for k, v in pairs(lists) do
-    setnumbergp_three(v)
-    end
-    marx:setex(MARKSTG.."bot:reload", 7230, true)
-    end
-    ------------------
+--         ~⊱                 is_sudo                         ««              --
+function is_sudo(msg)
+local var = false
+for k,v in pairs(sudo_users) do
+if msg.sender_user_id_ == v then var = true end
+end
+local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..msg.sender_user_id_..'')
+if keko_add_sudo then var = true end return var
+end
+--         ~⊱                 is_admin                         ««              --
+function is_admin(msg)
+user_id = msg.sender_user_id_
+local var = false 
+local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)
+if admin then var = true end
+for k,v in pairs(sudo_users) do
+if user_id == v then var = true end
+end
+local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+if keko_add_sudo then var = true end
+return var
+end
+--         ~⊱                 is_admin                         ««              --
+function ck_admin(user_id)
+local var = false 
+local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)
+if admin then var = true end
+for k,v in pairs(sudo_users) do
+if user_id == v then var = true end
+end
+local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+if keko_add_sudo then var = true end
+return var
+end
+--         ~⊱                 is_creator                         ««              --
+function is_creator(msg)
+user_id = msg.sender_user_id_
+chat_id = msg.chat_id_
+local var = false
+local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id) 
+local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)
+if creator then var = true end
+if admin then var = true end
+for k,v in pairs(sudo_users) do
+if user_id == v then var = true end end
+local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+if keko_add_sudo then var = true end
+return var
+end
+--         ~⊱                 is_vip                         ««              --
+function is_vip(msg)
+user_id = msg.sender_user_id_
+chat_id = msg.chat_id_
+local var = false
+local mod = database:sismember('MARKSTG:'..bot_id..'mods:'..chat_id, user_id)  
+local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)  
+local owner = database:sismember('MARKSTG:'..bot_id..'owners:'..chat_id, user_id)
+local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id)  
+local vip = database:sismember('MARKSTG:'..bot_id..'vipgp:'..chat_id, user_id)
+if mod then var = true end
+if owner then var = true end
+if creator then var = true end
+if admin then var = true end
+if vip then var = true end
+for k,v in pairs(sudo_users) do
+if user_id == v then
+var = true end end
+local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+if keko_add_sudo then var = true end
+return var end
+--         ~⊱                 is_owner                         ««              --
+function is_owner(msg)
+user_id = msg.sender_user_id_
+chat_id = msg.chat_id_
+local var = false
+local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)  
+local owner = database:sismember('MARKSTG:'..bot_id..'owners:'..chat_id, user_id)
+local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id)  
+if owner then var = true
+end if admin then
+var = true end if creator then var = true end
+for k,v in pairs(sudo_users) do
+if user_id == v then
+var = true
+end end
+local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+if keko_add_sudo then var = true end
+return var
+end
+--         ~⊱                 is_mod                         ««              --
+function is_mod(msg)
+user_id = msg.sender_user_id_
+chat_id = msg.chat_id_
+local var = false
+local mod = database:sismember('MARKSTG:'..bot_id..'mods:'..chat_id, user_id)  
+local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)  
+local owner = database:sismember('MARKSTG:'..bot_id..'owners:'..chat_id, user_id)
+local creator = database:sismember('MARKSTG:'..bot_id..'creator:'..chat_id, user_id)  
+if mod then var = true end
+if owner then var = true end
+if creator then var = true end
+if admin then var = true end
+for k,v in pairs(sudo_users) do
+if user_id == v then var = true end end
+local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+if keko_add_sudo then var = true end
+return var
+end
 --         ~⊱                 ck_mod                         ««              --
 function ck_mod(user_id,chat_id)
 local var = false
@@ -2448,137 +2199,6 @@ database:del("MARKSTG:edit:text:su:new:"..bot_id..msg.chat_id_..t[1])
 send(msg.chat_id_, msg.id_, 1, "☑┇ تم المسح بنجاح", 1, 'md')
 end
 end
-local text = msg.content_.text_:gsub('رفع مطور رتبه ثالثه','setdev3')
-if text:match("^[Ss]etdev3$") and is_sudo(msg) and msg.reply_to_message_id_ ~= 0 then
-function addadmin_by_reply(extra, result, success)
-local user_info_ = marx:get(MARKSTG..'user:Name' .. result.sender_user_id_)
-local MARKSTG_res = user_info_
-if user_info_ then
-local hash = 'bot:admins:'
-if marx:sismember(MARKSTG..hash, result.sender_user_id_) then
-if marx:get(MARKSTG..'lang:gp:'..msg.chat_id_) then
-marxdx(msg.chat_id_, msg.id_, 1, '*🎈|| The User ؛ '..result.sender_user_id_..' ، 🚷\n🎈|| is now Dev therd bot ✅ \nֆ • • • • • • • • • • • • • • • • ֆ*', 1, 'md')
-else
-marxdx(msg.chat_id_, msg.id_, 1, '👤╿❯ *العضو* « ['..MARKSTG_res..'] »\n💯┊❯ *ايديه* « *'..result.sender_user_id_..'* »\n📌┊❯ *بواسطه « '..renk_MARKSTG(msg)..' »*\n☑️╽❯ * تم رفعه « مطور ثالث » سابقا *', 1, 'md')
-end
-else
-marx:sadd(MARKSTG..hash, result.sender_user_id_)
-if marx:get(MARKSTG..'lang:gp:'..msg.chat_id_) then
-marxdx(msg.chat_id_, msg.id_, 1, '*🎈|| The User ؛ '..result.sender_user_id_..' ، 🚷\n🎈|| has been Dev therd bot ✅ \nֆ • • • • • • • • • • • • • • • • ֆ*', 1, 'md')
-else
-marxdx(msg.chat_id_, msg.id_, 1, '👤╿❯ *العضو* « ['..MARKSTG_res..'] »\n💯┊❯ *ايديه* « *'..result.sender_user_id_..'* »\n📌┊❯ *بواسطه « '..renk_MARKSTG(msg)..' »*\n☑️╽❯ * تم رفعه « مطور رتبه ثالثه » *', 1, 'md')
-end end end end 
-getMessage(msg.chat_id_, msg.reply_to_message_id_,addadmin_by_reply)
-end
------------------------------------------------------------------------------------------------
-if text:match("^[Ss]etdev3 @(.*)$") and is_sudo(msg) then
-local ap = {string.match(text, "^([Ss]etdev3) @(.*)$")}
-function addadmin_by_username(extra, result, success)
-local user_info_ = marx:get(MARKSTG..'user:Name' .. result.id_)
-local MARKSTG_res = user_info_
-if user_info_ then
-if result.id_ then
-if marx:get(MARKSTG..'lang:gp:'..msg.chat_id_) then
-texts = '*🎈|| The User ؛ '..result.id_..' ، 🚷|| has been Dev therd bot ✅ \nֆ • • • • • • • • • • • • • • • • ֆ*'
-else
-texts = '👤╿❯ العضو « '..MARKSTG_res..' »\n💯┊❯ ايديه « '..result.id_..' »\n📌┊❯ بواسطه « '..renk_MARKSTG(msg)..' »\n☑️╽❯ تم رفعه « مطور رتبه ثالثه » '
-end
-marx:sadd(MARKSTG..'bot:admins:', result.id_)
-else
-if marx:get(MARKSTG..'lang:gp:'..msg.chat_id_) then
-texts = '*🎈|| Username is not correct ❎*'
-else
-texts = '*🎈|| المعرف غير صحيح ❎*'
-end
-end
-end
-marxdx(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
-end
-resolve_username(ap[2],addadmin_by_username)
-end
-----------------------------------------MARKSTG-------------------------------------------------------
-if text:match("^[sS]etdev3 (%d+)$") and is_sudo(msg) then
-local ap = {string.match(text, "^([Ss]etdev3) (%d+)$")}
-local user_info_ = marx:get(MARKSTG..'user:Name' .. ap[2])
-local MARKSTG_res = user_info_
-if user_info_ then
-if marx:get(MARKSTG..'lang:gp:'..msg.chat_id_) then
-marxdx(msg.chat_id_, msg.id_, 1, '*🎈|| The User ؛ '..ap[2]..' ، 🚷\n🎈|| has been Dev therd bot ✅ \nֆ • • • • • • • • • • • • • • • • ֆ*', 1, 'md')
-else
-marxdx(msg.chat_id_, msg.id_, 1, '👤╿❯ *العضو* « ['..MARKSTG_res..'] »\n💯┊❯ *ايديه* « *'..ap[2]..'* »\n📌┊❯ *بواسطه « '..renk_MARKSTG(msg)..' »*\n☑️╽❯ * تم رفعه « مطور رتبه ثالثه » *', 1, 'md')
-end
-marx:sadd(MARKSTG..'bot:admins:', ap[2])
-end
-end
-----------------------------------------MARKSTG-------------------------------------------------------
-local text = msg.content_.text_:gsub('تنزيل مطور رتبه ثالثه','remdev3')
-if text:match("^[Rr]emdev3$") and is_sudo(msg) and msg.reply_to_message_id_ ~= 0 then
-function deadmin_by_reply(extra, result, success)
-local user_info_ = marx:get(MARKSTG..'user:Name' .. result.sender_user_id_)
-local MARKSTG_res = user_info_
-if user_info_ then
-local hash = 'bot:admins:'
-if not marx:sismember(MARKSTG..hash, result.sender_user_id_) then
-if marx:get(MARKSTG..'lang:gp:'..msg.chat_id_) then
-marxdx(msg.chat_id_, msg.id_, 1, '*🎈|| The User ؛ '..result.sender_user_id_..' ، 🚷\n🎈|| is not Dev therd bot ✅ \nֆ • • • • • • • • • • • • • • • • ֆ*', 1, 'md')
-else
-marxdx(msg.chat_id_, msg.id_, 1, '👤╿❯ *العضو* « ['..MARKSTG_res..'] »\n💯┊❯ *ايديه* « *'..result.sender_user_id_..'* »\n📌┊❯ *بواسطه « '..renk_MARKSTG(msg)..' »*\n☑️╽❯ * لم يتم رفعه « مطور » سابقا *', 1, 'md')
-end
-else
-marx:srem(MARKSTG..hash, result.sender_user_id_)
-if marx:get(MARKSTG..'lang:gp:'..msg.chat_id_) then
-marxdx(msg.chat_id_, msg.id_, 1, '*🎈|| The User ؛ '..result.sender_user_id_..' ، 🚷\n🎈|| removed from Dev therd bot ✅ \nֆ • • • • • • • • • • • • • • • • ֆ*', 1, 'md')
-else
-marxdx(msg.chat_id_, msg.id_, 1, '👤╿❯ *المطور الثالث* « ['..MARKSTG_res..'] »\n💯┊❯ *ايديه* « *'..result.sender_user_id_..'* »\n📌┊❯ *بواسطه « '..renk_MARKSTG(msg)..' »*\n☑️╽❯ * تم تنزيله « عضو » بنجاح *', 1, 'md')
-end
-end
-end
-end
-getMessage(msg.chat_id_, msg.reply_to_message_id_,deadmin_by_reply)
-end
--------------------------------------------MARKSTG----------------------------------------------------
-if text:match("^[Rr]emdev3 @(.*)$") and is_sudo(msg) then
-local hash = 'bot:admins:'
-local ap = {string.match(text, "^([Rr]emdev3) @(.*)$")}
-function remadmin_by_username(extra, result, success)
-local user_info_ = marx:get(MARKSTG..'user:Name' .. result.id_)
-local MARKSTG_res = user_info_
-if user_info_ then
-if result.id_ then
-marx:srem(MARKSTG..hash, result.id_)
-if marx:get(MARKSTG..'lang:gp:'..msg.chat_id_) then
-texts = '*🎈|| The User ؛ '..result.id_..' ، 🚷\n🎈|| removed from Dev therd bot ✅ \nֆ • • • • • • • • • • • • • • • • ֆ*'
-else
-texts = '👤╿❯ المطور الثالث « '..MARKSTG_res..' »\n💯┊❯ ايديه « '..result.id_..' »\n📌┊❯ بواسطه « '..renk_MARKSTG(msg)..' »\n☑️╽❯ تم تنزيله « عضو » '
-end
-else
-if marx:get(MARKSTG..'lang:gp:'..msg.chat_id_) then
-texts = '*🚦|| Username is not correct ❎*'
-else
-texts = '*🎈|| المعرف غير صحيح ❎*'
-end
-end
-end
-marxdx(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
-end
-resolve_username(ap[2],remadmin_by_username)
-end
--------------------------------------MARKSTG----------------------------------------------------------
-if text:match("^[Rr]emdev3 (%d+)$") and is_sudo(msg) then
-local hash = 'bot:admins:'
-local ap = {string.match(text, "^([Rr]emdev3) (%d+)$")}
-local user_info_ = marx:get(MARKSTG..'user:Name' .. ap[2])
-local MARKSTG_res = user_info_
-if user_info_ then
-marx:srem(MARKSTG..hash, ap[2])
-if marx:get(MARKSTG..'lang:gp:'..msg.chat_id_) then
-marxdx(msg.chat_id_, msg.id_, 1, '*🎈|| The User ؛ '..ap[2]..' ، 🚷\n🎈|| removed from Dev therd bot ✅ \nֆ • • • • • • • • • • • • • • • • ֆ*', 1, 'md')
-else
-marxdx(msg.chat_id_, msg.id_, 1, '👤╿❯ *المطور الثالث* « ['..MARKSTG_res..'] »\n💯┊❯ *ايديه* « *'..ap[2]..'* »\n📌┊❯ *بواسطه « '..renk_MARKSTG(msg)..' »*\n☑️╽❯ * تم تنزيله « عضو » بنجاح *', 1, 'md')
-end
-end
-end
-
 if text:match("^رفع مدير$")  and is_owner(msg) and msg.reply_to_message_id_ then
 function promote_by_reply(extra, result, success)
 local hash =  'MARKSTG:'..bot_id..'mods:'..msg.chat_id_
