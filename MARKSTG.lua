@@ -4658,99 +4658,121 @@ local MARKSTG_new_text = MARKSTG_new_text:gsub('#photos',(all_photo_MARKSTG or '
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,MARKSTG_new_text,msg.id_,msg.id_.."")
 end
 else
-if is_sudo(msg) then
-t = 'مطور البوت'
-elseif is_creator(msg) then
-t = 'منشئ الكروب'
-elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
-elseif is_owner(msg) then
-t = 'مدير عام الكروب'
-elseif is_mod(msg) then
-t = 'مدير الكروب'
-elseif is_vip(msg) then
-t = 'مميز الكروب'
-else
-t = 'لا شيء'
-end
-if not database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "💳┤ايديك ~⪼  ("..msg.sender_user_id_..")\n🎫┤معرفك ~⪼ "..marx_info.."\n👨‍✈️┤رتبتك ~⪼  "..t.."\n📨┤رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┤السحكات ~⪼<b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍", 1, 'html')
-else 
-local MARKSTG_new_text = database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_)
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(marx_info or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#edit',(edit or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#stast',(t or 'لا يوجد'))   
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#photos',(all_photo_MARKSTG or 'لا يوجد'))
-send(msg.chat_id_, msg.id_, 1, MARKSTG_new_text, 1, 'html')
-end   
-end
-else
-end
-else
-if is_sudo(msg) then
-t = 'مطور البوت'
-elseif is_creator(msg) then
-t = 'منشئ الكروب'
-elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
-elseif is_owner(msg) then
-t = 'مدير عام الكروب'
-elseif is_mod(msg) then
-t = 'مدير للكروب'
-elseif is_vip(msg) then
-t = 'مميز الكروب'
-else
-t = 'لا شيء'
-end
-if not database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then
-if not database:get('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_) then
-if not database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "❖ ᎒انت لا تملك صوره في بروفايلك\n💳┤ايديك ~⪼  ("..msg.sender_user_id_..")\n🎫┤معرفك ~⪼ "..marx_info.."\n👨‍✈️┤رتبتك ~⪼  "..t.."\n📨┤رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┤السحكات ~⪼<b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍ ", 1, 'html')
-else 
-local MARKSTG_new_text = database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_)
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(marx_info or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#edit',(edit or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#stast',(t or 'لا يوجد'))   
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#photos',(all_photo_MARKSTG or 'لا يوجد'))
-send(msg.chat_id_, msg.id_, 1, MARKSTG_new_text, 1, 'html')
-end
-else
-if is_sudo(msg) then
-t = 'مطور البوت'
-elseif is_creator(msg) then
-t = 'منشئ الكروب'
-elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
-elseif is_owner(msg) then
-t = 'مدير عام الكروب'
-elseif is_mod(msg) then
-t = 'مدير للكروب'
-elseif is_vip(msg) then
-t = 'مميز الكروب'
-else
-t = 'لا شيء'
-end
-if not database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "💳┤ايديك ~⪼  ("..msg.sender_user_id_..")\n🎫┤معرفك ~⪼ "..marx_info.."\n👨‍✈️┤رتبتك ~⪼  "..t.."\n📨┤رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┤السحكات ~⪼<b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍", 1, 'html')
-else 
-local MARKSTG_new_text = database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_)
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(marx_info or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#edit',(edit or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#stast',(t or 'لا يوجد'))   
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#photos',(all_photo_MARKSTG or 'لا يوجد'))
-send(msg.chat_id_, msg.id_, 1, MARKSTG_new_text, 1, 'html')  
-end 
-end
-else
-end
-end
-end
+  if is_sudo(msg) then
+    t = database:get("MARKSTG:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت'
+    elseif is_creatorbasic(msg) then
+    t = database:get("MARKSTG:name_cre"..bot_id..msg.chat_id_) or 'مطور درجه ثالثه'
+    elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+    t = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+    elseif is_creator(msg) then
+    t = database:get("MARKSTG:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب'
+    elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+    t = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+    elseif is_owner(msg) then
+    t = database:get("MARKSTG:name_own"..bot_id..msg.chat_id_) or 'مدير عام الكروب'
+    elseif is_mod(msg) then
+    t = database:get("MARKSTG:name_adm"..bot_id..msg.chat_id_) or 'ادمن للكروب'
+    elseif is_vip(msg) then
+    t = database:get("MARKSTG:name_vipp"..bot_id..msg.chat_id_) or 'عضو مميز'
+    else
+    t = database:get("MARKSTG:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط' 
+    end
+    if not database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_) then 
+    send(msg.chat_id_, msg.id_, 1, "💳┤ايديك~⊱ ("..msg.sender_user_id_..")\n🚸┤معرفك~⊱ "..marx_info.."\n📡┤رتبتك~⊱  "..t.."\n💌┤رسائلك~⊱ {"..user_msgs.."}\n📧┤السحكات ~⪼ {"..edit.."}\n🌟┤تفاعلك~⊱ ..formsgg(msguser).}\n💎┘الكوينز ~⪼ {"..nko.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ", 1, 'html')
+    else 
+    local MARKSTG_new_text = database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_)
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(marx_info or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#edit',(edit or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#stast',(t or 'لا يوجد'))   
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#auto',(imarx_text or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#photos',(all_photo_MARKSTG or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#game',(nko or 'لا يوجد'))
+    
+    send(msg.chat_id_, msg.id_, 1, MARKSTG_new_text, 1, 'html')
+    end   
+    end
+    else
+    end
+    else
+    if is_sudo(msg) then
+    t = database:get("MARKSTG:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت'
+    elseif is_creatorbasic(msg) then
+    t = database:get("MARKSTG:name_cre"..bot_id..msg.chat_id_) or 'مطور درجه ثالثه'
+    elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+    t = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+    elseif is_creator(msg) then
+    t = database:get("MARKSTG:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب'
+    elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+    t = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+    elseif is_owner(msg) then
+    t = database:get("MARKSTG:name_own"..bot_id..msg.chat_id_) or 'مدير عام الكروب'
+    elseif is_mod(msg) then
+    t = database:get("MARKSTG:name_adm"..bot_id..msg.chat_id_) or 'ادمن للكروب'
+    elseif is_vip(msg) then
+    t = database:get("MARKSTG:name_vipp"..bot_id..msg.chat_id_) or 'عضو مميز'
+    else
+    t = database:get("MARKSTG:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط' 
+    end
+    if not database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then
+    if not database:get('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_) then
+    if not database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_) then 
+      send(msg.chat_id_, msg.id_, 1, "💳┤ايديك~⊱ ("..msg.sender_user_id_..")\n🚸┤معرفك~⊱ "..marx_info.."\n📡┤رتبتك~⊱  "..t.."\n💌┤رسائلك~⊱ {"..user_msgs.."}\n📧┤السحكات ~⪼ {"..edit.."}\n🌟┤تفاعلك~⊱  "..imarx_text.."}\n💎┘مجموع مجوهراتك ~⪼ {"..nko.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ", 1, 'html')
+    else 
+    local MARKSTG_new_text = database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_)
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(marx_info or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#edit',(edit or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#stast',(t or 'لا يوجد'))   
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#auto',(imarx_text or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#photos',(all_photo_MARKSTG or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#game',(nko or 'لا يوجد'))
+    
+    send(msg.chat_id_, msg.id_, 1, MARKSTG_new_text, 1, 'html')
+    end
+    else
+    if is_sudo(msg) then
+    t = database:get("MARKSTG:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت'
+    elseif is_creatorbasic(msg) then
+    t = database:get("MARKSTG:name_cre"..bot_id..msg.chat_id_) or 'مطور درجه ثالثه'
+    elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+    t = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+    elseif is_creator(msg) then
+    t = database:get("MARKSTG:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب'
+    elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+    t = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
+    elseif is_owner(msg) then
+    t = database:get("MARKSTG:name_own"..bot_id..msg.chat_id_) or 'مدير عام الكروب'
+    elseif is_mod(msg) then
+    t = database:get("MARKSTG:name_adm"..bot_id..msg.chat_id_) or 'ادمن للكروب'
+    elseif is_vip(msg) then
+    t = database:get("MARKSTG:name_vipp"..bot_id..msg.chat_id_) or 'عضو مميز'
+    else
+    t = database:get("MARKSTG:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط' 
+    end
+    if not database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_) then 
+    send(msg.chat_id_, msg.id_, 1, "💳┤ايديك~⊱ ("..msg.sender_user_id_..")\n🚸┤معرفك~⊱ "..marx_info.."\n📡┤رتبتك~⊱  "..t.."\n💌┤رسائلك~⊱ {"..user_msgs.."}\n📧┤السحكات ~⪼ {"..edit.."}\n🌟┤تفاعلك~⊱  "..imarx_text.."}\n💎┘مجموع مجوهراتك ~⪼ {"..nko.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ", 1, 'html')
+    else 
+    local MARKSTG_new_text = database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_)
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(marx_info or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#edit',(edit or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#stast',(t or 'لا يوجد'))   
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#auto',(imarx_text or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#photos',(all_photo_MARKSTG or 'لا يوجد'))
+    local MARKSTG_new_text = MARKSTG_new_text:gsub('#game',(nko or 'لا يوجد'))
+    
+    send(msg.chat_id_, msg.id_, 1, MARKSTG_new_text, 1, 'html')  
+    end 
+    end
+    else
+    end
+    end
+    end
+    
 tdcli_function ({
 ID = "GetUserProfilePhotos",
 user_id_ = msg.sender_user_id_,
