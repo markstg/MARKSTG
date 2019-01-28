@@ -4607,56 +4607,98 @@ if text and text == "مسح مجموعه المطور" and tonumber(msg.sender_u
 send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح مجموعه المطور', 1, 'md')
 database:del("MARKSTG"..bot_id..":sudo:gr")
 end
-if text:match("^ايدي$") and msg.reply_to_message_id_ == 0 then
-local marx_info = nil
-function marx333(extra,result,success)
-marx_info = '@'..(result.username_ or 'لا يوجد')..''
-local function getpro(extra, result, success)
-local all_photo_MARKSTG = result.total_count_ 
-local user_msgs = database:get('MARKSTG:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
-local msguser = tonumber(database:get('MARKSTG:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_) or 1)
-local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
-if result.photos_[0] then
-if is_sudo(msg) then
-t = 'مطور البوت'
-elseif is_creator(msg) then
-t = 'منشئ الكروب'
-elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
-elseif is_owner(msg) then
-t = 'مدير عام الكروب'
-elseif is_mod(msg) then
-t = 'مدير للكروب'
-elseif is_vip(msg) then
-t = 'مميز الكروب'
-else
-t = 'لا شيء'
-end
-if not database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then
-if not database:get('MARKSTG:'..bot_id..'id:photo'..msg.chat_id_) then
-if not database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_) then 
-local marx_text = {
-"تنكرط ولكعبا❤️😔",
-"وفبس امصك☹️",
-"نصاوت ونرتبط يحلو🙈",
-"رجع صورتك خزيتنا😂",
-"شلزكت بهصورا ديمعود😂",
-"هذه ويهك 😂",
-"ببكن علاقه جاده 😹",
-"وجهك وجه الچوب ختتف😹",
-}
-marx3 = math.random(#marx_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🌌┐ "..marx_text[marx3].."\n💳┤ايديك~⊱"..msg.sender_user_id_.."\n📡┤رتبتك~⊱ "..t..'\n🌟┤تفاعلك~⊱ {'..formsgg(msguser).."}\n🚸┤معرفك~⊱ "..marx_info.."\n💌┤رسائلك~⊱ {"..user_msgs.."}\n📝┘سحكاتك~⊱ {"..edit.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉",msg.id_,msg.id_.."")
-else 
-local MARKSTG_new_text = database:get("MARKSTG:gr:id:text:"..bot_id..msg.chat_id_)
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#username',(marx_info or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#edit',(edit or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#msgs',(user_msgs or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#stast',(t or 'لا يوجد'))
-local MARKSTG_new_text = MARKSTG_new_text:gsub('#photos',(all_photo_MARKSTG or 'لا يوجد'))
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,MARKSTG_new_text,msg.id_,msg.id_.."")
-end
+if text:match("^ايدي @(.*)$") then
+  local ap = {string.match(text, "^(ايدي) @(.*)$")}
+  function id_by_username(extra, result, success)
+  if result.id_ then
+  if not database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then 
+  local tahna = (database:get('MARKSTG:'..bot_id..'nummsg'..msg.chat_id_..result.id_) or 0)
+  if tonumber((database:get('MARKSTG:'..bot_id..'add:numall'..msg.chat_id_..result.id_) or 0)) == 0 then
+  nko = '0'
+  else
+  nko = (database:get('MARKSTG:'..bot_id..'add:numall'..msg.chat_id_..result.id_))
+  end
+  local msgs = ((database:get('MARKSTG:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.id_) or 0) + tahna)
+  local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..result.id_) or 0
+  local msg2 = msg
+  msg2.sender_user_id_ = result.id_
+  local user_msgs = ((database:get('MARKSTG:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.id_) or 0) + tahna)
+  local marx_text = "2%"
+  if user_msgs then 
+  if tonumber(user_msgs) < 50 then 
+  marx_text = "5%"
+  elseif tonumber(user_msgs) < 100 then 
+  marx_text = "18%"
+  elseif tonumber(user_msgs) < 1000 then 
+  marx_text = "44% "
+  elseif tonumber(user_msgs) < 2000 then 
+  marx_text = "57%"
+  elseif tonumber(user_msgs) < 3000 then 
+  marx_text = "63%"
+  elseif tonumber(user_msgs) < 4000 then 
+  marx_text = "77%"
+  elseif tonumber(user_msgs) < 5000 then 
+  marx_text = "85%"
+  elseif tonumber(user_msgs) > 5000 then 
+  marx_text = "95%"
+  end
+  marx = database:smembers('marx:all:pppp:tt:'..bot_id) or 0
+  if (marx or marx[1]) then 
+  for i=1, #marx do
+  local tttee = database:get("marx:set:text:p"..bot_id..marx[i])
+  if tonumber(user_msgs) >= tonumber(marx[i]) then 
+  marx_text = tttee
+  end
+  end
+  end
+  end
+  if is_sudo(msg2) then
+  MARKSTG_oop = database:get("MARKSTG:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت'
+  elseif is_creatorbasic(msg) then
+  MARKSTG_oop = database:get("MARKSTG:name_cre"..bot_id..msg.chat_id_) or 'مطور درجه ثالثه'
+  elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.id_) ..bot_id..msg.chat_id_)) then 
+  MARKSTG_oop = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.id_)
+  elseif is_creator(msg) then
+  MARKSTG_oop = database:get("MARKSTG:name_cre"..bot_id..msg.chat_id_) or 'منشئ الكروب'
+  elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.id_) ..bot_id..msg.chat_id_)) then 
+  MARKSTG_oop = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.id_)
+  elseif is_owner(msg2) then
+  MARKSTG_oop = database:get("MARKSTG:name_own"..bot_id..msg.chat_id_) or 'مدير عام الكروب'
+  elseif is_mod(msg2) then
+  MARKSTG_oop = database:get("MARKSTG:name_adm"..bot_id..msg.chat_id_) or 'ادمن للكروب'
+  elseif is_vip(msg2) then
+  MARKSTG_oop = database:get("MARKSTG:name_vipp"..bot_id..msg.chat_id_) or 'عضو مميز'
+  else
+  MARKSTG_oop = database:get("MARKSTG:name_nk"..bot_id..msg.chat_id_) or 'عضو فقط' 
+  end
+  texts = "💳┤ايديك ~⪼  `{"..result.id_.."}`\n📡┤رتبتك~⊱  {"..MARKSTG_oop.."}\n💌┤رسائلك~⊱ `{"..msgs.."}`\n📧┤السحكات ~⪼ `{"..edit.."}`\n🌟┤تفاعلك~⊱ `{"..marx_text.."}`\n💎┇مجوهراتي ~⪼ *{"..nko.."}*"
+  else
+  texts = "`"..result.id_.."`"
+  end
+  else
+  texts = '✖┇خطاء'
+  end
+  send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
+  end
+  resolve_username(ap[2],id_by_username)
+  end  
+  if text:match("^جلب صوره (%d+)$") and msg.reply_to_message_id_ == 0 and not database:get('MARKSTG:'..bot_id..'get:photo'..msg.chat_id_) then
+  local pronumb = {string.match(text, "^(جلب صوره) (%d+)$")}
+  local ph = pronumb[2] - 1
+  local function gpro(extra, result, success)
+  if result.photos_[ph] then
+  sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[ph].sizes_[1].photo_.persistent_id_)
+  else
+  send(msg.chat_id_, msg.id_, 1, "❕┇لا تملك صوره رقم <b>{"..pronumb[2].."}</b> في حسابك", 1, 'html')
+  end
+  end
+  tdcli_function ({
+  ID = "GetUserProfilePhotos",
+  user_id_ = msg.sender_user_id_,
+  offset_ = 0,
+  limit_ = pronumb[2]
+  }, gpro, nil)
+  end
 else
   if is_sudo(msg) then
     t = database:get("MARKSTG:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت'
