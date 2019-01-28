@@ -88,6 +88,20 @@ local marx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if marx_add_sudo then var = true end
 return var
 end
+function is_creatorbasic(msg)
+  user_id = msg.sender_user_id_
+  chat_id = msg.chat_id_
+  local var = false
+  local creatorbasic = database:sismember('MARKSTG:'..bot_id..'creatorbasic:'..chat_id, user_id) 
+  local admin = database:sismember('MARKSTG:'..bot_id..'admins:', user_id)
+  if creatorbasic then var = true end
+  if admin then var = true end
+  for k,v in pairs(sudo_users) do
+  if user_id == v then var = true end end
+  local keko_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
+  if keko_add_sudo then var = true end
+  return var
+  end
 --         ~⊱                 is_vip                         ««              --
 function is_vip(msg)
 user_id = msg.sender_user_id_
