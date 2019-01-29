@@ -3343,7 +3343,7 @@ send(msg.chat_id_, msg.id_, 1, "📨┇عدد سحكاتك ~⪼ *{"..edit.."}*\n
 database:del('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_)
 end
 if text:match("^(سحكاتي)$") or text:match("^(سحكاتي)$") then
-local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+local edit = database:get('MARKSTG:'..bot_id..'user_info'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 send(msg.chat_id_, msg.id_, 1, "📮┇ احصائيات التعديلات 📊\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n📷┇عدد تعديلات الصور ~⪼ {0}\n📹┇عدد تعديلات الفيديو ~⪼ {0}\n📨┇عدد تعديلات الرسائل ~⪼ *{"..edit.."}*", 1, 'md')
 end
 if text:match("^(تبليغ)$") or text:match("^(ازعاج)$") then
