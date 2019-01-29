@@ -5101,6 +5101,27 @@ local text =  [[
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 🔎┇<a href="https://telegram.org/deactivate">اضغط هنا للحذف الحساب" </a>
 ]]
+if text:match("^بوتات$") or text:match("^بوت$") or text:match("^بوتات خدميه$") or text:match("^هلاو$") then
+local text =  [[
+📮┇مرحبا بك في بوتات السورس الخدميه
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+📜┋لطلب البوتات راسل مطور السورس
+🚸┋<a href="https://telegram.me/syatibot">صنع بوتات سايت</a>
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+💬┇<a href="https://telegram.me/TWSL_BBOT">صنع بوتات تواصل </a>
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+📟┇<a href="t.me/DEV02BOT">صنع بوتات حمايه</a> 
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+👁‍🗨┋<a href="https://telegram.me/ZRR_1BOT">بوت زغرفه وتصاميم</a>
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+🎥┇<a href="https://telegram.me/JLJLABOT">بوت تحميل من يوتيوب</a>
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+®️┇<a href="t.me/R00MBOT">بوت زيادة اعضاء القنواة</a> 
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+🔎┇<a href="t.me/P_PPPP">مطور السورس</a> 
+]]
+send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
+end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 end
