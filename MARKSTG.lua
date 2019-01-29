@@ -759,7 +759,7 @@ openChat(msg.chat_id_,MARKSTG_info2)
 --
 end
 else
-send(msg.chat_id_, msg.id_, 1, "❗┇لا يمكنني التفعيل انت لست (منشئ او مدير عام) في المجموعة", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "❗┇لا يمكنني التفعيل انت لست (منشئ الكروب او مدير عام) في المجموعة", 1, 'md')
 end
 end
 end
@@ -803,7 +803,7 @@ database:sadd("MARKSTG:gog"..bot_id, msg.chat_id_)
 function MARKSTG_info2(k1,k2)
 function dl_cb222(t1,t2)
 database:set('MARKSTG:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
-send(tostring((database:get("MARKSTG"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتفعيل البوت \n📟┇ايدي المنشئ ⌁≻ ("..msg.sender_user_id_..")\n☑️┇يوزر المنشئ ⌁≻ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ⌁≻ ("..k2.title_..")\n📎┇رابط المجموعه ⌁≻ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
+send(tostring((database:get("MARKSTG"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتفعيل البوت \n📟┇ايدي المنشئ الكروب ⌁≻ ("..msg.sender_user_id_..")\n☑️┇يوزر المنشئ الكروب ⌁≻ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ⌁≻ ("..k2.title_..")\n📎┇رابط المجموعه ⌁≻ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
 end
 tdcli_function ({
 ID = "GetChannelFull",
@@ -824,7 +824,7 @@ else
 send(msg.chat_id_, msg.id_, 1, "✖️┇عدد اعضاء المجموعه قليل راسل المطور للتفعيل ", 1, 'md')
 end
 else
-send(msg.chat_id_, msg.id_, 1, "✖️┇لا يمكنني التفعيل انت لست (منشئ او مدير عام) في المجموعة", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "✖️┇لا يمكنني التفعيل انت لست (منشئ الكروب او مدير عام) في المجموعة", 1, 'md')
 end
 end
 end
@@ -1716,24 +1716,24 @@ send(msg.chat_id_, msg.id_, 1, "☑┇راح اروح احبكم♥", 1, 'md'
 else
 end
 end
-if text == "رفع منشئ" and msg.reply_to_message_id_ then
+if text == "رفع منشئ الكروب" and msg.reply_to_message_id_ then
 function setcreator_by_reply(extra, result, success)
 local hash =  'MARKSTG:'..bot_id..'creator:'..msg.chat_id_
 if database:sismember(hash, result.sender_user_id_) then
-tsX000("prore",msg,"☑┇بالفعل تم رفع منشئ في البوت")
+tsX000("prore",msg,"☑┇بالفعل تم رفع منشئ الكروب في البوت")
 else
 database:sadd(hash, result.sender_user_id_)
-tsX000("prore",msg,"☑┇تم رفع منشئ في البوت")
+tsX000("prore",msg,"☑┇تم رفع منشئ الكروب في البوت")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,setcreator_by_reply)
 end
-if text:match("^رفع منشئ @(.*)$")  then
-local apow = {string.match(text, "^(رفع منشئ) @(.*)$")}
+if text:match("^رفع منشئ الكروب @(.*)$")  then
+local apow = {string.match(text, "^(رفع منشئ الكروب) @(.*)$")}
 function setcreator_by_username(extra, result, success)
 if result.id_ then
 database:sadd('MARKSTG:'..bot_id..'creator:'..msg.chat_id_, result.id_)
-texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MARKS_TEAM')..')\n☑┇تم رفع منشئ في البوت'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MARKS_TEAM')..')\n☑┇تم رفع منشئ الكروب في البوت'
 else
 texts = '✖┇خطاء'
 end
@@ -1741,30 +1741,30 @@ send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apow[2],setcreator_by_username)
 end
-if text:match("^رفع منشئ (%d+)$") then
-local apow = {string.match(text, "^(رفع منشئ) (%d+)$")}
+if text:match("^رفع منشئ الكروب (%d+)$") then
+local apow = {string.match(text, "^(رفع منشئ الكروب) (%d+)$")}
 database:sadd('MARKSTG:'..bot_id..'creator:'..msg.chat_id_, apow[2])
-tsX000(apow[2],msg,"☑┇تم رفع منشئ في البوت")
+tsX000(apow[2],msg,"☑┇تم رفع منشئ الكروب في البوت")
 end
-if text:match("^تنزيل منشئ$") and msg.reply_to_message_id_ then
+if text:match("^تنزيل منشئ الكروب$") and msg.reply_to_message_id_ then
 function decreator_by_reply(extra, result, success)
 local hash =  'MARKSTG:'..bot_id..'creator:'..msg.chat_id_
 if not database:sismember(hash, result.sender_user_id_) then
-tsX000("prore",msg,"☑┇بالفعل تم تنزيله من منشئين المجموعه")
+tsX000("prore",msg,"☑┇بالفعل تم تنزيله من منشئ الكروب المجموعه")
 else
 database:srem(hash, result.sender_user_id_)
-tsX000("prore",msg,"☑┇تم تنزيله من منشئين المجموعه")
+tsX000("prore",msg,"☑┇تم تنزيله من منشئ الكروب المجموعه")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,decreator_by_reply)
 end
-if text:match("^تنزيل منشئ @(.*)$") then
-local apow = {string.match(text, "^(تنزيل منشئ) @(.*)$")}
+if text:match("^تنزيل منشئ الكروب @(.*)$") then
+local apow = {string.match(text, "^(تنزيل منشئ الكروب) @(.*)$")}
 local hash =  'MARKSTG:'..bot_id..'creator:'..msg.chat_id_
 function remcreator_by_username(extra, result, success)
 if result.id_ then
 database:srem(hash, result.id_)
-texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MARKS_TEAM')..')\n☑┇تم تنزيله من منشئين المجموعه'
+texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MARKS_TEAM')..')\n☑┇تم تنزيله من منشئ الكروب المجموعه'
 else
 texts = '✖┇خطاء'
 end
@@ -1772,16 +1772,16 @@ send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
 resolve_username(apow[2],remcreator_by_username)
 end
-if text:match("^تنزيل منشئ (%d+)$") then
+if text:match("^تنزيل منشئ الكروب (%d+)$") then
 local hash =  'MARKSTG:'..bot_id..'creator:'..msg.chat_id_
-local apow = {string.match(text, "^(تنزيل منشئ) (%d+)$")}
+local apow = {string.match(text, "^(تنزيل منشئ الكروب) (%d+)$")}
 database:srem(hash, apow[2])
-tsX000(apow[2],msg,"☑┇تم تنزيله من منشئين المجموعه")
+tsX000(apow[2],msg,"☑┇تم تنزيله من منشئ الكروب المجموعه")
 end--
-if text:match("^المنشئين") then
+if text:match("^المنشئ الكروب") then
 local hash =   'MARKSTG:'..bot_id..'creator:'..msg.chat_id_
 local list = database:smembers(hash)
-text = "🛅┇قائمة المنشئين  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+text = "🛅┇قائمة المنشئ الكروب  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 local user_info = database:hgetall('MARKSTG:'..bot_id..'user:'..v)
 if user_info and user_info.username then
@@ -1796,7 +1796,7 @@ text = ""
 end
 end
 if #list == 0 then
-text = "✖┇لايوجد منشئين"
+text = "✖┇لايوجد منشئ الكروب"
 end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
@@ -1871,7 +1871,6 @@ os.execute('cd libs && wget https://raw.github.com/markstg/MARKSTG/master/libs/u
 os.execute('rm -rf MARKSTG.lua')
 os.execute('wget https://raw.github.com/markstg/MARKSTG/master/MARKSTG.lua')
 os.exit()
-return false
 end
 if text:match("^وضع وقت (%d+)$") then
 local a = {string.match(text, "^(وضع وقت) (%d+)$")}
@@ -2022,7 +2021,7 @@ local name_t = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
 database:srem("files"..bot_id,name_t[2]..'.lua')
 send(msg.chat_id_, msg.id_, 1, "✖┇تم تعطيل {"..name_t[2]..".lua}", 1, 'html')
 end
-if (text:match("^(مسح الملفات)$"))then
+if (text:match("^(حذف الملفات)$"))then
 database:del("files"..bot_id)
 send(msg.chat_id_, msg.id_, 1, "🗑┇تم مسح الملفات", 1, 'html')
 end
@@ -3338,9 +3337,9 @@ if txt[2] == 'banlist' or txt[2] == 'Banlist' or txt[2] == 'المحظورين' 
 database:del('MARKSTG:'..bot_id..'banned:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح المحظورين  من البوت ', 1, 'md')
 end
-if txt[2] == 'creators' and is_sudo(msg) or txt[2] == 'creatorlist' and is_sudo(msg) or txt[2] == 'Creatorlist' and is_sudo(msg) or txt[2] == 'Creators' and is_sudo(msg) or txt[2] == 'المنشئين' and is_sudo(msg) then
+if txt[2] == 'creators' and is_sudo(msg) or txt[2] == 'creatorlist' and is_sudo(msg) or txt[2] == 'Creatorlist' and is_sudo(msg) or txt[2] == 'Creators' and is_sudo(msg) or txt[2] == 'المنشئ الكروب' and is_sudo(msg) then
 database:del('MARKSTG:'..bot_id..'creator:'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح قائمه المنشئين', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '🗑┤ مرحبا عزيزي تم ~⊱ مسح قائمه المنشئ الكروب', 1, 'md')
 end
 if txt[2] == 'البوتات' then
 local function cb(extra,result,success)
@@ -4790,7 +4789,7 @@ local text =  [[
     
 ‎📬┇م2 ~⪼ لعرض اوامر المدراء
 ‎
-🚥┇م3 ~⪼ لعرض اوامر المدراء العامين والمنشئين
+🚥┇م3 ~⪼ لعرض اوامر المدراء العامين والمنشئ الكروب
 
 🎖┇م4 ~⪼ لعرض اوامر المطورين
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
@@ -4949,7 +4948,7 @@ local text =  [[
     🏧┇ تفعيل/تعطيل  التثبيت
     🚳┇ تفعيل/تعطيل  اطردني
     ➖➖➖➖➖➖➖➖➖➖➖➖➖
-    اوامر المنشئين 🥇
+    اوامر المنشئ الكروب 🥇
     ➖➖➖➖➖➖➖➖➖➖➖➖➖
     🗑┇ رفع/مسح المدراء
     🗑┇ اضف/مسح  رد
@@ -5009,11 +5008,11 @@ local text =  [[
     🚫 : المكتومين عام
     ➖➖➖➖➖➖➖➖➖➖➖➖
     🔘 : رفع/حذف مطور
-    🔘 : رفع/تنزيل منشئ
+    🔘 : رفع/تنزيل منشئ الكروب
     🔘 : رفع/تنزيل مدير عام
     🔘 : رفع/تنزيل مدير
     🔘 : المطورين
-    🔘 : المنشئين
+    🔘 : المنشئ الكروب
     🔘 : المدراء
     🔘 : المدراء 
     ➖➖➖➖➖➖➖➖➖➖➖➖
@@ -5023,7 +5022,7 @@ local text =  [[
     🔘 : الغاء المحظورين عام
     🔘 : تنزيل المدراء العامين
     🔘 : تنزيل المدراء
-    🔘 : تنزيل المنشئين
+    🔘 : تنزيل المنشئ الكروب
     🔘 : الغاء المكتومين عام ➖➖➖➖➖➖➖➖➖➖➖➖
     🔘 : تغير امرالاوامر/م1/م2/م3/م4
     📡 : اذاعه
@@ -5035,10 +5034,11 @@ local text =  [[
     🔘 : تغير نص الانلاين+النص
     🔘 : تغير رابط الانلاين+الرابط
     🔘 : تفعيل/تعطيل الانلاين
-    ➖➖➖➖➖➖➖➖➖➖➖➖
+➖➖➖➖➖➖➖➖➖➖➖➖
     قناتنا ~> @MARKS_TEAM
 ]]
-
+send(msg.chat_id_, msg.id_, 1, (h4 or text), 1, 'html')
+end
 if text:match("^اصدار$") or text:match("^با سورس$") or text:match("^السورس$") or text:match("^سورس$") then
 local text =  [[
 ❖
