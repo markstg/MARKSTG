@@ -3,7 +3,7 @@ BY MARKS
 DEV @P_PPPP
 CH > @MARKS_TEAM
 CH > @LE_C4_KR
---]] user:info
+--]]
 ------------------------------------
 serpent = require('serpent')
 serp = require 'serpent'.block
@@ -47,9 +47,6 @@ end
 local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..msg.sender_user_id_..'')
 if markx_add_sudo then var = true end return var
 end
-local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudo3'..msg.sender_user_id_..'')
-if markx_add_sudo then var = true end return var
-end
 --         ~⊱                 is_admin                         ««              --
 function is_admin(msg)
 user_id = msg.sender_user_id_
@@ -63,9 +60,6 @@ local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if markx_add_sudo then var = true end
 return var
 end
-local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudo3'..msg.sender_user_id_..'')
-if markx_add_sudo then var = true end return var
-end
 --         ~⊱                 is_admin                         ««              --
 function ck_admin(user_id)
 local var = false 
@@ -77,9 +71,6 @@ end
 local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if markx_add_sudo then var = true end
 return var
-end
-local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudo3'..msg.sender_user_id_..'')
-if markx_add_sudo then var = true end return var
 end
 --         ~⊱                 is_creator                         ««              --
 function is_creator(msg)
@@ -95,9 +86,6 @@ if user_id == v then var = true end end
 local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if markx_add_sudo then var = true end
 return var
-end
-local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudo3'..msg.sender_user_id_..'')
-if markx_add_sudo then var = true end return var
 end
 --         ~⊱                 is_vip                         ««              --
 function is_vip(msg)
@@ -120,9 +108,6 @@ var = true end end
 local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if markx_add_sudo then var = true end
 return var end
-local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudo3'..msg.sender_user_id_..'')
-if markx_add_sudo then var = true end return var
-end
 --         ~⊱                 is_owner                         ««              --
 function is_owner(msg)
 user_id = msg.sender_user_id_
@@ -141,9 +126,6 @@ end end
 local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if markx_add_sudo then var = true end
 return var
-end
-local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudo3'..msg.sender_user_id_..'')
-if markx_add_sudo then var = true end return var
 end
 --         ~⊱                 is_mod                         ««              --
 function is_mod(msg)
@@ -164,9 +146,6 @@ local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if markx_add_sudo then var = true end
 return var
 end
-local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudo3'..msg.sender_user_id_..'')
-if markx_add_sudo then var = true end return var
-end
 --         ~⊱                 ck_mod                         ««              --
 function ck_mod(user_id,chat_id)
 local var = false
@@ -185,9 +164,6 @@ if user_id == v then var = true end end
 local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudoo'..user_id..'')
 if markx_add_sudo then var = true end
 return var
-end
-local markx_add_sudo = redis:get('MARKSTG:'..bot_id..'sudo3'..msg.sender_user_id_..'')
-if markx_add_sudo then var = true end return var
 end
 --         ~⊱                 is_banned                         ««              --
 function is_banned(user_id, chat_id)
@@ -2898,7 +2874,7 @@ text = "✖┇لايوجد مدراء"
 end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
------------------------------------------------
+-----------------------------------------------      
 if (text and text == "ابلاغ" and msg.reply_to_message_id_ ~= 0 and (not database:get("MARKSTG:mute:deleta:msg:"..bot_id..msg.chat_id_))) then 
 b = database:get("MARKSTG:user:deleteL:msg:"..msg.chat_id_..bot_id..msg.sender_user_id_)
 if b and b == os.date("%x") then 
@@ -3227,6 +3203,35 @@ else
 send(msg.chat_id_, msg.id_, 1, '🖲┇الرابط معطل', 1, "html") 
 end
 end
+if text:match("^تبليغ$") and msg.reply_to_message_id_ ~= 0 then
+    function id_by_reply(extra, result, success)
+    if not database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then 
+    local msgs = database:get('MARKSTG:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.sender_user_id_) or 0
+    local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..result.sender_user_id_) or 0
+    local msg2 = msg
+    msg2.sender_user_id_ = result.sender_user_id_
+    if is_sudo(msg2) then
+    MARKSTG_oop = 'مطور البوت'
+    elseif is_creator(msg) then
+    MARKSTG_oop = 'منشئ الكروب'
+    elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+    MARKSTG_oop = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_)
+    elseif is_owner(msg2) then
+    MARKSTG_oop = 'مدير عام الكروب'
+    elseif ck_mod(result.sender_user_id_,msg.chat_id_) then
+    MARKSTG_oop = 'مدير للكروب'
+    elseif is_vip(msg2) then
+    MARKSTG_oop = 'مميز الكروب'
+    else
+    MARKSTG_oop = 'لا شيء'
+    end
+    send(msg.chat_id_, msg.id_, 1,"📬┇التبليغ عن ازعاج💢\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n💬┇ايدي صاحب التبليغ  ~⪼  `{"..result.sender_user_id_.."}`\n👁‍🗨┇رتبت صاحب التبليغ ➣ {"..MARKSTG_oop.."}\n🔘┇سيتم ارسال رساله للمنشئ للحضور`", 1, 'md')
+    else
+    send(msg.chat_id_, msg.id_, 1,"`"..result.sender_user_id_.."`", 1, 'md')
+    end
+    end
+    getMessage(msg.chat_id_, msg.reply_to_message_id_,id_by_reply)
+    end  
 -----------------------------------------------------------
 if text:match("^تفعيل الترحيب$") and is_mod(msg) then
 send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل الترحيب في المجموعه', 1, 'md')
@@ -3338,8 +3343,12 @@ send(msg.chat_id_, msg.id_, 1, "📨┇عدد سحكاتك ~⪼ *{"..edit.."}*\n
 database:del('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_)
 end
 if text:match("^(سحكاتي)$") or text:match("^(سحكاتي)$") then
-local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
-send(msg.chat_id_, msg.id_, 1, "📮┇ احصائيات التعديلات 📊\n📷┇عدد تعديلات الصور ~⪼ {0}\n📹┇عدد تعديلات الفيديو ~⪼ {0}\n📨┇عدد تعديلات الرسائل ~⪼ *{"..edit.."}*", 1, 'md')
+local edit = database:get('MARKSTG:'..bot_id..'user_info'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+send(msg.chat_id_, msg.id_, 1, "📮┇ احصائيات التعديلات 📊\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n📷┇عدد تعديلات الصور ~⪼ {0}\n📹┇عدد تعديلات الفيديو ~⪼ {0}\n📨┇عدد تعديلات الرسائل ~⪼ *{"..edit.."}*", 1, 'md')
+end
+if text:match("^(تبليغ)$") or text:match("^(ازعاج)$") then
+local markx_info = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+send(msg.chat_id_, msg.id_, 1, "🎫┇ التبليغ عن ازعاج 💢\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n💬┇لقد استدعيت المنشئ\n👁‍🗨┇سيرى الرساله فور وصوله\n☑️┇عزيزي المنشئ ارجو الاستجابه~⪼ *{"..markx_info.."}*", 1, 'md')
 end
 if text:match("^مسح المحظورين عام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 text = '🗑┤ مرحبا عزيزي تم ~⊱ مسح محظورين عام'
@@ -3947,74 +3956,6 @@ redis:del('MARKSTG:'..bot_id..'sudoo'..apmd[2]..'', 'no')
 redis:srem('MARKSTG:'..bot_id..'dev', apmd[2])
 tsX000(apmd[2],msg,'☑┇ تم تنزيله من مطورين البوت')
 end
-if text:match("^اضف مطور$")  and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
-    function promote_by_reply(extra, result, success)
-    if redis:sismember('MARKSTG:'..bot_id..'dev', result.sender_user_id_) then
-    tsX000("prore",msg,'☑┇بالفعل تم رفعه مطور')
-    else
-    redis:set('MARKSTG:'..bot_id..'sudoo'..result.sender_user_id_..'', 'yes')
-    redis:sadd('MARKSTG:'..bot_id..'dev', result.sender_user_id_)
-    tsX000("prore",msg,'☑┇تم رفعه مطور')
-    end
-    end
-    getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
-    end
-    
-    if text:match("^اضف مطور @(.*)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-    local apmd = {string.match(text, "^(اضف مطور) @(.*)$")}
-    function promote_by_username(extra, result, success)
-    if result.id_ then
-    redis:set('MARKSTG:'..bot_id..'sudoo'..result.id_..'', 'yes')
-    redis:sadd('MARKSTG:'..bot_id..'dev', result.id_)
-    texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n\n☑┇تم رفعه مطور'
-    else
-    texts = '✖┇خطاء'
-    end
-    send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
-    end
-    resolve_username(apmd[2],promote_by_username)
-    end
-    
-    if text:match("^اضف مطور درجه ثالثه(%d+)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-    local apmd = {string.match(text, "^(اضف مطور درجه ثالثه) (%d+)$")}
-    redis:set('MARKSTG:'..bot_id..'sudo3'..apmd[2]..'', 'yes')
-    redis:sadd('MARKSTG:'..bot_id..'dev', apmd[2])
-    tsX000(apmd[2],msg,'☑┇تم رفعه مطور درجه ثالثه')
-    end
-    
-    if text:match("^حذف مطور درجه ثالثه$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
-    function demote_by_reply(extra, result, success)
-    if not redis:sismember('MARKSTG:'..bot_id..'dev', result.sender_user_id_) then
-    tsX000("prore",msg,'☑┇ بالفعل تم تنزيله من المطورين')
-    else
-    redis:del('MARKSTG:'..bot_id..'sudo3'..result.sender_user_id_..'', 'no')
-    redis:srem('MARKSTG:'..bot_id..'dev', result.sender_user_id_)
-    tsX000("prore",msg,'☑┇ تم تنزيله من مطورين البوت')
-    end
-    end
-    getMessage(msg.chat_id_, msg.reply_to_message_id_,demote_by_reply)
-    end
-    
-    if text:match("^حذف مطور درجه ثالثه@(.*)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-    local apmd = {string.match(text, "^(حذف مطور درجه ثالثه) @(.*)$")}
-    function demote_by_username(extra, result, success)
-    if result.id_ then
-    redis:del('MARKSTG:'..bot_id..'sudo3'..result.id_..'', 'no')
-    redis:srem('MARKSTG:'..bot_id..'dev', result.id_)
-    texts = '☑️¦العضو ⌁≻ ['..result.title_..'](t.me/'..(apmd[2] or 'MARKS_TEAM')..')\n☑┇ تم تنزيله من مطورين البوت'
-    else
-    texts = '✖┇خطاء'
-    end
-    send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
-    end
-    resolve_username(apmd[2],demote_by_username)
-    end  
-    if text:match("^حذف مطور درجه ثالثه(%d+)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-    local apmd = {string.match(text, "^(حذف مطور درجه ثالثه) (%d+)$")}
-    redis:del('MARKSTG:'..bot_id..'sudo3'..apmd[2]..'', 'no')
-    redis:srem('MARKSTG:'..bot_id..'dev', apmd[2])
-    tsX000(apmd[2],msg,'☑┇ تم تنزيله من مطورين البوت')
-    end
 if not database:get('MARKSTG:'..bot_id..'repowner:mute'..msg.chat_id_) then
 local markx = redis:get('MARKSTG:'..bot_id..'markx'..text..''..msg.chat_id_..'')
 if markx then 
@@ -4024,8 +3965,6 @@ local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'.
 local t = ""
 if is_sudo(msg) then
 t = 'مطور البوت'
-if is_sudo3(msg) then
-t = 'مطور درجه ثالثه'
 elseif is_creator(msg) then
 t = 'منشئ الكروب'
 elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
@@ -4069,8 +4008,6 @@ local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'.
 local t = ""
 if is_sudo(msg) then
 t = 'مطور البوت'
-if is_sudo3(msg) then
-    t = 'مطور درجه ثالثه'
 elseif is_creator(msg) then
 t = 'منشئ الكروب'
 elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
@@ -4640,8 +4577,6 @@ local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'.
 if result.photos_[0] then
 if is_sudo(msg) then
 t = 'مطور البوت'
-if is_sudo3(msg) then
-    t = 'مطور درجه ثالثه'
 elseif is_creator(msg) then
 t = 'منشئ الكروب'
 elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
@@ -4683,8 +4618,6 @@ end
 else
 if is_sudo(msg) then
 t = 'مطور البوت'
-if is_sudo3(msg) then
-    t = 'مطور درجه ثالثه'
 elseif is_creator(msg) then
 t = 'منشئ الكروب'
 elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
@@ -4716,8 +4649,6 @@ end
 else
 if is_sudo(msg) then
 t = 'مطور البوت'
-if is_sudo3(msg) then
-    t = 'مطور درجه ثالثه'
 elseif is_creator(msg) then
 t = 'منشئ الكروب'
 elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
@@ -4748,8 +4679,6 @@ end
 else
 if is_sudo(msg) then
 t = 'مطور البوت'
-if is_sudo3(msg) then
-    t = 'مطور درجه ثالثه'
 elseif is_creator(msg) then
 t = 'منشئ الكروب'
 elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
