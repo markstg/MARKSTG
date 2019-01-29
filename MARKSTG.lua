@@ -2875,6 +2875,264 @@ end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 -----------------------------------------------
+        ------------------------------------------------------------------------
+if text == 'اللعبه' and is_mod(msg.sender_user_id_, msg.chat_id_) then
+    if redis:get(MARKSTG.."lock_GEM"..msg.chat_id_) then
+    send(msg.chat_id_, msg.id_, 1, "💬┊ اللعبه معطله\n ‏ ", 1, "md")
+    return false end
+    local user_info_ = redis:get(MARKSTG.."user:Name" .. msg.sender_user_id_)
+    local sender_user_id_ = user_info_
+    if user_info_ then
+    redis:set(MARKSTG..'kk1'..msg.sender_user_id_..''..msg.chat_id_..'','kk')
+    send(msg.chat_id_, 0, 1, '👨‍✈️» اهلا ['..sender_user_id_..'] \n™️» في لعبه السرعه\n⚠️» ارسل ( بدء اللعبه ) للعب\n✓',1, 'md')
+    return false end end
+    if text == 'بدء اللعبه'  and is_mod(msg.sender_user_id_, msg.chat_id_) and redis:get(MARKSTG..'kk1'..msg.sender_user_id_..''..msg.chat_id_..'') then
+    local markx1 = {'س م ى و','ى-س-م-و'}
+    send(msg.chat_id_, 0, 1, '• رتب الكلمه  التاليه \n*('..markx1[math.random(#markx1)]..')*',1, 'md')
+    redis:set(MARKSTG..'kk11'..msg.chat_id_..'','kkk')
+    return false end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'kk11'..msg.chat_id_..'')
+    if MARKSTG1 == 'kkk' then
+    if text == 'موسى' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'kk11'..msg.chat_id_..'')
+    sleep(1.5)
+    local ooo = {'ا-ل-ي-ي-ب','ي ي ا ل ب'}
+    send(msg.chat_id_, 0, 1, '• رتب الكلمه  التاليه \n*('..ooo[math.random(#ooo)]..')*',1, 'md')
+    redis:set(MARKSTG..'kk111'..msg.chat_id_..'','kkkk')
+     return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'kk111'..msg.chat_id_..'')
+    if MARKSTG1 == 'kkkk' then
+    if text == 'ليبيا' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'kk111'..msg.chat_id_..'')
+    sleep(1.5) 
+    local markx = {'ر ط ا ي ه','ا-ي-ط-ر-ه'}
+    send(msg.chat_id_, 0, 1, '• رتب الكلمه  التاليه \n*('..markx[math.random(#markx)]..')*',1, 'md')
+    redis:set(MARKSTG..'kk1111'..msg.chat_id_..'','mm')
+     return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'kk1111'..msg.chat_id_..'')
+    if MARKSTG1 == 'mm' then
+    if text == 'طياره' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'kk1111'..msg.chat_id_..'')
+    sleep(1.5)
+    local markx77 = {'😛😛😛😝😛😛😛','😜😝😜😜😜😜😜'}
+    send(msg.chat_id_, 0, 1, '•ارسل الاسمايل المختلف \n*('..markx77[math.random(#markx77)]..')*',1, 'md')
+    redis:set(MARKSTG..'w1'..msg.chat_id_..'','q1')
+     return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'w1'..msg.chat_id_..'')
+    if MARKSTG1 == 'q1' then
+    if text == '😝' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'w1'..msg.chat_id_..'')
+    sleep(1.5)
+    local markx2 = {'ش-ر-ط-ي','ش,ط,ر,ي'}
+    send(msg.chat_id_, 0, 1, '• رتب الكلمه  التاليه \n*('..markx2[math.random(#markx2)]..')*',1, 'md')
+    redis:set(MARKSTG..'w2'..msg.chat_id_..'','q2')
+     return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'w2'..msg.chat_id_..'')
+    if MARKSTG1 == 'q2' then
+    if text == 'شرطي' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'w2'..msg.chat_id_..'')
+    sleep(1.5)
+    local markx3 = {'😃😃😄😃😃😃'}
+    send(msg.chat_id_, 0, 1, '•ارسل الاسمايل المختلف \n*('..markx3[math.random(#markx3)]..')*',1, 'md')
+    redis:set(MARKSTG..'w9'..msg.chat_id_..'','q9')
+     return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'w9'..msg.chat_id_..'')
+    if MARKSTG1 == 'q9' then
+    if text == '😄' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'w9'..msg.chat_id_..'')
+    sleep(1.5)
+    local markx4 = {'ر ك و ا ي','ر ا ي ك و'}
+    send(msg.chat_id_, 0, 1, '• رتب الكلمه  التاليه \n*('..markx4[math.random(#markx4)]..')*',1, 'md')
+    redis:set(MARKSTG..'w4'..msg.chat_id_..'','q4')
+     return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'w4'..msg.chat_id_..'')
+    if MARKSTG1 == 'q4' then
+    if text == 'كوريا' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'w4'..msg.chat_id_..'')
+    sleep(1.5)
+    local markx5 = {'ك - م - ا - ل','ل ك ا م'}
+    send(msg.chat_id_, 0, 1, '• رتب الكلمه  التاليه \n*('..markx5[math.random(#markx5)]..')*',1, 'md')
+    redis:set(MARKSTG..'w5'..msg.chat_id_..'','q5')
+    return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'w5'..msg.chat_id_..'')
+    if MARKSTG1 == 'q5' then
+    if text == 'ملاك' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'w5'..msg.chat_id_..'')
+    sleep(1.5)
+    send(msg.chat_id_, 0, 1, '• رتب الكلمه  التاليه \n(ك , ش , ب , ا)',1, 'md')
+    redis:set(MARKSTG..'w6'..msg.chat_id_..'','q6')
+     return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'w6'..msg.chat_id_..'')
+    if MARKSTG1 == 'q6' then
+    if text == 'شباك' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'w6'..msg.chat_id_..'')
+    sleep(1.5)
+    local markx6 = {'ل-ج-م-ي','ل ي م ج'}
+    send(msg.chat_id_, 0, 1, '• رتب الكلمه  التاليه \n*('..markx6[math.random(#markx6)]..')*',1, 'md')
+    redis:set(MARKSTG..'w7'..msg.chat_id_..'','q7')
+    return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'w7'..msg.chat_id_..'')
+    if MARKSTG1 == 'q7' then
+    if text == 'جميل' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'w7'..msg.chat_id_..'')
+    sleep(1.5)
+    local markx7 = {'و ك ه ه','ه ك ه و'}
+    send(msg.chat_id_, 0, 1, '• رتب الكلمه  التاليه \n*('..markx7[math.random(#markx7)]..')*',1, 'md')
+    redis:set(MARKSTG..'w8'..msg.chat_id_..'','q8')
+    return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'w8'..msg.chat_id_..'')
+    if MARKSTG1 == 'q8' then
+    if text == 'كهوه' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'w8'..msg.chat_id_..'')
+    sleep(1.5)
+    send(msg.chat_id_, 0, 1, '• رتب الكلمه  التاليه \n( ن ،ص، و، ك، د)',1, 'md')
+    redis:set(MARKSTG..'w9o'..msg.chat_id_..'','q9o')
+     return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'w9o'..msg.chat_id_..'')
+    if MARKSTG1 == 'q9o' then
+    if text == 'صندوك' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'w9o'..msg.chat_id_..'')
+    sleep(1.5)
+    local markx8 = {'ض ر م ي','م ض ر ي'}
+    send(msg.chat_id_, 0, 1, '• رتب الكلمه  التاليه \n*('..markx8[math.random(#markx8)]..')*',1, 'md')
+    redis:set(MARKSTG..'w00'..msg.chat_id_..'','q00')
+     return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'w00'..msg.chat_id_..'')
+    if MARKSTG1 == 'q00' then
+    if text == 'مريض' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'w00'..msg.chat_id_..'')
+    sleep(1.5)
+    local markx9 = {'ي- ط -ر -ق -ن -ب -ا',' ب ي ق ا ط ر ا ن','ب,ي,ا,,ق,ر,ن,ط'}
+    send(msg.chat_id_, 0, 1, '• رتب الكلمه  التاليه \n*('..markx9[math.random(#markx9)]..')*',1, 'md')
+    redis:set(MARKSTG..'a15'..msg.chat_id_..'','s15')
+     return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'a15'..msg.chat_id_..'')
+    if MARKSTG1 == 's15' then
+    if text == 'قرنابيط' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'a15'..msg.chat_id_..'')
+    sleep(1.5)
+    local markx00 = {'😔😔😔😔😔😔😔☺️😔😔😔😔😔'}
+    send(msg.chat_id_, 0, 1, '•ارسل الاسمايل المختلف \n*('..markx00[math.random(#markx00)]..')*',1, 'md')
+    redis:set(MARKSTG..'a26'..msg.chat_id_..'','s26')
+    return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'a26'..msg.chat_id_..'')
+    if MARKSTG1 == 's26' then
+    if text == '☺️' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'a26'..msg.chat_id_..'')
+    sleep(1.5)
+    local markxp = {'ط - م - ي','ي ,م ,ط'}
+    send(msg.chat_id_, 0, 1, '• رتب الكلمه  التاليه \n*('..markxp[math.random(#markxp)]..')*',1, 'md')
+    redis:set(MARKSTG..'a99'..msg.chat_id_..'','s99')
+     return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'a99'..msg.chat_id_..'')
+    if MARKSTG1 == 's99' then
+    if text == 'مطي' then
+    redis:incr(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    send(msg.chat_id_, msg.id_, 1, '• اجابتك صحيحه 👏🏻 ',1, 'md')
+    redis:del(MARKSTG..'a99'..msg.chat_id_..'')
+    return false end end end
+    -----------------------------------------------------------------------------
+    if text == 'نقاطي' then
+    send(msg.chat_id_, msg.id_, 1, '💬┊ عدد نقاطك » *('..tonumber(redis:get(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'') or 0 )..')*',1, 'md')
+    return false end
+    if text == 'بيع نقاطي' then
+    local user_info_ = redis:get(MARKSTG..'user:Name' .. msg.sender_user_id_)
+    local sender_user_id_ = user_info_
+    if user_info_ then
+    local numkep = tonumber(redis:get(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'') or 0 )
+    if numkep == 0 then
+    send(msg.chat_id_, msg.id_, 1, '• انت لا تمتلك نقاط',1, 'md')
+    else
+    local markx = [[
+    • اهلا ~ []]..sender_user_id_..[[]
+    ®️┊نقاطك *(]]..numkep..[[)* اذا اردت تحويلهم
+    💬┊لعضو مميز ارسل رقـــــم ( *1* ) 
+     ✓
+    ]]
+    redis:set(MARKSTG..'markx'..msg.sender_user_id_..''..msg.chat_id_..'','karrar2')
+    send(msg.chat_id_, msg.id_, 1, markx,1, 'md')
+    return false end end end
+    if text then
+    local MARKSTG1 = redis:get(MARKSTG..'markx'..msg.sender_user_id_..''..msg.chat_id_..'')
+    if MARKSTG1 == 'karrar2' then
+    if text == '1' then
+    if redis:sismember(MARKSTG..'bot:vipmem:'..msg.chat_id_, msg.sender_user_id_) then
+    send(msg.chat_id_, msg.id_, 1,'⚠️┊ عذرا انت مرفوع مميز سابقا\n✓', 1, 'md')
+    redis:del(MARKSTG..'markx'..msg.sender_user_id_..''..msg.chat_id_..'')
+    else
+    local numkep = tonumber(redis:get(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'') or 0 )
+    if numkep < tonumber(redis:get(MARKSTG.."MARKSTG_OO0" .. msg.chat_id_) or 100 )  then
+    send(msg.chat_id_, msg.id_, 1, '®️┊عذرا نقاطك اقل من '..tonumber(redis:get(MARKSTG.."MARKSTG_OO0" .. msg.chat_id_) or 100 )..'\n💬┊لا تستطيع تحويلهم لعضو مميز\n✓',1, 'md')
+    redis:del(MARKSTG..'markx'..msg.sender_user_id_..''..msg.chat_id_..'')
+    return false end
+    if numkep > tonumber(redis:get(MARKSTG.."MARKSTG_OO0" .. msg.chat_id_) or 100 )  then
+    send(msg.chat_id_, msg.id_, 1, '🎰┊مبروك عزيزي\n🎧┊تم رفعك عضو مميز\n ✓',1, 'md')
+    redis:sadd(MARKSTG..'bot:vipmem:'..msg.chat_id_, msg.sender_user_id_)
+    redis:del(MARKSTG..'incr_msg'..msg.sender_user_id_..''..msg.chat_id_..'')
+    redis:del(MARKSTG..'markx'..msg.sender_user_id_..''..msg.chat_id_..'')
+    return false end end end end end
+    ------------------------------------------------------------------------------------
+    if is_mod(msg.sender_user_id_, msg.chat_id_) and idf:match("-100(%d+)") and text:match("^ضع شرط البيع (%d+)$")  then
+    local MARKSTG = { string.match(text, "^(ضع شرط البيع) (%d+)$")}
+    send(msg.chat_id_, msg.id_, 1, "®️┊تم وضع عدد نقاط البيع\n🎵┊الان يمكن للعضو بيع نقاط اللعبه\n🌋┊اذا كان عدد نقاطه اكبر من~ *"..MARKSTG[2].."*\n✓",1, 'md')
+    redis:set(MARKSTG.."MARKSTG_OO0" .. msg.chat_id_, MARKSTG[2])
+    return false end
+    -------------------------------------------------------------------------------------
+    if text == 'تفعيل اللعبه' and is_mod(msg.sender_user_id_, msg.chat_id_) then
+    send(msg.chat_id_, msg.id_, 1, "💬┊ بواسطه » "..result.first_name_(msg).."\n🎟┊ تم تفعيل اللعبه\n ✓ ", 1, 'md')
+    redis:del(MARKSTG.."lock_GEM"..msg.chat_id_)
+    end
+    if text == 'تعطيل اللعبه' and is_mod(msg.sender_user_id_, msg.chat_id_) then
+    send(msg.chat_id_, msg.id_, 1, "💬┊ بواسطه » "..result.first_name_(msg).."\n🎟┊ تم تعطيل استخدام اللعبه\n ✓ ", 1, 'md')
+    redis:set(MARKSTG.."lock_GEM"..msg.chat_id_, true)
+    end 
+    -----------------------------------------------------------------------------------------------
 if (text and text == "ابلاغ" and msg.reply_to_message_id_ ~= 0 and (not database:get("MARKSTG:mute:deleta:msg:"..bot_id..msg.chat_id_))) then 
 b = database:get("MARKSTG:user:deleteL:msg:"..msg.chat_id_..bot_id..msg.sender_user_id_)
 if b and b == os.date("%x") then 
