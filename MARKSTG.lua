@@ -1078,12 +1078,12 @@ tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل الجهات
 database:set("lock_contact:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
-if (text == "قفل العربيه") then
+if (text == "قفل الفارسيه") then
 local tsX_o = database:get("lock_ar:MARKSTG"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🗃¦ تم قفل العربيه •")
+tsX000("lock",msg,"🚦: مرحبا عزيزي\n🇮🇷¦ تم قفل الغة الفارسيه •")
 else
-tsX000("lock",msg,"📬¦ خاصيه القفل\n🗃¦ تم قفل العربيه •")
+tsX000("lock",msg,"📬¦ خاصيه القفل\n🇮🇷¦ تم قفل الغة الفارسيه •")
 database:set("lock_ar:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
@@ -1390,12 +1390,12 @@ tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح الجهات 
 database:del("lock_contact:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
-if (text == "فتح العربيه") then
+if (text == "فتح الفارسيه") then
 local tsX_o = database:get("lock_ar:MARKSTG"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"🚦: مرحبا عزيزي\n🔑: تم فتح العربيه•")
+tsX000("lock",msg,"🚦: مرحبا عزيزي\n🇮🇷: تم فتح الغه الفارسيه•")
 else
-tsX000("lock",msg,"📬¦ خاصيه الفتح\n🔑: تم فتح العربيه •")
+tsX000("lock",msg,"📬¦ خاصيه الفتح\n🇮🇷: تم فتح الغه الفارسيه •")
 database:del("lock_ar:MARKSTG"..msg.chat_id_..bot_id,"ok")
 end
 end
