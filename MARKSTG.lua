@@ -3203,6 +3203,35 @@ else
 send(msg.chat_id_, msg.id_, 1, '🖲┇الرابط معطل', 1, "html") 
 end
 end
+if text:match("^تبليغ$") and msg.reply_to_message_id_ ~= 0 then
+    function id_by_reply(extra, result, success)
+    if not database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then 
+    local msgs = database:get('MARKSTG:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.sender_user_id_) or 0
+    local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..result.sender_user_id_) or 0
+    local msg2 = msg
+    msg2.sender_user_id_ = result.sender_user_id_
+    if is_sudo(msg2) then
+    MARKSTG_oop = 'مطور البوت'
+    elseif is_creator(msg) then
+    MARKSTG_oop = 'منشئ الكروب'
+    elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+    MARKSTG_oop = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_)
+    elseif is_owner(msg2) then
+    MARKSTG_oop = 'مدير عام الكروب'
+    elseif ck_mod(result.sender_user_id_,msg.chat_id_) then
+    MARKSTG_oop = 'مدير للكروب'
+    elseif is_vip(msg2) then
+    MARKSTG_oop = 'مميز الكروب'
+    else
+    MARKSTG_oop = 'لا شيء'
+    end
+    send(msg.chat_id_, msg.id_, 1,"📬┇التبليغ عن ازعاج💢\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n💬┇ايدي صاحب التبليغ  ~⪼  `{"..result.sender_user_id_.."}`\n👁‍🗨┇رتبت صاحب التبليغ ➣ {"..MARKSTG_oop.."}\n🔘┇سيتم ارسال رساله للمنشئ للحضور`", 1, 'md')
+    else
+    send(msg.chat_id_, msg.id_, 1,"`"..result.sender_user_id_.."`", 1, 'md')
+    end
+    end
+    getMessage(msg.chat_id_, msg.reply_to_message_id_,id_by_reply)
+    end  
 -----------------------------------------------------------
 if text:match("^تفعيل الترحيب$") and is_mod(msg) then
 send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل الترحيب في المجموعه', 1, 'md')
