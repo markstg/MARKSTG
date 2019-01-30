@@ -5126,6 +5126,7 @@ send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 end
 end
+end
 function tdcli_update_callback(data)
 local chat = {}
 if (data.ID == "UpdateNewMessage") then
