@@ -3314,11 +3314,11 @@ send(msg.chat_id_, msg.id_, 1, "📨┇عدد سحكاتك ~⪼ *{"..edit.."}*\n
 database:del('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_)
 end
 if text:match("^(سحكاتي)$") or text:match("^(سحكاتي)$") then
-local edit = database:get('MARKSTG:'..bot_id..'user_info'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 send(msg.chat_id_, msg.id_, 1, "📮┇ احصائيات التعديلات 📊\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n📷┇عدد تعديلات الصور ~⪼ {0}\n📹┇عدد تعديلات الفيديو ~⪼ {0}\n📨┇عدد تعديلات الرسائل ~⪼ *{"..edit.."}*", 1, 'md')
 end
 if text:match("^(تفاعلي)$") or text:match("^(تفاعلي)$") then
-local taha = database:get('MARKSTG:'..bot_id..'user:formsgg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+local taha = database:get('MARKSTG:'..bot_id..'user:formsgg(msguser'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 send(msg.chat_id_, msg.id_, 1, "📮┇ احصائيات تفاعلك 📊\n📷┇استحقاقك ~⪼ {0}\n📹┇اجمالي تفاعلك ~⪼ {0}\n📨┇نسبة تفاعلك ~⪼ *{"..formsgg(msguser).."}*", 1, 'md')
 end
 if text:match("^مسح المحظورين عام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
