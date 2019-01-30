@@ -3071,6 +3071,8 @@ end
 if #list == 0 then
 text = "✖┇لايوجد مكتومين عام"
 end
+send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
+end  
 if text:match("^ايدي$") and msg.reply_to_message_id_ ~= 0 then
 function id_by_reply(extra, result, success)
 if not database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then 
@@ -3201,6 +3203,35 @@ else
 send(msg.chat_id_, msg.id_, 1, '🖲┇الرابط معطل', 1, "html") 
 end
 end
+if text:match("^تبليغ$") and msg.reply_to_message_id_ ~= 0 then
+    function id_by_reply(extra, result, success)
+    if not database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then 
+    local msgs = database:get('MARKSTG:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.sender_user_id_) or 0
+    local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..result.sender_user_id_) or 0
+    local msg2 = msg
+    msg2.sender_user_id_ = result.sender_user_id_
+    if is_sudo(msg2) then
+    MARKSTG_oop = 'مطور البوت'
+    elseif is_creator(msg) then
+    MARKSTG_oop = 'منشئ الكروب'
+    elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+    MARKSTG_oop = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_)
+    elseif is_owner(msg2) then
+    MARKSTG_oop = 'مدير عام الكروب'
+    elseif ck_mod(result.sender_user_id_,msg.chat_id_) then
+    MARKSTG_oop = 'مدير للكروب'
+    elseif is_vip(msg2) then
+    MARKSTG_oop = 'مميز الكروب'
+    else
+    MARKSTG_oop = 'لا شيء'
+    end
+    send(msg.chat_id_, msg.id_, 1,"📬┇التبليغ عن ازعاج💢\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n💬┇ايدي صاحب التبليغ  ~⪼  `{"..result.sender_user_id_.."}`\n👁‍🗨┇رتبت صاحب التبليغ ➣ {"..MARKSTG_oop.."}\n🔘┇سيتم ارسال رساله للمنشئ للحضور`", 1, 'md')
+    else
+    send(msg.chat_id_, msg.id_, 1,"`"..result.sender_user_id_.."`", 1, 'md')
+    end
+    end
+    getMessage(msg.chat_id_, msg.reply_to_message_id_,id_by_reply)
+    end  
 -----------------------------------------------------------
 if text:match("^تفعيل الترحيب$") and is_mod(msg) then
 send(msg.chat_id_, msg.id_, 1, '🚦¦ مرحبا عزيزي تم ~⊱ تفعيل الترحيب في المجموعه', 1, 'md')
@@ -3314,10 +3345,6 @@ end
 if text:match("^(سحكاتي)$") or text:match("^(سحكاتي)$") then
 local edit = database:get('MARKSTG:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 send(msg.chat_id_, msg.id_, 1, "📮┇ احصائيات التعديلات 📊\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n📷┇عدد تعديلات الصور ~⪼ {0}\n📹┇عدد تعديلات الفيديو ~⪼ {0}\n📨┇عدد تعديلات الرسائل ~⪼ *{"..edit.."}*", 1, 'md')
-end
-if text:match("^(تفاعلي)$") or text:match("^(تفاعلي)$") then
-local taha = database:get('MARKSTG:'..bot_id..'user:formsgg(msguser'..msg.chat_id_..':'..msg.sender_user_id_) or 0
-send(msg.chat_id_, msg.id_, 1, "📮┇ احصائيات تفاعلك 📊\n📷┇استحقاقك ~⪼ {0}\n📹┇اجمالي تفاعلك ~⪼ {0}\n📨┇نسبة تفاعلك ~⪼ *{"..formsgg(msguser).."}*", 1, 'md')
 end
 if text:match("^مسح المحظورين عام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 text = '🗑┤ مرحبا عزيزي تم ~⊱ مسح محظورين عام'
@@ -5063,26 +5090,6 @@ local text =  [[
 ]]
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
-if text:match("^بوتات$") or text:match("^بوت$") or text:match("^بوتات خدميه$") or text:match("^هلاو$") then
-local text =  [[
-📮┇مرحبا بك في بوتات السورس الخدميه
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📜┋لطلب البوتات راسل مطور السورس
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-🚸┋<a href="https://telegram.me/syatibot">صنع بوتات سايت</a>
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-💬┇<a href="https://telegram.me/TWSL_BBOT">صنع بوتات تواصل </a>
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-📟┇<a href="t.me/DEV02BOT">صنع بوتات حمايه</a> 
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-👁‍🗨┋<a href="https://telegram.me/ZRR_1BOT">بوت زغرفه وتصاميم</a>
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-🎥┇<a href="https://telegram.me/JLJLABOT">بوت تحميل من يوتيوب</a>
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-®️┇<a href="t.me/R00MBOT">بوت زيادة اعضاء القنواة</a> 
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-🔎┇<a href="t.me/P_PPPP">مطور السورس</a> 
-]]
 if text:match("^اريد رابط حذف$") or text:match("^رابط حذف$") or text:match("^رابط الحذف$") or text:match("^الرابط حذف$") or text:match("^اريد رابط الحذف$") then
 local text =  [[
 🗑┇رابط حذف التلي ، ⬇
@@ -5090,8 +5097,6 @@ local text =  [[
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 🔎┇<a href="https://telegram.org/deactivate">اضغط هنا للحذف الحساب" </a>
 ]]
-send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
-end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 end
