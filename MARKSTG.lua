@@ -3091,10 +3091,8 @@ t = database:get("MARKSTG:name_vipp"..bot_id..msg.chat_id_) or 'عضو مميز 
 else
 t = database:get("MARKSTG:name_nk"..bot_id..msg.chat_id_) or 'عضو محد يحترمك 👶🏻😹' 
 end
-send(msg.chat_id_, msg.id_, 1,"🚦┇ اهلا عزيزي\n ----------------------\n⚙️┇ رتبتك ~⊱  "..t.."" 1 , 'md')
+send(msg.chat_id_, msg.id_, 1,"👨🏻‍⚖️┇رتبتك >> "..t.."", 1, 'md')
 end
-send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
-end  
 if text:match("^ايدي$") and msg.reply_to_message_id_ ~= 0 then
 function id_by_reply(extra, result, success)
 if not database:get('MARKSTG:'..bot_id..'id:mute'..msg.chat_id_) then 
