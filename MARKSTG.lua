@@ -3074,10 +3074,6 @@ end
 if (text and text == "رتبتي") then
 if is_sudo(msg) then
 t = database:get("MARKSTG:name_sudo"..bot_id..msg.chat_id_)  or 'مطور البوت 👨🏻‍✈️'
-elseif is_creatorbasic(msg) then
-t = database:get("MARKSTG:name_cre"..bot_id..msg.chat_id_) or 'منشئ اساسي 👨🏻‍✈️'
-elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
-t = database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 elseif is_creator(msg) then
 t = database:get("MARKSTG:name_cre"..bot_id..msg.chat_id_) or 'منشئ  الكروب 👨🏻‍🚒'
 elseif (database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) and database:get("MARKSTG:all_if:"..database:get("MARKSTG:name_user:"..bot_id..msg.chat_id_..msg.sender_user_id_) ..bot_id..msg.chat_id_)) then 
