@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-cd MARKSTG
-screen -S MARKSTG -X kill
-screen -S MARKSTG ./MaRkS
